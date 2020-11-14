@@ -12,5 +12,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         //trying to put a comment to see if this wiorks - hassan
+        //adding another comment to show hassam how to commit
     }
 }
