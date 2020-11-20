@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashb1"
+
+            android:title="Dashboard - Supplier"></item>
+        <item
+            android:id="@+id/nav_dashb2"
+
+            android:title="Dashboard - Customer"></item>
+        <item
+            android:id="@+id/nav_product"
+
+            android:title="Products"></item>
+        <item
+            android:id="@+id/nav_sale"
+
+            android:title="Sale"></item>
+        <item
+            android:id="@+id/nav_purchase"
+
+            android:title="Purchases"></item>
+        <item
+            android:id="@+id/nav_customer"
+
+            android:title="Customer"></item>
+        <item
+            android:id="@+id/nav_report"
+
+            android:title="Reports"></item>
+        <item
+            android:id="@+id/nav_setting"
+
+            android:title="Settings"></item>
+        <item
+            android:id="@+id/nav_other"
+
+            android:title="Other"></item>
+
+    </group>
+
+    <item android:title="Bottom">
+
+        <menu>
+            <item
+                android:id="@+id/share"
+                android:title="test"></item>
+            <item
+                android:id="@+id/send"
+                android:title="Settings?"></item>
+        </menu>
+    </item>
+</menu>
