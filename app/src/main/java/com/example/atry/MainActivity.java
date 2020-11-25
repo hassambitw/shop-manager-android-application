@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer = findViewById(R.id.drawer_layout); //menu
         Toolbar toolbar = findViewById(R.id.toolbar); //makes your own toolbar, needed inorder to make your nav drawer functional
         //also remove the other actionbar using NoActionBar theme
+        toolbar.setBackgroundColor(getResources().getColor(R.color.weirdbluevariant));
         setSupportActionBar(toolbar);
 
         NavigationView nav_view = findViewById(R.id.nav_view);

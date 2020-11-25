@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/lin_layout_dashboard"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_layout_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,15 +10,16 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:paddingBottom="8dp"
         android:text="@string/products"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:layout_alignParentTop="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="9">
+        android:layout_height="602dp"
+        android:layout_below="@+id/textView">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -26,6 +27,7 @@
         android:id="@+id/addProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
         android:text="Add Product" />
-</LinearLayout>
+</RelativeLayout>

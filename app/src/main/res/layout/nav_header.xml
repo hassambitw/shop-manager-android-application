@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    android:background="@color/purple_200"
+    android:background="@color/weirdyellowvariant"
     android:orientation="vertical"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -14,6 +14,7 @@
         android:paddingTop="48dp"
         android:text="Welcome!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
         android:textSize="36sp"></TextView>
 
     <TextView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="4dp"
         android:text="Manager"
+        android:textColor="@color/black"
         android:textSize="20sp"></TextView>
 
 </LinearLayout>
