@@ -1,6 +1,7 @@
 package com.example.atry;
 
 class Product {
+    private int productId;
     private String category;
     private String brandName;
     private String productName;
@@ -8,7 +9,8 @@ class Product {
     private int price;
     private int quantity;
 
-    public Product(String category, String brandName, String productName, int modalYear, int price, int quantity) {
+    public Product(int productId, String category, String brandName, String productName, int modalYear, int price, int quantity) {
+        this.productId = productId;
         this.category = category;
         this.brandName = brandName;
         this.productName = productName;

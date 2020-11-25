@@ -3,13 +3,14 @@ package com.example.atry;
 class Supplier {
 
     public String supplierName;
-    //public String supplierId;
+    public String supplierId;
     public String supplierNumber;
     public String supplierEmail;
 
 
-    public Supplier(String supplierName, String supplierNumber, String supplierEmail) {
+    public Supplier(String supplierName, String supplierId, String supplierNumber, String supplierEmail) {
         this.supplierName = supplierName;
+        this.supplierId = supplierId;
         this.supplierNumber = supplierNumber;
         this.supplierEmail = supplierEmail;
     }

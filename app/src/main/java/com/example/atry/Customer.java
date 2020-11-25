@@ -2,6 +2,8 @@ package com.example.atry;
 
 class Customer {
 
+
+    private int customerId;
     private String firstName;
     private String lastName;
     private String email;
@@ -11,7 +13,8 @@ class Customer {
     private int phone;
     private int city;
 
-    public Customer(String firstName, String lastName, String email, String street, String state, int zipcode, int phone, int city) {
+    public Customer(int customerId, String firstName, String lastName, String email, String street, String state, int zipcode, int phone, int city) {
+        this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
