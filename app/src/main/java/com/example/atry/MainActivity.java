@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this,"Reports",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_sale:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SalesFragment()).commit();
                 Toast.makeText(this,"Sale",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_setting:
