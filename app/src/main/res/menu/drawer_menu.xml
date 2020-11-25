@@ -16,31 +16,31 @@
         <item
             android:id="@+id/nav_product"
 
-            android:title="Products"></item>
+            android:title="@string/products"></item>
         <item
             android:id="@+id/nav_sale"
 
-            android:title="Sale"></item>
+            android:title="@string/sale"></item>
         <item
             android:id="@+id/nav_purchase"
 
-            android:title="Purchases"></item>
+            android:title="@string/purchases"></item>
         <item
             android:id="@+id/nav_customer"
 
-            android:title="Customer"></item>
+            android:title="@string/customer"></item>
         <item
             android:id="@+id/nav_report"
 
-            android:title="Reports"></item>
+            android:title="@string/reports"></item>
         <item
             android:id="@+id/nav_setting"
 
-            android:title="Settings"></item>
+            android:title="@string/settings"></item>
         <item
             android:id="@+id/nav_other"
 
-            android:title="Other"></item>
+            android:title="@string/other"></item>
 
     </group>
 
