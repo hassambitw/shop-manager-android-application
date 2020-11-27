@@ -1,5 +1,6 @@
 package com.example.atry;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,24 +20,23 @@ public class SalesFragment extends Fragment {
     private RecyclerView salesRecyclerView;
     private RecyclerView.Adapter salesAdapter;
     private RecyclerView.LayoutManager salesLayoutManager;
+    DBHelper dbO;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        ArrayList<Product> productList = new ArrayList<>();
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
+        ArrayList<Orders> ordersList = new ArrayList<>();
 
+        dbO=new DBHelper(getActivity());
+        dbO.insertOrder(2,001,"12/12/2020");
 
+        Cursor c1=dbO.getAllFrom_Orders();
+        while(c1.moveToNext()){
+            int id=c1.getInt(c1.getColumnIndex("order_id"));
 
+            int customerID=c1.getInt(c1.getColumnIndex("customer_id"));
+            String orderDate=c1.getString(c1.getColumnIndex("order_date"));
+            ordersList.add(new Orders(id,customerID,orderDate));
+        }
 
 
 
@@ -45,7 +45,7 @@ public class SalesFragment extends Fragment {
         salesRecyclerView = v.findViewById(R.id.product_recycler_view);
         salesRecyclerView.setHasFixedSize(true);
         salesLayoutManager = new LinearLayoutManager(v.getContext());
-        salesAdapter = new ProductAdapter(productList);
+        salesAdapter = new Sales_Adapter(ordersList);
         salesRecyclerView.setLayoutManager(salesLayoutManager);
         salesRecyclerView.setAdapter(salesAdapter);
 
