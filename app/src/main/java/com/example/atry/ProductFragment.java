@@ -15,14 +15,14 @@ import java.util.ArrayList;
 
 public class ProductFragment extends Fragment {
 
-
+    ArrayList<Product> productList = new ArrayList<>();
     private RecyclerView productRecyclerView;
     private RecyclerView.Adapter productAdapter;
     private RecyclerView.LayoutManager productLayoutManager;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        ArrayList<Product> productList = new ArrayList<>();
+
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));

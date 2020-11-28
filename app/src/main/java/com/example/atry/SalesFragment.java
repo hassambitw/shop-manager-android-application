@@ -25,18 +25,18 @@ public class SalesFragment extends Fragment {
     Button b;
     DBHelper dbO;
     int req_code=10;
-
+    ArrayList<Orders> ordersList = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        ArrayList<Orders> ordersList = new ArrayList<>();
+
 
         dbO=new DBHelper(getActivity());
 
 
 
-     // dbO.insertOrder(6,005,"02/10/2020",99);
+      dbO.insertOrder(6,005,"02/10/2020",99);
        //dbO.updateTable();
         Cursor c1=dbO.getAllFrom_Orders();
         while(c1.moveToNext()){
