@@ -1,10 +1,12 @@
 package com.example.atry;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,16 +22,21 @@ public class SalesFragment extends Fragment {
     private RecyclerView salesRecyclerView;
     private RecyclerView.Adapter salesAdapter;
     private RecyclerView.LayoutManager salesLayoutManager;
+    Button b;
     DBHelper dbO;
+    int req_code=10;
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         ArrayList<Orders> ordersList = new ArrayList<>();
 
         dbO=new DBHelper(getActivity());
-       // dbO.getWritableDatabase()
 
-      // dbO.insertOrder(2,001,"02/12/2020");
+
+
+     // dbO.insertOrder(6,005,"02/10/2020",99);
        //dbO.updateTable();
         Cursor c1=dbO.getAllFrom_Orders();
         while(c1.moveToNext()){
@@ -44,7 +51,13 @@ public class SalesFragment extends Fragment {
 
 
         View v =  inflater.inflate(R.layout.fragment_sales,container,false);
-
+        b = (Button)v.findViewById(R.id.addSale);
+        b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity(),Add_Sale.class);
+                startActivityForResult(i,req_code);
+            }
+        });
         salesRecyclerView = v.findViewById(R.id.product_recycler_view);
         salesRecyclerView.setHasFixedSize(true);
         salesLayoutManager = new LinearLayoutManager(v.getContext());
@@ -57,5 +70,6 @@ public class SalesFragment extends Fragment {
 
 
     }
+
 
 }

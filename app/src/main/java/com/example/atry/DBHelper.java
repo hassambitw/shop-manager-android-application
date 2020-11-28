@@ -8,12 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "MyShop3.db";
+    public static final String DATABASE_NAME = "MyShop4.db";
 
     public static final String ORDERS_TABLE_NAMEe = "orders";
     public static final String ORDERS_ORDER_ID = "order_id";
     public static final String ORDERS_CUSTOMER_ID = "customer_id";
     public static final String ORDERS_ORDER_DATE = "order_date";
+    public static final String ORDERS_STAFF_ID="staff_id";
 
 
     public static final String ORDER_ITEMS_TABLE_NAME = "order_items";
@@ -27,7 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
 
-        super(context, DATABASE_NAME , null, 2);
+        super(context, DATABASE_NAME , null, 1);
         db=getWritableDatabase();
     }
 
@@ -40,7 +41,8 @@ public class DBHelper extends SQLiteOpenHelper {
         String createTable_orders2 = "CREATE TABLE IF NOT EXISTS " + ORDERS_TABLE_NAMEe +
                 " ("+ ORDERS_ORDER_ID +" INTEGER PRIMARY KEY, "+
                 ORDERS_CUSTOMER_ID+ " INTEGER , " +
-                ORDERS_ORDER_DATE +" STRING " +
+                ORDERS_ORDER_DATE +" STRING, " +
+                ORDERS_STAFF_ID+" INTEGER"+
               ")";
         String createTable_order_items = "CREATE TABLE IF NOT EXISTS " + ORDER_ITEMS_TABLE_NAME +
                 " ("+ ORDER_ITEMS_ORDER_ID +" INTEGER, "+
@@ -58,18 +60,19 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO Auto-generated method stub
-        if (newVersion > oldVersion) {
+       /* if (newVersion > oldVersion) {
             String add_orders = "ALTER TABLE " + ORDERS_TABLE_NAMEe + " ADD COLUMN staff_id INTEGER";
             db.execSQL(add_orders);
-        }
+        }*/
 
     }
-    public void insertOrder(int orderId, int customerId, String orderDate){
+    public void insertOrder(int orderId, int customerId, String orderDate,int staff_id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("order_id", orderId);
         contentValues.put("customer_id", customerId);
         contentValues.put("order_date", orderDate);
+        contentValues.put("staff_id",staff_id);
         db.insert("orders","",contentValues);
 
     }
