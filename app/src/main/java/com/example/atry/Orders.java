@@ -5,12 +5,14 @@ class Orders {
     private int orderId;
     private int customerId;
     private String orderDate;
+    private int staff_id;
     private double total_price;
 
-    public Orders(int orderId, int customerId, String orderDate) {
+    public Orders(int orderId, int customerId, String orderDate, int staff_id) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.orderDate = orderDate;
+        this.staff_id=staff_id;
     }
 
     public int getOrderId() {
@@ -27,6 +29,15 @@ class Orders {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    public int getStaffId() {
+        return staff_id;
+    }
+
+    public void setStaffId(int staff_id) {
+        this.staff_id=staff_id;
+
     }
 
 

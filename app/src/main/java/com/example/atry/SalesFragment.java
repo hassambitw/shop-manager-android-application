@@ -27,15 +27,18 @@ public class SalesFragment extends Fragment {
         ArrayList<Orders> ordersList = new ArrayList<>();
 
         dbO=new DBHelper(getActivity());
-        dbO.insertOrder(2,001,"12/12/2020");
+       // dbO.getWritableDatabase()
 
+      // dbO.insertOrder(2,001,"02/12/2020");
+       //dbO.updateTable();
         Cursor c1=dbO.getAllFrom_Orders();
         while(c1.moveToNext()){
             int id=c1.getInt(c1.getColumnIndex("order_id"));
 
             int customerID=c1.getInt(c1.getColumnIndex("customer_id"));
             String orderDate=c1.getString(c1.getColumnIndex("order_date"));
-            ordersList.add(new Orders(id,customerID,orderDate));
+            int staff_id=c1.getInt(c1.getColumnIndex("staff_id"));
+            ordersList.add(new Orders(id,customerID,orderDate,staff_id));
         }
 
 

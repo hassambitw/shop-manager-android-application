@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "MyShop2.db";
+    public static final String DATABASE_NAME = "MyShop3.db";
 
     public static final String ORDERS_TABLE_NAMEe = "orders";
     public static final String ORDERS_ORDER_ID = "order_id";
@@ -23,16 +23,19 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String ORDER_ITEMS_QUANTITY = "quantity";
     public static final String ORDER_ITEMS_PRICE = "price";
     public static final String ORDER_ITEMS_DISCOUNT = "discount";
+    SQLiteDatabase db;
 
     public DBHelper(Context context) {
-        super(context, DATABASE_NAME , null, 1);
+
+        super(context, DATABASE_NAME , null, 2);
+        db=getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("DROP TABLE IF EXISTS orders");
-        db.execSQL("DROP TABLE IF EXISTS order_items");
+        /*db.execSQL("DROP TABLE IF EXISTS orders");
+        db.execSQL("DROP TABLE IF EXISTS order_items");*/
         System.out.println("IN CREATE BOOM");
         String createTable_orders2 = "CREATE TABLE IF NOT EXISTS " + ORDERS_TABLE_NAMEe +
                 " ("+ ORDERS_ORDER_ID +" INTEGER PRIMARY KEY, "+
@@ -45,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 ORDER_ITEMS_PRODUCT_ID +" INTEGER, " +
                 ORDER_ITEMS_QUANTITY + " INTEGER, " +
                 ORDER_ITEMS_PRICE + " DOUBLE," +
-                ORDER_ITEMS_DISCOUNT+"DOUBLE,"+
+                ORDER_ITEMS_DISCOUNT+" DOUBLE,"+
                 "PRIMARY KEY("+ORDER_ITEMS_ORDER_ID+","+ORDER_ITEMS_ITEM_ID+
                 "))";
         db.execSQL(createTable_orders2);
@@ -55,8 +58,11 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO Auto-generated method stub
+        if (newVersion > oldVersion) {
+            String add_orders = "ALTER TABLE " + ORDERS_TABLE_NAMEe + " ADD COLUMN staff_id INTEGER";
+            db.execSQL(add_orders);
+        }
 
-        onCreate(db);
     }
     public void insertOrder(int orderId, int customerId, String orderDate){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -67,6 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert("orders","",contentValues);
 
     }
+
 
     public void insert_order_item(int orderId, int itemId, int productId, int quantity, double price, double discount){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -84,9 +91,21 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.query("orders",null,null,null,null,null,null);
     }
-    public Cursor getAllFrom_Order_items() {
+    public Cursor getAllFrom_Order_items(int order_id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.query("order_items",null,null,null,null,null,null);
+        String select_order_items = "SELECT * FROM " + ORDER_ITEMS_TABLE_NAME +
+                " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
+        return db.rawQuery(select_order_items,null);
+
+    }
+    public void updateTable(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String update_orders = "UPDATE " + ORDERS_TABLE_NAMEe + " SET staff_id=3 WHERE order_id=1";
+        db.execSQL(update_orders);
+        String update_orders2 = "UPDATE " + ORDERS_TABLE_NAMEe + " SET staff_id=9 WHERE order_id=2";
+        db.execSQL(update_orders2);
+        String update_orders3 = "UPDATE " + ORDERS_TABLE_NAMEe + " SET staff_id=83 WHERE order_id=69";
+        db.execSQL(update_orders3);
     }
 
 }
