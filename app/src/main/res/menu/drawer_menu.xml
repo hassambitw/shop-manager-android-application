@@ -10,10 +10,6 @@
 
             android:title="Dashboard - Supplier"></item>
         <item
-            android:id="@+id/nav_dashb2"
-
-            android:title="Dashboard - Customer"></item>
-        <item
             android:id="@+id/nav_product"
 
             android:title="@string/products"></item>
@@ -37,22 +33,8 @@
             android:id="@+id/nav_setting"
 
             android:title="@string/settings"></item>
-        <item
-            android:id="@+id/nav_other"
 
-            android:title="@string/other"></item>
 
     </group>
 
-    <item android:title="Bottom">
-
-        <menu>
-            <item
-                android:id="@+id/share"
-                android:title="test"></item>
-            <item
-                android:id="@+id/send"
-                android:title="Settings?"></item>
-        </menu>
-    </item>
 </menu>

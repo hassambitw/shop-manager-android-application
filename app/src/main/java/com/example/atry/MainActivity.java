@@ -68,19 +68,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_dashb1:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DashboardFragment()).commit();
                 break;
-            case R.id.nav_dashb2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DashboardFragment()).commit();
-                break;
             case R.id.nav_product:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
                 break;
-            case R.id.nav_other:
+            case R.id.nav_customer:
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
                 Toast.makeText(this,"Other",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_purchase:
+               // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new PurchaseFragment()).commit();
                 Toast.makeText(this,"Purchases",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_report:
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
                 Toast.makeText(this,"Reports",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_sale:
@@ -88,13 +88,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this,"Sale",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_setting:
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
                 Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.share:
-                Toast.makeText(this,"Test ?",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.send:
-                Toast.makeText(this,"Settings ?",Toast.LENGTH_SHORT).show();
                 break;
 
 
