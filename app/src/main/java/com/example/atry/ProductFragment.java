@@ -1,9 +1,11 @@
 package com.example.atry;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +21,14 @@ public class ProductFragment extends Fragment {
     private RecyclerView productRecyclerView;
     private RecyclerView.Adapter productAdapter;
     private RecyclerView.LayoutManager productLayoutManager;
+
+    int req_code=11;
+
+    Button addProduct;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
+        //addProduct = container.findViewById(R.id.addProduct);
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
@@ -34,13 +40,17 @@ public class ProductFragment extends Fragment {
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
         productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
-
-
-
-
 
 
         View v =  inflater.inflate(R.layout.fragment_products,container,false);
+
+        addProduct = (Button)v.findViewById(R.id.addProduct);
+        addProduct.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity(),AddProduct.class);
+                startActivityForResult(i,req_code);
+            }
+        });
 
         productRecyclerView = v.findViewById(R.id.product_recycler_view);
         productRecyclerView.setHasFixedSize(true);

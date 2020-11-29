@@ -26,6 +26,10 @@
 
             android:title="@string/customer"></item>
         <item
+            android:id="@+id/nav_supplier"
+
+            android:title="@string/suppliers"></item>
+        <item
             android:id="@+id/nav_report"
 
             android:title="@string/reports"></item>

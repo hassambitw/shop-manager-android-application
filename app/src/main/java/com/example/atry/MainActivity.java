@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
 
-        //trying to put a comment to see if this wiorks - hassan
+
         //adding another comment to show hassam how to commit
-        //test again
+
         // when theres nothing in the saved state ie when the activity restarts or resumes, it will get the deashboard fragment
         if (savedInstanceState ==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DashboardFragment()).commit();
@@ -67,13 +67,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
             case R.id.nav_dashb1:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DashboardFragment()).commit();
+                Toast.makeText(this,"Dashboard",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_product:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
+                Toast.makeText(this,"Products",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_customer:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new CustomerFragment()).commit();
-                Toast.makeText(this,"Other",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Customer",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_purchase:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new PurchaseFragment()).commit();
@@ -82,6 +84,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_report:
                 //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
                 Toast.makeText(this,"Reports",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_supplier:
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
+                Toast.makeText(this,"Suppliers",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_sale:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SalesFragment()).commit();
