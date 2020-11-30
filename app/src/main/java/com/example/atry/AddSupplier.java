@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AddProduct extends AppCompatActivity {
+public class AddSupplier extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_product);
-
-
-        //when done , implement toast informing user about the product id created
+        setContentView(R.layout.activity_add_supplier);
     }
 }
