@@ -57,7 +57,7 @@ public class Sales_Adapter extends RecyclerView.Adapter<Sales_Adapter.SalesViewH
         holder.mTextView3.setText(curItem.getOrderDate());
         holder.mTextView4.setText(Integer.toString(curItem.getStaffId()));
         holder.b.setOnClickListener((v)->{
-            Intent i=new Intent(v.getContext(), MainActivity2.class);
+            Intent i=new Intent(v.getContext(), View_receipt.class);
             i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));
             i.putExtra("customer_id",Integer.parseInt(holder.mTextView2.getText().toString()));
             i.putExtra("order_date",holder.mTextView3.getText().toString());

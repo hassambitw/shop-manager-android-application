@@ -7,12 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity2 extends AppCompatActivity {
+public class View_receipt extends AppCompatActivity {
     TextView tv1;
     TextView tv2;
     TextView tv3;
@@ -26,7 +25,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<Order_Items>itemList=new ArrayList<>();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_view_receipt);
         Intent intent = getIntent();
         int order_id=intent.getIntExtra("order_id",0);
         int customer_id=intent.getIntExtra("customer_id",0);
