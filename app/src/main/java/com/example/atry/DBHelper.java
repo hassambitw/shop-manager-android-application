@@ -156,7 +156,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SUPPLIER_COL4_SUPPLIERID = "shipment_supplier_id";   //FK on supplier table
     public static final String SUPPLIER_COL5_SHIPMENTDATE = "shipment_date";
 
-    String CREATE_TABLE_SHIPMENT = "CREATE TABLE IF NOT EXISTS " + SUPPLIER_TABLE +
+    String CREATE_TABLE_SHIPMENT = "CREATE TABLE IF NOT EXISTS " + SHIPMENT_TABLE +
                                     "("
                                         + SHIPMENT_COL1_SHIPMENTNUM + " INTEGER NOT NULL, "
                                         + SHIPMENT_COL2_PRODUCTID + " INTEGER NOT NULL, "
