@@ -41,6 +41,7 @@ public class SuppliersFragment extends Fragment {
 //        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
 //        productList.add(new Product(001, "SmartPhones", "Samsung", "Galaxy 2077 Doomesday Edition", 2077, 202020, 55));
 
+        supplierList.add(new Supplier("Eros Entertainment",001,995554545,"eros@err.com"));
 
         View v =  inflater.inflate(R.layout.fragment_suppliers,container,false);
 
@@ -55,7 +56,7 @@ public class SuppliersFragment extends Fragment {
         supplierRecyclerView = v.findViewById(R.id.product_recycler_view);
         supplierRecyclerView.setHasFixedSize(true);
         supplierLayoutManager = new LinearLayoutManager(v.getContext());
-        //supplierAdapter = new SupplierAdapter(supplierList);
+        supplierAdapter = new SuppliersAdapter(supplierList);
         supplierRecyclerView.setLayoutManager(supplierLayoutManager);
         supplierRecyclerView.setAdapter(supplierAdapter);
 
