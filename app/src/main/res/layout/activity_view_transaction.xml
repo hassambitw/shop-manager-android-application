@@ -11,14 +11,14 @@
         android:id="@+id/firstLin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="8dp"
-        android:text="@string/customer"
-        android:textSize="36sp"
-        android:layout_alignParentTop="true" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="@string/transactionHeading"
+            android:textSize="36sp"
+            android:layout_alignParentTop="true" />
 
     </LinearLayout>
 
@@ -30,7 +30,7 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/customer_recycler_view"
+            android:id="@+id/transaction_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView"
@@ -44,7 +44,7 @@
             android:layout_height="0.8dp"
             android:layout_marginBottom="0dp"
             android:background="#B2B2B2"
-            android:layout_below="@+id/customer_recycler_view"/>
+            android:layout_below="@+id/transaction_recycler_view"/>
 
 
 
@@ -55,13 +55,13 @@
             android:layout_weight="0.5"
             android:weightSum="1">
 
-        <Button
-            android:id="@+id/addCustomer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="@string/addButton"
-            android:layout_gravity="center"/>
+            <Button
+                android:id="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/backButton"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 

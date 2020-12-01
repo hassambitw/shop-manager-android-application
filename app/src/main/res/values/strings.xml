@@ -14,24 +14,34 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Add customer xml -->
-         <string name="heading">Add Customer </string>
-        <!-- text views -->
-        <string name="customerID_tv">Customer ID: </string>
-        <string name="firstNameTV">First name: </string>
-        <string name="lastNameTV">Last name: </string>
-        <string name="emailTV">Email: </string>
-        <string name="phoneNumTV">Phone number: </string>
-        <!-- edit text hints -->
-        <string name="customerIDHint">Enter customer ID </string>
-        <string name="firstNameHint">Enter first name </string>
-        <string name="lastNameHint">Enter last name </string>
-        <string name="emailHint">Enter email </string>
-        <string name="phoneNumHint">Enter phone number </string>
-        <!-- buttons -->
-        <string name="backButton">Back</string>
-        <string name="DoneButton">Done</string>
+    <string name="heading">Add Customer </string>
+    <!-- text views -->
+    <string name="customerID_tv">Customer ID: </string>
+    <string name="firstNameTV">First name: </string>
+    <string name="lastNameTV">Last name: </string>
+    <string name="emailTV">Email: </string>
+    <string name="phoneNumTV">Phone number: </string>
+    <!-- edit text hints -->
+    <string name="customerIDHint">Enter customer ID </string>
+    <string name="firstNameHint">Enter first name </string>
+    <string name="lastNameHint">Enter last name </string>
+    <string name="emailHint">Enter email </string>
+    <string name="phoneNumHint">Enter phone number </string>
+    <!-- buttons -->
+    <string name="backButton">Back</string>
+    <string name="DoneButton">Done</string>
 
     <!-- Add customer xml -->
     <string name="addButton">Add Customer</string>
+
+    <!-- customer_item xml -->
+    <string name="transactionBtn">View&#10; Transactions</string>
+    <string name="editBtn">Edit</string>
+
+    <!-- editCustomer xml -->
+    <string name="editCustHeading">Edit Customers</string>
+
+    <!-- activity_view_transaction xml -->
+    <string name="transactionHeading">Transaction History</string>
 
 </resources>

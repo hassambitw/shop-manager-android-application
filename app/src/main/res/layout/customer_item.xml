@@ -29,7 +29,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Customer ID: "
+                    android:text="@string/customerID_tv"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -84,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Phone no: "
+                        android:text="@string/phoneNumTV"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -105,7 +105,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Email:  "
+                        android:text="@string/emailTV"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -139,7 +139,7 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:paddingEnd="8dp"
-                android:text="View&#10;Transactions"
+                android:text="@string/transactionBtn"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
 
@@ -153,7 +153,7 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:paddingEnd="20dp"
-                android:text="Edit"
+                android:text="@string/editBtn"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
 

@@ -1,8 +1,10 @@
 package com.example.atry;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +20,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         public TextView lastNameTV;
         public TextView phoneTV;
         public TextView emailTV;
+        Button transactionBtn;
+        Button editBtn;
 
         public CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -27,6 +31,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
             lastNameTV = itemView.findViewById(R.id.lastName);
             phoneTV = itemView.findViewById(R.id.phone);
             emailTV = itemView.findViewById(R.id.email);
+            transactionBtn = itemView.findViewById(R.id.viewTransaction);
+            editBtn = itemView.findViewById(R.id.editCustomer);
         }
     }
 
@@ -53,6 +59,23 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         holder.phoneTV.setText(Integer.toString(curItem.getPhone()));
         holder.emailTV.setText(curItem.getEmail());
 
+        holder.transactionBtn.setOnClickListener((v)->{
+            Intent i = new Intent(v.getContext(), viewTransaction_activity.class);
+//            i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));
+//            i.putExtra("customer_id",Integer.parseInt(holder.mTextView2.getText().toString()));
+//            i.putExtra("order_date",holder.mTextView3.getText().toString());
+//            i.putExtra("staff_id",Integer.parseInt(holder.mTextView4.getText().toString()));
+            v.getContext().startActivity(i);
+        });
+
+        holder.editBtn.setOnClickListener((v)->{
+            Intent i = new Intent(v.getContext(), editCustomer_activity.class);
+//            i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));
+//            i.putExtra("customer_id",Integer.parseInt(holder.mTextView2.getText().toString()));
+//            i.putExtra("order_date",holder.mTextView3.getText().toString());
+//            i.putExtra("staff_id",Integer.parseInt(holder.mTextView4.getText().toString()));
+            v.getContext().startActivity(i);
+        });
     }
 
     @Override
