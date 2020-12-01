@@ -7,22 +7,23 @@ class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    private String street;
-    private String state;
-    private int zipcode;
     private int phone;
-    private String city;
 
-    public Customer(int customerId, String firstName, String lastName, String email, String street, String state, int zipcode, int phone, String city) {
+    public Customer(int customerId, String firstName, String lastName, String email, int phone) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.street = street;
-        this.state = state;
-        this.zipcode = zipcode;
         this.phone = phone;
-        this.city = city;
+    }
+
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getFirstName() {
@@ -49,43 +50,11 @@ class Customer {
         this.email = email;
     }
 
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public int getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
-    }
-
     public int getPhone() {
         return phone;
     }
 
     public void setPhone(int phone) {
         this.phone = phone;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 }

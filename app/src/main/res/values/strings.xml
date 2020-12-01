@@ -6,11 +6,32 @@
     <string name="products">Products</string>
     <string name="sale">Sales</string>
     <string name="purchases">Purchases</string>
-    <string name="customer">Customer</string>
+    <string name="customer">Customers</string>
     <string name="reports">Reports</string>
     <string name="settings">Settings</string>
     <string name="dashboard">Dashboard</string>
     <string name="suppliers">Suppliers</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Add customer xml -->
+         <string name="heading">Add Customer </string>
+        <!-- text views -->
+        <string name="customerID_tv">Customer ID: </string>
+        <string name="firstNameTV">First name: </string>
+        <string name="lastNameTV">Last name: </string>
+        <string name="emailTV">Email: </string>
+        <string name="phoneNumTV">Phone number: </string>
+        <!-- edit text hints -->
+        <string name="customerIDHint">Enter customer ID </string>
+        <string name="firstNameHint">Enter first name </string>
+        <string name="lastNameHint">Enter last name </string>
+        <string name="emailHint">Enter email </string>
+        <string name="phoneNumHint">Enter phone number </string>
+        <!-- buttons -->
+        <string name="backButton">Back</string>
+        <string name="DoneButton">Done</string>
+
+    <!-- Add customer xml -->
+    <string name="addButton">Add Customer</string>
+
 </resources>

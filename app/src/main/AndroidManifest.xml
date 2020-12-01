@@ -10,13 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Try.NoActionBar">
         <activity android:name=".AddSupplier"></activity>
-        <activity android:name=".AddCustomer" />
+        <activity android:name=".AddCustomer_Activity" />
         <activity android:name=".AddPurchase" />
         <activity android:name=".AddProduct" />
         <activity android:name=".Add_Sale" />
         <activity android:name=".View_receipt" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

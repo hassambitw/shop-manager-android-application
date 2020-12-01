@@ -24,40 +24,37 @@ public class SalesFragment extends Fragment {
     private RecyclerView.LayoutManager salesLayoutManager;
     Button b;
     DBHelper dbO;
-    int req_code=10;
+    int req_code = 10;
     ArrayList<Orders> ordersList = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-
-        dbO=new DBHelper(getActivity());
-
+        dbO = new DBHelper(getActivity());
 
 
-      dbO.insertOrder(6,005,"02/10/2020",99);
-       //dbO.updateTable();
-        Cursor c1=dbO.getAllFrom_Orders();
-        while(c1.moveToNext()){
-            int id=c1.getInt(c1.getColumnIndex("order_id"));
-
-            int customerID=c1.getInt(c1.getColumnIndex("customer_id"));
-            String orderDate=c1.getString(c1.getColumnIndex("order_date"));
-            int staff_id=c1.getInt(c1.getColumnIndex("staff_id"));
-            ordersList.add(new Orders(id,customerID,orderDate,staff_id));
+        dbO.insertOrder(6, 005, "02/10/2020", 99);
+        //dbO.updateTable();
+        Cursor c1 = dbO.getAllFrom_Orders();
+        while (c1.moveToNext()) {
+            int id = c1.getInt(c1.getColumnIndex("order_id"));
+            int customerID = c1.getInt(c1.getColumnIndex("customer_id"));
+            String orderDate = c1.getString(c1.getColumnIndex("order_date"));
+            int staff_id = c1.getInt(c1.getColumnIndex("staff_id"));
+            ordersList.add(new Orders(id, customerID, orderDate, staff_id));
         }
 
 
-
-        View v =  inflater.inflate(R.layout.fragment_sales,container,false);
-        b = (Button)v.findViewById(R.id.addSale);
+        View v = inflater.inflate(R.layout.fragment_sales, container, false);
+        b = (Button) v.findViewById(R.id.addSale);
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i=new Intent(getActivity(),Add_Sale.class);
-                startActivityForResult(i,req_code);
+                Intent i = new Intent(getActivity(), Add_Sale.class);
+                startActivityForResult(i, req_code);
             }
         });
+
         salesRecyclerView = v.findViewById(R.id.product_recycler_view);
         salesRecyclerView.setHasFixedSize(true);
         salesLayoutManager = new LinearLayoutManager(v.getContext());

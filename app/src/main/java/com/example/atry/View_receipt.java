@@ -3,12 +3,10 @@ package com.example.atry;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class View_receipt extends AppCompatActivity {
@@ -21,6 +19,7 @@ public class View_receipt extends AppCompatActivity {
     View_items_Adapter adapter;
     RecyclerView recyclerView;
     private RecyclerView.LayoutManager itemsLayoutManager;
+    // hello
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<Order_Items>itemList=new ArrayList<>();

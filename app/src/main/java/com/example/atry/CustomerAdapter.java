@@ -4,27 +4,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.CustomerViewHolder> {
 
     private ArrayList<Customer> purcList;
+
     public class CustomerViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView1;
-        public TextView mTextView2;
-        public TextView mTextView3;
+        public TextView customer_id_tv;
+        public TextView firstNameTV;
+        public TextView lastNameTV;
+        public TextView phoneTV;
+        public TextView emailTV;
 
         public CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
-            mTextView1 = itemView.findViewById(R.id.fName);
-            mTextView2 = itemView.findViewById(R.id.lName);
-            mTextView3 = itemView.findViewById(R.id.pNumber);
+            customer_id_tv = itemView.findViewById(R.id.customerID);
+            firstNameTV = itemView.findViewById(R.id.firstName);
+            lastNameTV = itemView.findViewById(R.id.lastName);
+            phoneTV = itemView.findViewById(R.id.phone);
+            emailTV = itemView.findViewById(R.id.email);
         }
     }
 
@@ -45,9 +47,11 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
         Customer curItem = purcList.get(position);
 
-        holder.mTextView1.setText(curItem.getFirstName());
-        holder.mTextView2.setText(curItem.getLastName());
-        holder.mTextView3.setText(Integer.toString(curItem.getPhone()));
+        holder.customer_id_tv.setText(Integer.toString(curItem.getCustomerId()));
+        holder.firstNameTV.setText(curItem.getFirstName());
+        holder.lastNameTV.setText(curItem.getLastName());
+        holder.phoneTV.setText(Integer.toString(curItem.getPhone()));
+        holder.emailTV.setText(curItem.getEmail());
 
     }
 

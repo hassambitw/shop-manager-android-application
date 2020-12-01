@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Sales_Adapter extends RecyclerView.Adapter<Sales_Adapter.SalesViewHolder> {
 
     private ArrayList<Orders> salesList;
+
     public class SalesViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView1;
         public TextView mTextView2;
