@@ -37,88 +37,84 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/customerID_tv"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:layout_weight="0.5"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/customerID_tv"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/customer_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="@string/customerIDHint"
-            android:textSize="14sp"
-            android:layout_weight="0.5"/>
+            <EditText
+                android:id="@+id/customer_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/customerIDHint"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:text="@string/firstNameTV"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:layout_weight="0.5"/>
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/firstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_weight="0.5"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:gravity="center"
                 android:hint="@string/firstNameHint"
-                android:textSize="14sp"
-                android:layout_weight="0.5"/>
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:text="@string/lastNameTV"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:layout_weight="0.5"/>
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/lastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_weight="0.5"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:gravity="center"
                 android:hint="@string/lastNameHint"
-                android:textSize="14sp"
-                android:layout_weight="0.5"/>
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal">
 
             <TextView
@@ -145,27 +141,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:text="@string/phoneNumTV"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:layout_weight="0.5"/>
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_weight="0.5"
                 android:ems="10"
-                android:inputType="phone"
+                android:gravity="center"
                 android:hint="@string/phoneNumHint"
-                android:textSize="14sp"
-                android:layout_weight="0.5"/>
+                android:inputType="phone"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
