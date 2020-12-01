@@ -3,12 +3,12 @@ package com.example.atry;
 class Supplier {
 
     public String supplierName;
-    public String supplierId;
-    public String supplierNumber;
+    public int supplierId;
+    public int supplierNumber;
     public String supplierEmail;
 
 
-    public Supplier(String supplierName, String supplierId, String supplierNumber, String supplierEmail) {
+    public Supplier(String supplierName, int supplierId, int supplierNumber, String supplierEmail) {
         this.supplierName = supplierName;
         this.supplierId = supplierId;
         this.supplierNumber = supplierNumber;
@@ -23,11 +23,11 @@ class Supplier {
         this.supplierName = supplierName;
     }
 
-    public String getSupplierNumber() {
+    public int getSupplierNumber() {
         return supplierNumber;
     }
 
-    public void setSupplierNumber(String supplierNumber) {
+    public void setSupplierNumber(int supplierNumber) {
         this.supplierNumber = supplierNumber;
     }
 
