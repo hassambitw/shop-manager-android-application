@@ -67,12 +67,19 @@
                 android:text="Choose Category:"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
+            <EditText
+                android:id="@+id/editTextProductCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
-            <Spinner
+        <!--    <Spinner
                 android:id="@+id/spinner_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
+-->
             <LinearLayout
                 android:id="@+id/lin_layout_sub_add_product_3"
                 android:layout_width="match_parent"
