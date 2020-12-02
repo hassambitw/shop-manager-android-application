@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Try.NoActionBar">
-        <activity android:name=".editCustomer_activity"></activity>
+        <activity android:name=".editProduct_activity"></activity>
+        <activity android:name=".editCustomer_activity" />
         <activity android:name=".viewTransaction_activity" />
         <activity android:name=".AddSupplier" />
         <activity android:name=".AddCustomer_Activity" />
