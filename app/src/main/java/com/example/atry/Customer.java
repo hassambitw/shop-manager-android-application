@@ -7,9 +7,9 @@ class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    private int phone;
+    private String phone;
 
-    public Customer(int customerId, String firstName, String lastName, String email, int phone) {
+    public Customer(int customerId, String firstName, String lastName, String email, String phone) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,11 +50,11 @@ class Customer {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

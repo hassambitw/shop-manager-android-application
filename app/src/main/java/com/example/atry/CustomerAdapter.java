@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.CustomerViewHolder> {
 
-    private ArrayList<Customer> purcList;
+    private ArrayList<Customer> cAdapterList;
 
     public class CustomerViewHolder extends RecyclerView.ViewHolder{
         public TextView customer_id_tv;
@@ -36,8 +36,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         }
     }
 
-    public CustomerAdapter(ArrayList<Customer> purcList) {
-        this.purcList = purcList;
+    public CustomerAdapter(ArrayList<Customer> cAdapterList) {
+        this.cAdapterList = cAdapterList;
     }
 
     @NonNull
@@ -51,13 +51,15 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
     @Override
     public void onBindViewHolder(@NonNull CustomerViewHolder holder, int position) {
 
-        Customer curItem = purcList.get(position);
+        Customer curItem = cAdapterList.get(position);
 
         holder.customer_id_tv.setText(Integer.toString(curItem.getCustomerId()));
         holder.firstNameTV.setText(curItem.getFirstName());
         holder.lastNameTV.setText(curItem.getLastName());
-        holder.phoneTV.setText(Integer.toString(curItem.getPhone()));
+        holder.phoneTV.setText(curItem.getPhone());
         holder.emailTV.setText(curItem.getEmail());
+
+        //CustomerAdapter.this.notifyDataSetChanged();
 
         holder.transactionBtn.setOnClickListener((v)->{
             Intent i = new Intent(v.getContext(), viewTransaction_activity.class);
@@ -80,6 +82,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
     @Override
     public int getItemCount() {
-        return purcList.size();
+        return cAdapterList.size();
     }
 }

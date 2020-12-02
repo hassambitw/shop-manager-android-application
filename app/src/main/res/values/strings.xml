@@ -19,8 +19,8 @@
     <string name="customerID_tv">Customer ID: </string>
     <string name="firstNameTV">First name: </string>
     <string name="lastNameTV">Last name: </string>
-    <string name="emailTV">Email: </string>
-    <string name="phoneNumTV">Phone number: </string>
+    <string name="emailTV">Email:  </string>
+    <string name="phoneNumTV">Phone number:  </string>
     <!-- edit text hints -->
     <string name="customerIDHint">Enter customer ID </string>
     <string name="firstNameHint">Enter first name </string>

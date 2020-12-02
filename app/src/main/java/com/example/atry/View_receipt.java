@@ -23,13 +23,16 @@ public class View_receipt extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<Order_Items>itemList=new ArrayList<>();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_receipt);
+
         Intent intent = getIntent();
         int order_id=intent.getIntExtra("order_id",0);
         int customer_id=intent.getIntExtra("customer_id",0);
         String order_date = intent.getStringExtra("order_date");
         int staff_id=intent.getIntExtra("staff_id",0);
+
         total_tv=(TextView)findViewById(R.id.total);
         tv1=(TextView)findViewById(R.id.tv1);
         tv1.setText(Integer.toString(order_id));
@@ -39,10 +42,13 @@ public class View_receipt extends AppCompatActivity {
         tv3.setText(order_date);
         tv4=(TextView)findViewById(R.id.tv4);
         tv4.setText(Integer.toString(staff_id));
+
         dbO=new DBHelper(this);
+
        // dbO.insert_order_item(order_id,8,288,2,90,0.9);
         dbO.insert_order_item(order_id,87,28,2,30,0.2);
-        Cursor c1=dbO.getAllFrom_Order_items(order_id);
+
+        Cursor c1 = dbO.getAllFrom_Order_items(order_id);
 
         while(c1.moveToNext()){
             int item_id=c1.getInt(c1.getColumnIndex("item_id"));
@@ -61,6 +67,7 @@ public class View_receipt extends AppCompatActivity {
         adapter = new View_items_Adapter(itemList);
         recyclerView.setLayoutManager(itemsLayoutManager);
         recyclerView.setAdapter(adapter);
+
         double total_price=0;
         for(int i=0;i<itemList.size();i++){
             double p=itemList.get(i).getPrice()*itemList.get(i).getQuantity()*itemList.get(i).getDiscount();

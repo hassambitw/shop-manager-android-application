@@ -17,8 +17,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:text="@string/customer"
-        android:textSize="36sp"
-        android:layout_alignParentTop="true" />
+        android:textSize="36sp" />
 
     </LinearLayout>
 
@@ -33,7 +32,6 @@
             android:id="@+id/customer_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
             android:layout_weight="6">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -43,25 +41,33 @@
             android:layout_width="match_parent"
             android:layout_height="0.8dp"
             android:layout_marginBottom="0dp"
-            android:background="#B2B2B2"
-            android:layout_below="@+id/customer_recycler_view"/>
+            android:background="#B2B2B2" />
 
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bar"
             android:layout_weight="0.5"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/refreshbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Refresh"
+            android:layout_weight="0.5"/>
 
         <Button
             android:id="@+id/addCustomer"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="@string/addButton"
-            android:layout_gravity="center"/>
+            android:layout_weight="0.5"
+            android:layout_marginLeft="5dp"/>
 
         </LinearLayout>
 

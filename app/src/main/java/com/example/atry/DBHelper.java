@@ -19,7 +19,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     String CREATE_TABLE_CUSTOMERS = "CREATE TABLE IF NOT EXISTS " + CUSTOMERS_TABLE +
                                     "("
-                                            + CUSTOMERS_COL1_ID + " INTEGER PRIMARY KEY, "
+                                            + CUSTOMERS_COL1_ID + " INTEGER PRIMARY KEY NOT NULL, "
                                             + CUSTOMERS_COL2_FNAME + " TEXT NOT NULL, "
                                             + CUSTOMERS_COL3_LNAME + " TEXT NOT NULL, "
                                             + CUSTOMERS_COL4_PHONE + " TEXT NOT NULL, "
@@ -185,14 +185,14 @@ public class DBHelper extends SQLiteOpenHelper {
         System.out.println("IN CREATE BOOM");
 
         db.execSQL(CREATE_TABLE_CUSTOMERS);
-        db.execSQL(CREATE_TABLE_ORDERS);
-        db.execSQL(CREATE_TABLE_ORDERITEMS);
-        db.execSQL(CREATE_TABLE_STAFF);
-        db.execSQL(CREATE_TABLE_PRODUCTS);
-        db.execSQL(CREATE_TABLE_CATEGORIES);
-        db.execSQL(CREATE_TABLE_BRANDS);
-        db.execSQL(CREATE_TABLE_SUPPLIER);
-        db.execSQL(CREATE_TABLE_SHIPMENT);
+//        db.execSQL(CREATE_TABLE_ORDERS);
+//        db.execSQL(CREATE_TABLE_ORDERITEMS);
+//        db.execSQL(CREATE_TABLE_STAFF);
+//        db.execSQL(CREATE_TABLE_PRODUCTS);
+//        db.execSQL(CREATE_TABLE_CATEGORIES);
+//        db.execSQL(CREATE_TABLE_BRANDS);
+//        db.execSQL(CREATE_TABLE_SUPPLIER);
+//        db.execSQL(CREATE_TABLE_SHIPMENT);
 
     }
 
@@ -203,9 +203,11 @@ public class DBHelper extends SQLiteOpenHelper {
             String add_orders = "ALTER TABLE " + ORDERS_TABLE_NAMEe + " ADD COLUMN staff_id INTEGER";
             db.execSQL(add_orders);
         }*/
-        db.execSQL("DROP TABLE IF EXISTS " + DB_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + CUSTOMERS_TABLE);
         onCreate(db); 
     }
+
+    //insert methods
     public void insertOrder(int orderId, int customerId, String orderDate, int staff_id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -215,6 +217,18 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("staff_id",staff_id);
         db.insert("orders","",contentValues);
 
+    }
+
+    public boolean insertCustomer (int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("customer_id", customerID);
+        contentValues.put("first_name", customer_Fname);
+        contentValues.put("last_name", customer_Lname);
+        contentValues.put("phone", customer_phone);
+        contentValues.put("email", customer_email);
+        long result = db.insert("customers","", contentValues);
+        return result != -1;
     }
 
 
@@ -228,8 +242,16 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("price", price);
         contentValues.put("discount",discount);
         db.insert("order_items","",contentValues);
-
     }
+
+    //getMethods
+    public Cursor getCustomers () {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_customer = "SELECT * FROM " + CUSTOMERS_TABLE;
+        return db.rawQuery(select_customer,null);
+    }
+
+
     public Cursor getAllFrom_Orders() {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.query("orders",null,null,null,null,null,null);
@@ -239,7 +261,6 @@ public class DBHelper extends SQLiteOpenHelper {
         String select_order_items = "SELECT * FROM " + ORDER_ITEMS_TABLE +
                 " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
         return db.rawQuery(select_order_items,null);
-
     }
     public void updateTable(){
         SQLiteDatabase db = this.getWritableDatabase();
