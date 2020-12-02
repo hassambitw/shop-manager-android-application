@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "MyShop4.db";
@@ -209,17 +210,32 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //insert methods
     public void insertOrder(int orderId, int customerId, String orderDate, int staff_id){
+        boolean check;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("order_id", orderId);
         contentValues.put("customer_id", customerId);
         contentValues.put("order_date", orderDate);
-        contentValues.put("staff_id",staff_id);
-        db.insert("orders","",contentValues);
+        db.insert("orders", "", contentValues);
+        }
 
+
+    //check for duplicates
+    private boolean checkCustomerDuplicate (int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + CUSTOMERS_TABLE + " WHERE " + CUSTOMERS_COL1_ID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;       // no match
+        }
+        cursor.close();
+        return true;           // match found
     }
 
     public boolean insertCustomer (int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
+        //db.execSQL("DROP TABLE " + CUSTOMERS_TABLE);
+        boolean check;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("customer_id", customerID);
@@ -227,8 +243,13 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("last_name", customer_Lname);
         contentValues.put("phone", customer_phone);
         contentValues.put("email", customer_email);
-        long result = db.insert("customers","", contentValues);
-        return result != -1;
+        check = checkCustomerDuplicate(customerID);
+        if (!check) {       // if there's no match, add
+            long result = db.insert("customers", "", contentValues);
+            return result != -1;
+        } else {
+            return false;
+        }
     }
 
 
