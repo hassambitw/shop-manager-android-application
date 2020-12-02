@@ -52,12 +52,17 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
     public void onBindViewHolder(@NonNull CustomerViewHolder holder, int position) {
 
         Customer curItem = cAdapterList.get(position);
+        int custID = curItem.getCustomerId();
+        String fname = curItem.getFirstName();
+        String lname = curItem.getLastName();
+        String phone = curItem.getPhone();
+        String email = curItem.getEmail();
 
-        holder.customer_id_tv.setText(Integer.toString(curItem.getCustomerId()));
-        holder.firstNameTV.setText(curItem.getFirstName());
-        holder.lastNameTV.setText(curItem.getLastName());
-        holder.phoneTV.setText(curItem.getPhone());
-        holder.emailTV.setText(curItem.getEmail());
+        holder.customer_id_tv.setText(Integer.toString(custID));
+        holder.firstNameTV.setText(fname);
+        holder.lastNameTV.setText(lname);
+        holder.phoneTV.setText(phone);
+        holder.emailTV.setText(email);
 
         //CustomerAdapter.this.notifyDataSetChanged();
 
@@ -72,10 +77,11 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
         holder.editBtn.setOnClickListener((v)->{
             Intent i = new Intent(v.getContext(), editCustomer_activity.class);
-//            i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));
-//            i.putExtra("customer_id",Integer.parseInt(holder.mTextView2.getText().toString()));
-//            i.putExtra("order_date",holder.mTextView3.getText().toString());
-//            i.putExtra("staff_id",Integer.parseInt(holder.mTextView4.getText().toString()));
+            i.putExtra("customer_id",  Integer.parseInt(holder.customer_id_tv.getText().toString()));
+            i.putExtra("first_name", holder.firstNameTV.getText().toString());
+            i.putExtra("last_name", holder.lastNameTV.getText().toString());
+            i.putExtra("phone", holder.phoneTV.getText().toString());
+            i.putExtra("email", holder.emailTV.getText().toString());
             v.getContext().startActivity(i);
         });
     }
