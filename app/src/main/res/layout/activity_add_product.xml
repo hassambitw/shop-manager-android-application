@@ -1,148 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rel_layout_add_product"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".AddProduct">
+    tools:context=".AddProduct"
+    >
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/purple_500"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"></androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/enter_product_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enter Product Name: "
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/editTextProductName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Product Name"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/enter_brand_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enter Brand Name: "
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/editTextBrandName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/choose_category_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choose Category:"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <Spinner
-            android:id="@+id/spinner_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
         <LinearLayout
-            android:id="@+id/lin_layout_sub_add_product_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/enter_quantity_product"
+                android:id="@+id/enter_product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Enter Product Quantity: "
+                android:text="Enter Product Name: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editTextQuantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lin_layout_sub_add_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/enter_model_year"
+                android:id="@+id/editTextProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Enter Model Year: "
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Product Name"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/enter_brand_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Brand Name: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editTextModelYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lin_layout_sub_add_product_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/enter_product_price"
+                android:id="@+id/editTextBrandName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Enter Product Price: "
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/choose_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose Category:"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/editTextPrice"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinner_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/lin_layout_sub_add_product_3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/enter_quantity_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Enter Product Quantity: "
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_layout_sub_add_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/enter_model_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Enter Model Year: "
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextModelYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_layout_sub_add_product_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/enter_product_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Enter Product Price: "
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
-
-
-    <Button
+        <Button
         android:id="@+id/finish_adding_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="Done" />
+    </RelativeLayout>
 
-</RelativeLayout>
+
+
+
+
+
+</LinearLayout>

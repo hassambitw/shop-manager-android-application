@@ -15,7 +15,7 @@
         <activity android:name=".AddSupplier" />
         <activity android:name=".AddCustomer_Activity" />
         <activity android:name=".AddPurchase" />
-        <activity android:name=".AddProduct" />
+        <activity android:name=".AddProduct" android:parentActivityName=".MainActivity"/>
         <activity android:name=".Add_Sale" />
         <activity android:name=".View_receipt" />
         <activity android:name=".Dashboard" />
