@@ -16,7 +16,7 @@
         android:baselineAligned="false">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="8dp">
@@ -125,9 +125,8 @@
 
         <LinearLayout
             android:id="@+id/cust_buttons"
-            android:layout_width="0dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.2"
             android:orientation="vertical">
 
             <Button
