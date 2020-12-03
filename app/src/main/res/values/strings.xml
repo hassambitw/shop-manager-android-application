@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shop Manager+</string>
+    <string name="app_name">Tech Shop Manager+</string>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="other">Other</string>
