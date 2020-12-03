@@ -19,6 +19,14 @@ class Product {
         this.quantity = quantity;
     }
 
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
     public String getCategory() {
         return category;
     }

@@ -290,6 +290,25 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean updateProduct (int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear,  double ProductListPrice , int ProductQuantity) {
+       // boolean update;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //contentValues.put("product_id", prodID);
+        contentValues.put("product_name", ProductName);
+        contentValues.put("brand", ProductBrand);
+        contentValues.put("category", ProductCategory);
+        contentValues.put("model_year", ProductYear);
+        contentValues.put("list_price", ProductListPrice);
+        contentValues.put("stock", ProductQuantity);
+//        String update_query = "UPDATE " + CUSTOMERS_TABLE + " SET " + CUSTOMERS_COL2_FNAME + "='" + customer_Fname + "', " + CUSTOMERS_COL3_LNAME + "='" + customer_Lname + "', "
+//                            + CUSTOMERS_COL4_PHONE + "='" + customer_phone + "', " + CUSTOMERS_COL5_EMAIL + "='" + customer_email + "' WHERE " + CUSTOMERS_COL1_ID + "=" + customerID;
+//       db.execSQL(update_query);
+        long result = db.update("products", contentValues, "product_id = ?", new String[]{ String.valueOf(prodID) });
+        System.out.println("After input");
+        return result != -1;
+    }
+
     public boolean updateCustomer (int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
         boolean update;
         SQLiteDatabase db = this.getWritableDatabase();

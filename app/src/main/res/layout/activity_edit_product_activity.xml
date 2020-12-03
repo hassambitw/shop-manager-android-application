@@ -66,10 +66,13 @@
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/spinner_category"
+            <EditText
+                android:id="@+id/editTextEditProductCategory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:id="@+id/lin_layout_sub_add_product_3"
