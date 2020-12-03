@@ -90,23 +90,23 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CATEGORIES_TABLE = "categories";
     public static final String CATEGORIES_COL1_CATEGORYID = "category_id";
     public static final String CATEGORIES_COL2_CATEGORYNAME = "category_name";
-
-    String CREATE_TABLE_CATEGORIES = "CREATE TABLE IF NOT EXISTS " + CATEGORIES_TABLE +
-                                    "("
-                                        + CATEGORIES_COL1_CATEGORYID + " INTEGER PRIMARY KEY, "
-                                        + CATEGORIES_COL2_CATEGORYNAME + " TEXT NOT NULL " +
-                                    ")";
+//
+//    String CREATE_TABLE_CATEGORIES = "CREATE TABLE IF NOT EXISTS " + CATEGORIES_TABLE +
+//                                    "("
+//                                        + CATEGORIES_COL1_CATEGORYID + " INTEGER PRIMARY KEY, "
+//                                        + CATEGORIES_COL2_CATEGORYNAME + " TEXT NOT NULL " +
+//                                    ")";
 
     //brands table
     public static final String BRANDS_TABLE = "brands";
     public static final String BRANDS_COL1_BRANDID = "brand_id";
     public static final String BRANDS_COL2_BRANDNAME = "category_name";
 
-    String CREATE_TABLE_BRANDS = "CREATE TABLE IF NOT EXISTS " + BRANDS_TABLE +
-                                    "("
-                                        + BRANDS_COL1_BRANDID + " INTEGER PRIMARY KEY, "
-                                        + BRANDS_COL2_BRANDNAME + " TEXT NOT NULL " +
-                                    ")";
+//    String CREATE_TABLE_BRANDS = "CREATE TABLE IF NOT EXISTS " + BRANDS_TABLE +
+//                                    "("
+//                                        + BRANDS_COL1_BRANDID + " INTEGER PRIMARY KEY, "
+//                                        + BRANDS_COL2_BRANDNAME + " TEXT NOT NULL " +
+//                                    ")";
 
     //suppliers table
     public static final String SUPPLIER_TABLE = "supplier";
@@ -127,24 +127,26 @@ public class DBHelper extends SQLiteOpenHelper {
     //products table
     public static final String PRODUCTS_TABLE = "products";
     public static final String PRODUCTS_COL1_PRODID = "product_id";
-    public static final String PRODUCTS_COL2_BRANDID = "brand_id";          //FK on brands
-    public static final String PRODUCTS_COL3_CATEGORYID = "category_id";    //FK on categories
-    public static final String PRODUCTS_COL4_MODELYR = "model_year";
-    public static final String PRODUCTS_COL5_LISTPRICE = "list_price";
-    public static final String PRODUCTS_COL6_STOCK = "stock";
+    public static final String PRODUCTS_COL2_PRODNAME = "product_name";
+    public static final String PRODUCTS_COL3_BRAND = "brand";          //FK on brands - not really
+    public static final String PRODUCTS_COL4_CATEGORY = "category";    //FK on categories - not really
+    public static final String PRODUCTS_COL5_MODELYR = "model_year";
+    public static final String PRODUCTS_COL6_LISTPRICE = "list_price";
+    public static final String PRODUCTS_COL7_STOCK = "stock";
     //public static final String PRODUCTS_COL7_SUPPLIERID = "prodSupplier_id";
 
     String CREATE_TABLE_PRODUCTS = "CREATE TABLE IF NOT EXISTS " + PRODUCTS_TABLE +
                                     "("
                                         + PRODUCTS_COL1_PRODID + " INTEGER PRIMARY KEY, "
-                                        + PRODUCTS_COL2_BRANDID + " TEXT NOT NULL, "
-                                        + PRODUCTS_COL3_CATEGORYID + " INTEGER NOT NULL, "
-                                        + PRODUCTS_COL4_MODELYR + " INTEGER NOT NULL, "
-                                        + PRODUCTS_COL5_LISTPRICE + " DOUBLE NOT NULL, "
-                                        + PRODUCTS_COL6_STOCK + " INTEGER NOT NULL, "
+                                        + PRODUCTS_COL2_PRODNAME + " TEXT NOT NULL, "
+                                        + PRODUCTS_COL3_BRAND + " TEXT NOT NULL, "
+                                        + PRODUCTS_COL4_CATEGORY + " TEXT NOT NULL, "
+                                        + PRODUCTS_COL5_MODELYR + " INTEGER NOT NULL, "
+                                        + PRODUCTS_COL6_LISTPRICE + " DOUBLE NOT NULL, "
+                                        + PRODUCTS_COL7_STOCK + " INTEGER NOT NULL " +
                                         //+ PRODUCTS_COL7_SUPPLIERID + "INTEGER NOT NULL, "
-                                        + "FOREIGN KEY (" + PRODUCTS_COL3_CATEGORYID + ") REFERENCES " + CATEGORIES_TABLE +  "(" + CATEGORIES_COL1_CATEGORYID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
-                                        + "FOREIGN KEY (" + PRODUCTS_COL2_BRANDID + ") REFERENCES " + BRANDS_TABLE +  "(" + BRANDS_COL1_BRANDID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
+                                       // + "FOREIGN KEY (" + PRODUCTS_COL3_CATEGORYID + ") REFERENCES " + CATEGORIES_TABLE +  "(" + CATEGORIES_COL1_CATEGORYID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
+                                       // + "FOREIGN KEY (" + PRODUCTS_COL2_BRANDID + ") REFERENCES " + BRANDS_TABLE +  "(" + BRANDS_COL1_BRANDID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
                                        // + "FOREIGN KEY (" + PRODUCTS_COL7_SUPPLIERID + ") REFERENCES " + SUPPLIER_TABLE +  "(" + SUPPLIER_COL1_SUPPLIERID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
                                     ")";
 
@@ -189,7 +191,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_ORDERS);
        db.execSQL(CREATE_TABLE_ORDERITEMS);
 //        db.execSQL(CREATE_TABLE_STAFF);
-//        db.execSQL(CREATE_TABLE_PRODUCTS);
+        db.execSQL(CREATE_TABLE_PRODUCTS);
 //        db.execSQL(CREATE_TABLE_CATEGORIES);
 //        db.execSQL(CREATE_TABLE_BRANDS);
 //        db.execSQL(CREATE_TABLE_SUPPLIER);
@@ -232,6 +234,18 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         return true;           // match found
     }
+    //check for duplicates
+    private boolean checkProductDuplicate (int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + PRODUCTS_TABLE + " WHERE " + PRODUCTS_COL1_PRODID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;       // no match
+        }
+        cursor.close();
+        return true;           // match found
+    }
 
     public boolean insertCustomer (int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
         //db.execSQL("DROP TABLE " + CUSTOMERS_TABLE);
@@ -246,6 +260,27 @@ public class DBHelper extends SQLiteOpenHelper {
         check = checkCustomerDuplicate(customerID);
         if (!check) {       // if there's no match, add
             long result = db.insert("customers", "", contentValues);
+            return result != -1;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean insertProduct (int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear,  double ProductListPrice , int ProductQuantity) {
+        //db.execSQL("DROP TABLE " + PRODUCT_TABLE);
+        boolean check;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("product_id", prodID);
+        contentValues.put("product_name", ProductName);
+        contentValues.put("brand", ProductBrand);
+        contentValues.put("category", ProductCategory);
+        contentValues.put("model_year", ProductYear);
+        contentValues.put("list_price", ProductListPrice);
+        contentValues.put("stock", ProductQuantity);
+        check = checkProductDuplicate(prodID);
+        if (!check) {       // if there's no match, add
+            long result = db.insert("products", "", contentValues);
             return result != -1;
         } else {
             return false;
@@ -270,6 +305,12 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String select_customer = "SELECT * FROM " + CUSTOMERS_TABLE;
         return db.rawQuery(select_customer,null);
+    }
+
+    public Cursor getProducts () {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_products = "SELECT * FROM " + PRODUCTS_TABLE;
+        return db.rawQuery(select_products,null);
     }
 
 

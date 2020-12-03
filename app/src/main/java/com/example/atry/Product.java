@@ -6,10 +6,10 @@ class Product {
     private String brandName;
     private String productName;
     private int modalYear;
-    private int price;
+    private double price;
     private int quantity;
 
-    public Product(int productId, String category, String brandName, String productName, int modalYear, int price, int quantity) {
+    public Product(int productId, String category, String brandName, String productName, int modalYear, double price, int quantity) {
         this.productId = productId;
         this.category = category;
         this.brandName = brandName;
@@ -51,11 +51,11 @@ class Product {
         this.modalYear = modalYear;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
