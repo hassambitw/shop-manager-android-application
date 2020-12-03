@@ -3,6 +3,7 @@ package com.example.atry;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -72,11 +73,14 @@ public class AddCustomer_Activity extends AppCompatActivity {
                 if (!custID_et.getText().toString().isEmpty() && !customer_fname.isEmpty() && !customer_lname.isEmpty() && !customer_email.isEmpty() && !customer_phone.isEmpty()) {
                     if (dbh.insertCustomer(customer_id, customer_fname, customer_lname, customer_email, customer_phone)) {
                         Toast.makeText(getApplicationContext(), "Data added", Toast.LENGTH_SHORT).show();
-                        custID_et.setText("");
-                        cust_fname_et.setText("");
-                        cust_lname_et.setText("");
-                        cust_email_et.setText("");
-                        cust_phone_et.setText("");
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        i.putExtra("from_customers","customers");
+                        startActivity(i);
+//                        custID_et.setText("");
+//                        cust_fname_et.setText("");
+//                        cust_lname_et.setText("");
+//                        cust_email_et.setText("");
+//                        cust_phone_et.setText("");
                     } else {
                         Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
                     }
@@ -92,7 +96,7 @@ public class AddCustomer_Activity extends AppCompatActivity {
                     else if (customer_phone.length() == 0)
                         cust_phone_et.setError("Enter phone number.");
                 }
-//                    dbh.insertCustomer(customer_id, customer_fname, customer_lname, customer_email, customer_phone);
+//    }
 
             }
         });

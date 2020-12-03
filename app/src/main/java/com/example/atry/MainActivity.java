@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             nav_view.setCheckedItem(R.id.nav_dashb1);
         }
 
+
+
         //note to self, all fragment classes must be a public class inorder for it to function
     }
 
@@ -68,12 +70,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (extras != null) {
             if (extras.containsKey("from_sales")) {
-
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SalesFragment()).commit();
                 Toast.makeText(this, "Sale", Toast.LENGTH_SHORT).show();
-
-
             }
+
+            if (extras.containsKey("from_customers") || extras.containsKey("from_edit_customers")) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CustomerFragment()).commit();
+               // Toast.makeText(this, "Customer", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
@@ -120,5 +125,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 }

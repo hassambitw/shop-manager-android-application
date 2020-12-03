@@ -1,5 +1,6 @@
 package com.example.atry;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
         holder.transactionBtn.setOnClickListener((v)->{
             Intent i = new Intent(v.getContext(), viewTransaction_activity.class);
-//            i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));
+            i.putExtra("customer_id",Integer.parseInt(holder.customer_id_tv.getText().toString()));
 //            i.putExtra("customer_id",Integer.parseInt(holder.mTextView2.getText().toString()));
 //            i.putExtra("order_date",holder.mTextView3.getText().toString());
 //            i.putExtra("staff_id",Integer.parseInt(holder.mTextView4.getText().toString()));
@@ -84,6 +85,15 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
             i.putExtra("email", holder.emailTV.getText().toString());
             v.getContext().startActivity(i);
         });
+
+        //Intent intent = ((Activity) this).getIntent();
+
+
+    }
+
+    public void setCustomers(ArrayList<Customer> customers) {
+        this.cAdapterList = customers;
+        notifyDataSetChanged();
     }
 
     @Override

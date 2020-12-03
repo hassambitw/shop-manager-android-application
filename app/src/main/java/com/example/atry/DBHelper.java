@@ -5,7 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.SystemClock;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "MyShop4.db";
@@ -287,6 +290,22 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean updateCustomer (int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
+        boolean update;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("first_name", customer_Fname);
+        contentValues.put("last_name", customer_Lname);
+        contentValues.put("phone", customer_phone);
+        contentValues.put("email", customer_email);
+//        String update_query = "UPDATE " + CUSTOMERS_TABLE + " SET " + CUSTOMERS_COL2_FNAME + "='" + customer_Fname + "', " + CUSTOMERS_COL3_LNAME + "='" + customer_Lname + "', "
+//                            + CUSTOMERS_COL4_PHONE + "='" + customer_phone + "', " + CUSTOMERS_COL5_EMAIL + "='" + customer_email + "' WHERE " + CUSTOMERS_COL1_ID + "=" + customerID;
+//       db.execSQL(update_query);
+            long result = db.update("customers", contentValues, "customer_id = ?", new String[]{ String.valueOf(customerID) });
+            System.out.println("After input");
+            return result != -1;
+    }
+
 
     public void insert_order_item(int orderId, int itemId, int productId, int quantity, double price, double discount){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -329,6 +348,12 @@ public class DBHelper extends SQLiteOpenHelper {
         String select_order_items = "SELECT * FROM " + ORDER_ITEMS_TABLE +
                 " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
         return db.rawQuery(select_order_items,null);
+    }
+
+    public Cursor getCustomerTransactions(int custID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT c.customer_fname, c.customer_lname, o.order_id, oi.price*oi.quantity*oi.discount AS totalPrice FROM " + "c.customers, o.orders, oi.order_items WHERE c.customer_id = o.customer_id AND o.order_id = oi.order_id AND c.customer_id = " + custID;
+        return db.rawQuery(select_query, null);
     }
     public void updateTable(){
         SQLiteDatabase db = this.getWritableDatabase();

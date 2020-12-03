@@ -58,6 +58,8 @@ public class View_receipt extends AppCompatActivity {
 
 
 
+
+
        // dbO.insert_order_item(order_id,8,288,2,90,0.9);
       //  dbO.insert_order_item(order_id,87,28,2,30,0.2);
 
@@ -84,8 +86,8 @@ public class View_receipt extends AppCompatActivity {
 
         double total_price=0;
         for(int i=0;i<itemList.size();i++){
-            double p=itemList.get(i).getPrice()*itemList.get(i).getQuantity()*itemList.get(i).getDiscount();
-            total_price=p+total_price;
+            double p = itemList.get(i).getPrice() * itemList.get(i).getQuantity() * itemList.get(i).getDiscount();
+            total_price = p+total_price;
         }
         total_tv.setText(Double.toString(round(total_price,2)));
 

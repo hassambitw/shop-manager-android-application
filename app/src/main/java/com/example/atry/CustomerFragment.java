@@ -1,5 +1,6 @@
 package com.example.atry;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -39,7 +40,6 @@ public class CustomerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
         dbh = new DBHelper(getContext());
 
         //adding customers
@@ -68,11 +68,21 @@ public class CustomerFragment extends Fragment {
             }
         });
 
-
         buildRecyclerView(v);
         return v;
     }
 
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        Intent i = ((Activity) getContext()).getIntent();
+//        //intent.getIntExtra()
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//    }
 
     public void addCustomers() {
         dbh.insertCustomer(01, "John", "Williams", "+971561017939", "johnwilliams@hotmail.com");
