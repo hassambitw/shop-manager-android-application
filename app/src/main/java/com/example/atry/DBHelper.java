@@ -371,8 +371,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getCustomerTransactions(int custID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String select_query = "SELECT c.customer_fname, c.customer_lname, o.order_id, oi.price*oi.quantity*oi.discount AS totalPrice FROM " + "c.customers, o.orders, oi.order_items WHERE c.customer_id = o.customer_id AND o.order_id = oi.order_id AND c.customer_id = " + custID;
-        return db.rawQuery(select_query, null);
+        String select_query = "SELECT c.first_name, c.last_name, o.order_id, oi.price*oi.quantity*((100-oi.discount)/100) AS totalPrice FROM " + "customers c, orders o, order_items oi WHERE c.customer_id = o.customer_id AND o.order_id = oi.order_id AND c.customer_id = ?";
+        //String select_query = "SELECT * FROM customers c, orders o WHERE c.customer_id = o.customer_id AND c.customer_id = ?";
+        return db.rawQuery(select_query, new String[]{ String.valueOf(custID)} );
     }
     public void updateTable(){
         SQLiteDatabase db = this.getWritableDatabase();

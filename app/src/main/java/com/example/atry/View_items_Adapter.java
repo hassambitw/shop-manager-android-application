@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class View_items_Adapter extends RecyclerView.Adapter<View_items_Adapter.View_Items_Holder> {
 
     private ArrayList<Order_Items>  itemsList;
+
     public class View_Items_Holder extends RecyclerView.ViewHolder{
 
         public TextView item_id_tv;

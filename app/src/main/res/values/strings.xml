@@ -44,7 +44,6 @@
     <!-- activity_view_transaction xml -->
     <string name="transactionHeading">Transaction History</string>
 
-
     <string-array name="product_category_array">
         <item>Smart phones</item>
         <item>Smartphone Covers</item>

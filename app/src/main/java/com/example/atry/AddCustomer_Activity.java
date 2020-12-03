@@ -76,7 +76,7 @@ public class AddCustomer_Activity extends AppCompatActivity {
                 customer_email = cust_email_et.getText().toString();
                 customer_phone = cust_phone_et.getText().toString();
                 if (!custID_et.getText().toString().isEmpty() && !customer_fname.isEmpty() && !customer_lname.isEmpty() && !customer_email.isEmpty() && !customer_phone.isEmpty()) {
-                    if (dbh.insertCustomer(customer_id, customer_fname, customer_lname, customer_email, customer_phone)) {
+                    if (dbh.insertCustomer(customer_id, customer_fname, customer_lname, customer_phone, customer_email)) {
                         Toast.makeText(getApplicationContext(), "Data added", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         i.putExtra("from_customers","customers");

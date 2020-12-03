@@ -1,46 +1,47 @@
 package com.example.atry;
 
-import android.view.LayoutInflater;
-import android.content.Intent;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class transactionsAdapter extends RecyclerView.Adapter<transactionsAdapter.TransactionsViewHolder> {
 
-    private ArrayList<Orders> orders_transactionList;
-    private ArrayList<Customer> customers_transactionList;
+    private ArrayList<TransactionDetails> transactionList;
+    private RecyclerView salesRecyclerView;
+    private RecyclerView.Adapter salesAdapter;
+    private RecyclerView.LayoutManager salesLayoutManager;
+    DBHelper dbh;
     //private ArrayList<Orders> _transactionList;
 
     public class TransactionsViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView1;
-        public TextView mTextView2;
-        public TextView mTextView3;
-        public TextView mTextView4;
+        public TextView fname_tv;
+        public TextView lname_tv;
+        public TextView total_price_tv;
+        public TextView order_id_tv;
 
 
         public TransactionsViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
-            mTextView1 = itemView.findViewById(R.id.firstName);
-            mTextView2 = itemView.findViewById(R.id.lastName);
-            mTextView3 = itemView.findViewById(R.id.totalPrice);
-            mTextView4=itemView.findViewById(R.id.order_id);
+            fname_tv = itemView.findViewById(R.id.firstName);
+            lname_tv = itemView.findViewById(R.id.lastName);
+            total_price_tv = itemView.findViewById(R.id.totalPrice);
+            order_id_tv=itemView.findViewById(R.id.order_id);
 
         }
     }
 
-    public transactionsAdapter (ArrayList<Orders> orders_transactionsList, ArrayList<Customer> customers_transactionsList) {
-        this.orders_transactionList = orders_transactionList;
-        this.customers_transactionList = customers_transactionsList;
+    public transactionsAdapter (ArrayList<TransactionDetails> transactionList) {
+        this.transactionList = transactionList;
     }
 
     @NonNull
@@ -54,16 +55,18 @@ public class transactionsAdapter extends RecyclerView.Adapter<transactionsAdapte
     @Override
     public void onBindViewHolder(@NonNull TransactionsViewHolder holder, int position) {
 
-        Orders curItem = orders_transactionList.get(position);
-        Customer curItem_cust = customers_transactionList.get(position);
+//        Orders curItem = orders_transactionList.get(position);
+//        Customer curItem_cust = customers_transactionList.get(position);
+          TransactionDetails curTransaction = transactionList.get(position);
 
-        holder.mTextView1.setText(curItem_cust.getFirstName());
-        holder.mTextView2.setText(curItem_cust.getLastName());
-        holder.mTextView3.setText(Integer.toString(curItem.getOrderId()));
-        holder.mTextView4.setText(Integer.toString(curItem.getOrderId()));
+
+        holder.fname_tv.setText(curTransaction.getCust_fname());
+        holder.lname_tv.setText(curTransaction.getCust_lname());
+        holder.total_price_tv.setText(Double.toString(round(curTransaction.getTotal_price(), 2)));
+        holder.order_id_tv.setText(Integer.toString(curTransaction.getOrder_id()));
 //        holder.b.setOnClickListener((v)->{
 //            Intent i=new Intent(v.getContext(), View_receipt.class);
-//            i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));
+//            i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));          //order_id_from_transactions
 //            i.putExtra("customer_id",Integer.parseInt(holder.mTextView2.getText().toString()));
 //            i.putExtra("order_date",holder.mTextView3.getText().toString());
 //            i.putExtra("staff_id",Integer.parseInt(holder.mTextView4.getText().toString()));
@@ -73,6 +76,14 @@ public class transactionsAdapter extends RecyclerView.Adapter<transactionsAdapte
 
     @Override
     public int getItemCount() {
-        return orders_transactionList.size();
+        return transactionList.size();
+    }
+
+    public static double round (double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

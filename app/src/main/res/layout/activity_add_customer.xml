@@ -45,6 +45,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/customerID_tv"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:gravity="center"/>
+
             <EditText
                 android:id="@+id/customer_idtv"
                 android:layout_width="match_parent"
@@ -56,20 +65,21 @@
                 android:inputType="number"
                 android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/customerID_tv"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/firstNameTV"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:gravity="center"/>
 
             <EditText
                 android:id="@+id/firstNametv"
@@ -82,13 +92,6 @@
                 android:inputType="textPersonName"
                 android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/firstNameTV"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -96,6 +99,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/lastNameTV"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:gravity="center"/>
 
             <EditText
                 android:id="@+id/lastNametv"
@@ -108,20 +120,21 @@
                 android:inputType="textPersonName"
                 android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/lastNameTV"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/emailTV"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:gravity="center"/>
 
             <EditText
                 android:id="@+id/emailtv"
@@ -134,13 +147,6 @@
                 android:inputType="textEmailAddress"
                 android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/emailTV"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -148,6 +154,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/phoneNumTV"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:gravity="center"/>
 
             <EditText
                 android:id="@+id/phonetv"
@@ -159,14 +174,6 @@
                 android:hint="@string/phoneNumHint"
                 android:inputType="phone"
                 android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/phoneNumTV"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
 
         </LinearLayout>
 
