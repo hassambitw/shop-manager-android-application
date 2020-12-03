@@ -186,8 +186,8 @@ public class DBHelper extends SQLiteOpenHelper {
         System.out.println("IN CREATE BOOM");
 
         db.execSQL(CREATE_TABLE_CUSTOMERS);
-//        db.execSQL(CREATE_TABLE_ORDERS);
-//        db.execSQL(CREATE_TABLE_ORDERITEMS);
+        db.execSQL(CREATE_TABLE_ORDERS);
+       db.execSQL(CREATE_TABLE_ORDERITEMS);
 //        db.execSQL(CREATE_TABLE_STAFF);
 //        db.execSQL(CREATE_TABLE_PRODUCTS);
 //        db.execSQL(CREATE_TABLE_CATEGORIES);
@@ -276,6 +276,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getAllFrom_Orders() {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.query("orders",null,null,null,null,null,null);
+    }
+    public Cursor get_Order_Details(int order_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_orders = "SELECT * FROM " + ORDERS_TABLE +
+                " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
+        return db.rawQuery(select_orders,null);
     }
     public Cursor getAllFrom_Order_items(int order_id) {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class View_items_Adapter extends RecyclerView.Adapter<View_items_Adapter.View_Items_Holder> {
@@ -57,10 +59,10 @@ public class View_items_Adapter extends RecyclerView.Adapter<View_items_Adapter.
         holder.product_id_tv.setText(Integer.toString(curItem.getProductId()));
         holder.quantity_tv.setText(Integer.toString(curItem.getQuantity()));
         holder.price_tv.setText(Double.toString(curItem.getPrice()));
-        holder.discount_tv.setText(Double.toString(curItem.getDiscount()));
+        holder.discount_tv.setText(Double.toString(curItem.viewDiscount()));
         double a=curItem.getPrice()*curItem.getDiscount()*curItem.getQuantity();
 
-        holder.final_price_tv.setText(Double.toString(a));
+        holder.final_price_tv.setText(Double.toString(round(a,2)));
 
 
     }
@@ -68,5 +70,12 @@ public class View_items_Adapter extends RecyclerView.Adapter<View_items_Adapter.
     @Override
     public int getItemCount() {
         return itemsList.size();
+    }
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

@@ -24,11 +24,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter Product ID: "
+                android:text="Enter Order ID: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
             <EditText
-                android:id="@+id/editTextItemID_sale"
+                android:id="@+id/order_id_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -50,13 +50,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter Product ID: "
+                android:text="Enter Customer ID: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
+
             <EditText
-                android:id="@+id/editTextProductID_sale"
+                android:id="@+id/customer_id_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="number" />
@@ -76,11 +77,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter Quantity: "
+                android:text="Enter Staff ID: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
             <EditText
-                android:id="@+id/editTextQuantity_sale"
+                android:id="@+id/staff_id_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -101,79 +102,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter Sale Price: "
+                android:text="Enter Order Date: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
             <EditText
-                android:id="@+id/editTextPrice_sale"
+                android:id="@+id/order_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
-
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/lin_layout_sub_add_sale_5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/enter_discount_sale"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Enter Discount: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-            <EditText
-                android:id="@+id/editTextDiscount_sale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number" />
+               />
 
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/lin_layout_sub_add_sale_6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/enter_final_price_sale"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Enter Product ID: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-            <EditText
-                android:id="@+id/editTextFinalPrice_sale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number" />
-
-
-
-        </LinearLayout>
 
 
     </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true">
 
     <Button
-        android:id="@+id/finish_adding_product2"
-        android:layout_width="match_parent"
+        android:id="@+id/cancel_order"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="Done" />
+        android:layout_marginRight="110dp"
+        android:onClick="onClick_Cancel"
+        android:text="Cancel Order" />
+
+    <Button
+        android:id="@+id/add_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+
+        android:onClick="onClick_Add"
+        android:text="Add Items" />
+</LinearLayout>
 </RelativeLayout>

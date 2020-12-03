@@ -35,6 +35,7 @@ public class SalesFragment extends Fragment {
 
 
         dbO.insertOrder(6, 005, "02/10/2020", 99);
+        dbO.insert_order_item(6,2,3,2,33,20);
         //dbO.updateTable();
         Cursor c1 = dbO.getAllFrom_Orders();
         while (c1.moveToNext()) {
@@ -51,7 +52,7 @@ public class SalesFragment extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), Add_Sale.class);
-                startActivityForResult(i, req_code);
+                startActivity(i);
             }
         });
 

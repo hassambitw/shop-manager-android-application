@@ -38,6 +38,10 @@ public class Order_Items {
     }
 
     public double getDiscount() {
+        double d=(100-discount)/100;
+        return d;
+    }
+    public double viewDiscount(){
         return discount;
     }
 
