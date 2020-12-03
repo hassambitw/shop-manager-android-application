@@ -4,13 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_Sale"
-    android:padding="16dp">
+    tools:context=".Add_Sale">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar5"
         android:orientation="vertical">
 
         <LinearLayout
@@ -27,6 +35,7 @@
                 android:text="Enter Order ID: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/order_id_tv"
                 android:layout_width="wrap_content"
@@ -34,7 +43,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="number" />
-
 
 
         </LinearLayout>
@@ -63,7 +71,6 @@
                 android:inputType="number" />
 
 
-
         </LinearLayout>
 
         <LinearLayout
@@ -80,6 +87,7 @@
                 android:text="Enter Staff ID: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/staff_id_tv"
                 android:layout_width="wrap_content"
@@ -89,8 +97,8 @@
                 android:inputType="number" />
 
 
-
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/lin_layout_sub_add_sale_4"
             android:layout_width="match_parent"
@@ -105,43 +113,43 @@
                 android:text="Enter Order Date: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/order_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-               />
-
+                android:ems="10" />
 
 
         </LinearLayout>
 
 
-
-
     </LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_alignParentBottom="true">
 
-    <Button
-        android:id="@+id/cancel_order"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="110dp"
-        android:onClick="onClick_Cancel"
-        android:text="Cancel Order" />
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/add_items"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
+        <Button
+            android:id="@+id/cancel_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="110dp"
+            android:onClick="onClick_Cancel"
+            android:text="Cancel Order" />
 
-        android:onClick="onClick_Add"
-        android:text="Add Items" />
-</LinearLayout>
+        <Button
+            android:id="@+id/add_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_500"
+
+            android:onClick="onClick_Add"
+            android:text="Add Items" />
+    </LinearLayout>
+
 </RelativeLayout>

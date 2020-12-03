@@ -39,6 +39,7 @@ public class AddProduct extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar2); //makes your own toolbar, needed inorder to make your nav drawer functional
         //also remove the other actionbar using NoActionBar theme
+        toolbar.setTitle("Add Product");
         toolbar.setBackgroundColor(getResources().getColor(R.color.weirdbluevariant));
         setSupportActionBar(toolbar);
 
