@@ -58,6 +58,8 @@ public class CustomerFragment extends Fragment {
 
         buildRecyclerView(v);
         return v;
+
+
     }
 
     public void addCustomers() {

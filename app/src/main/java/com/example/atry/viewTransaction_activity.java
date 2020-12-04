@@ -64,7 +64,6 @@ public class viewTransaction_activity extends AppCompatActivity {
             custTransactionList.add(new TransactionDetails(fname, lname, orderID, totalPrice));
         }
 
-        custTransactionList.add(new TransactionDetails("Hassam", "Minhas", 4, 165));
 
         backBtn = findViewById(R.id.back);
         backBtn.setOnClickListener(new View.OnClickListener() {

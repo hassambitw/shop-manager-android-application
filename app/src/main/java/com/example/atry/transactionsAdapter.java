@@ -1,12 +1,14 @@
 package com.example.atry;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.math.BigDecimal;
@@ -27,6 +29,7 @@ public class transactionsAdapter extends RecyclerView.Adapter<transactionsAdapte
         public TextView lname_tv;
         public TextView total_price_tv;
         public TextView order_id_tv;
+        public CardView item_transaction;
 
 
         public TransactionsViewHolder(@NonNull View itemView) {
@@ -36,6 +39,7 @@ public class transactionsAdapter extends RecyclerView.Adapter<transactionsAdapte
             lname_tv = itemView.findViewById(R.id.lastName);
             total_price_tv = itemView.findViewById(R.id.totalPrice);
             order_id_tv=itemView.findViewById(R.id.order_id);
+            item_transaction = itemView.findViewById(R.id.transaction_item);
 
         }
     }
@@ -48,8 +52,8 @@ public class transactionsAdapter extends RecyclerView.Adapter<transactionsAdapte
     @Override
     public TransactionsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_item,parent,false);
-        TransactionsViewHolder svh = new TransactionsViewHolder(v);
-        return svh;
+        TransactionsViewHolder tvh = new TransactionsViewHolder(v);
+        return tvh;
     }
 
     @Override
@@ -64,14 +68,15 @@ public class transactionsAdapter extends RecyclerView.Adapter<transactionsAdapte
         holder.lname_tv.setText(curTransaction.getCust_lname());
         holder.total_price_tv.setText(Double.toString(round(curTransaction.getTotal_price(), 2)));
         holder.order_id_tv.setText(Integer.toString(curTransaction.getOrder_id()));
-//        holder.b.setOnClickListener((v)->{
-//            Intent i=new Intent(v.getContext(), View_receipt.class);
-//            i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));          //order_id_from_transactions
-//            i.putExtra("customer_id",Integer.parseInt(holder.mTextView2.getText().toString()));
-//            i.putExtra("order_date",holder.mTextView3.getText().toString());
-//            i.putExtra("staff_id",Integer.parseInt(holder.mTextView4.getText().toString()));
-//            v.getContext().startActivity(i);
-//        });
+
+        holder.item_transaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), View_receipt.class);
+                i.putExtra("order_id", Integer.parseInt(holder.order_id_tv.getText().toString()));
+                v.getContext().startActivity(i);
+            }
+        });
     }
 
     @Override
