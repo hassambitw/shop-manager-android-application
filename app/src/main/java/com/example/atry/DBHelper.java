@@ -442,7 +442,6 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("stock", ProductQuantity);
         long result = db.update("products", contentValues, "product_id = ?", new String[]{String.valueOf(prodID)});
         System.out.println("After input");
-        //tests
         return result != -1;
     }
 

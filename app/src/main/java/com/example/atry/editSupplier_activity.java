@@ -61,7 +61,7 @@ public class editSupplier_activity extends AppCompatActivity {
         String name = i.getStringExtra("supplier_name");
         String phone = i.getStringExtra("supplier_num");
         String email = i.getStringExtra("supplier_email");
-
+        //do u see this
 
         //setting them to tvs
         supplierID_tv.setText(Integer.toString(custID));
