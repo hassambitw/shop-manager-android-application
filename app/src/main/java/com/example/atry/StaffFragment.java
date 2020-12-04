@@ -24,12 +24,12 @@ public class StaffFragment extends Fragment {
     private RecyclerView.LayoutManager staffLayoutManager;
     Button addBtn;
     DBHelper dbh;
-    ArrayList<Customer> staffList = new ArrayList<>();
+    ArrayList<Staff> staffList = new ArrayList<>();
     int staff_id;
-    String customer_fname;
-    String customer_lname;
-    String customer_email;
-    String customer_phone;
+    String staff_fname;
+    String staff_lname;
+    String staff_email;
+    String staff_phone;
 
 
 
@@ -43,9 +43,9 @@ public class StaffFragment extends Fragment {
 //
 //        addToArrayList();
 //
-        View v = inflater.inflate(R.layout.fragment_customer, container, false);
+        View v = inflater.inflate(R.layout.fragment_staff, container, false);
 
-//        addBtn = v.findViewById(R.id.addCustomer);
+        addBtn = v.findViewById(R.id.addStaff);
 //
 //        addBtn.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
@@ -59,27 +59,27 @@ public class StaffFragment extends Fragment {
 //    }
 //
 //
-//    public void addCustomers() {
-//        dbh.insertCustomer(01, "John", "Williams", "+971561017939", "johnwilliams@hotmail.com");
-//        dbh.insertCustomer(02, "Jason", "King", "+971561017939", "jasonking@hotmail.com");
-//        dbh.insertCustomer(03, "Elizabeth", "Becks", "+971561017939", "elibeck@hotmail.com");
-//        dbh.insertCustomer(04, "Kenny", "Smith", "+971561017939", "kennysmith@hotmail.com");
-//        dbh.insertCustomer(05, "Soda", "Poppins", "+971561017939", "sodapoppins@hotmail.com");
+//    public void addStaff() {
+//        dbh.insertStaff(01, "John", "Williams", "+971561017939", "johnwilliams@hotmail.com");
+//        dbh.insertStaff(02, "Jason", "King", "+971561017939", "jasonking@hotmail.com");
+//        dbh.insertStaff(03, "Elizabeth", "Becks", "+971561017939", "elibeck@hotmail.com");
+//        dbh.insertStaff(04, "Kenny", "Smith", "+971561017939", "kennysmith@hotmail.com");
+//        dbh.insertStaff(05, "Soda", "Poppins", "+971561017939", "sodapoppins@hotmail.com");
 //    }
 //
 //    public void buildRecyclerView(View v) {
-//        customerRecyclerView = v.findViewById(R.id.customer_recycler_view);
-//        customerRecyclerView.setHasFixedSize(true);
-//        customerLayoutManager = new LinearLayoutManager(getActivity());
-//        customerAdapter = new CustomerAdapter(customerList);
-//        customerRecyclerView.setLayoutManager(customerLayoutManager);
-//        customerRecyclerView.setAdapter(customerAdapter);
-//        customerAdapter.notifyDataSetChanged();
+//        StaffRecyclerView = v.findViewById(R.id.staff_recycler_view);
+//        StaffRecyclerView.setHasFixedSize(true);
+//        StaffLayoutManager = new LinearLayoutManager(getActivity());
+//        StaffAdapter = new CustomerAdapter(StaffList);
+//        StaffRecyclerView.setLayoutManager(StaffLayoutManager);
+//        StaffRecyclerView.setAdapter(StaffAdapter);
+//        StaffAdapter.notifyDataSetChanged();
 //    }
 //
 //    public void addToArrayList() {
 //        //retrieving customers
-//        Cursor c = dbh.getCustomers();
+//        Cursor c = dbh.getStaffs();
 //
 //        //adding to arrayList
 //        while (c.moveToNext()) {
