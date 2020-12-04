@@ -21,15 +21,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
+        android:gravity="center|center_horizontal"
         android:orientation="horizontal"
-        android:padding="16dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:layout_margin="16dp"
             app:cardBackgroundColor="@color/weirdyellow"
             app:cardCornerRadius="5dp"
@@ -65,8 +65,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:layout_margin="16dp"
             app:cardBackgroundColor="@color/weirdyellow"
             app:cardCornerRadius="5dp"
@@ -111,15 +111,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lin_layout_1"
+        android:gravity="center|center_horizontal"
         android:orientation="horizontal"
-        android:padding="16dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:layout_margin="16dp"
             app:cardBackgroundColor="@color/weirdyellow"
             app:cardCornerRadius="5dp"
@@ -160,8 +160,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_4"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:layout_margin="16dp"
             app:cardBackgroundColor="@color/weirdyellow"
             app:cardCornerRadius="5dp"

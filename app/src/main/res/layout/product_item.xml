@@ -23,50 +23,59 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/from"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="from: "
-                    android:textColor="@color/white" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/brandName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="4dp"
-                    android:text="Brand Name"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/from"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="from: "
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/brandName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:text="Brand Name"
+                        android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/id_head"
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ID: "
-                    android:textColor="@color/white" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/prod_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="4dp"
-                    android:text=" "
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/id_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" ID: "
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/prod_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:text=" "
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/productName"
-                android:layout_width="match_parent"
+                android:layout_width="196dp"
                 android:layout_height="wrap_content"
                 android:text="Product Name"
                 android:textColor="@color/white"
@@ -80,87 +89,93 @@
                 android:textColor="@color/white"
                 android:textSize="10sp" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lin_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/lin_1"
-            android:orientation="vertical"
-            android:paddingLeft="8dp"
-            android:paddingTop="16dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="16dp">
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:id="@+id/lin_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/listprice_head"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Price: $"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/listprice"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="4dp"
-                    android:text="00.0"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/quantity_head"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Stock"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/quantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="4dp"
+                            android:text="00"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/year_head"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Model Year:"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/year"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="4dp"
+                            android:text="00"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/listprice_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price: $"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/listprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:text="00.0"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/quantity_head"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Stock"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/quantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="4dp"
-                    android:text="00"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/year_head"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Model Year:"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/year"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="4dp"
-                    android:text="00"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </LinearLayout>
         </LinearLayout>
 
         <Button
@@ -168,10 +183,19 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
             android:text="@string/editBtn" />
+
+        <Button
+            android:id="@+id/deleteProd"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editProd"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Delete" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
