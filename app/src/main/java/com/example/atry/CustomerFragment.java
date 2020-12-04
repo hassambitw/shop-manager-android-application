@@ -25,8 +25,6 @@ public class CustomerFragment extends Fragment {
     private RecyclerView.Adapter customerAdapter;
     private RecyclerView.LayoutManager customerLayoutManager;
     Button addBtn;
-    Button refreshBtn;
-    int req_code = 1;
     DBHelper dbh;
     ArrayList<Customer> customerList = new ArrayList<>();
     int customer_id;
@@ -49,17 +47,7 @@ public class CustomerFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_customer, container, false);
 
-        refreshBtn = v.findViewById(R.id.refreshbtn);
         addBtn = v.findViewById(R.id.addCustomer);
-
-        refreshBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                customerList.clear();
-                addToArrayList();
-                customerAdapter.notifyDataSetChanged();
-            }
-        });
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -71,18 +59,6 @@ public class CustomerFragment extends Fragment {
         buildRecyclerView(v);
         return v;
     }
-
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        Intent i = ((Activity) getContext()).getIntent();
-//        //intent.getIntExtra()
-//    }
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//    }
 
     public void addCustomers() {
         dbh.insertCustomer(01, "John", "Williams", "+971561017939", "johnwilliams@hotmail.com");

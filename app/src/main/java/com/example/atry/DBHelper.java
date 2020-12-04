@@ -192,8 +192,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(CREATE_TABLE_CUSTOMERS);
         db.execSQL(CREATE_TABLE_ORDERS);
-       db.execSQL(CREATE_TABLE_ORDERITEMS);
-//        db.execSQL(CREATE_TABLE_STAFF);
+        db.execSQL(CREATE_TABLE_ORDERITEMS);
+        db.execSQL(CREATE_TABLE_STAFF);
         db.execSQL(CREATE_TABLE_PRODUCTS);
 //        db.execSQL(CREATE_TABLE_CATEGORIES);
 //        db.execSQL(CREATE_TABLE_BRANDS);
@@ -268,6 +268,25 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+//    public boolean insertStaff (int staffID, String staff_fname, String staff_lname, String staff_phone, String staff_email) {
+//        //db.execSQL("DROP TABLE " + CUSTOMERS_TABLE);
+//        boolean check;
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("staff_id", staffID);
+//        contentValues.put("first_name", staff_fname);
+//        contentValues.put("last_name", staff_lname);
+//        contentValues.put("phone", staff_phone);
+//        contentValues.put("email", staff_email);
+//        check = checkStaffDuplicate(staffID);
+//        if (!check) {       // if there's no match, add
+//            long result = db.insert("customers", "", contentValues);
+//            return result != -1;
+//        } else {
+//            return false;
+//        }
+//    }
 
     public boolean insertProduct (int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear,  double ProductListPrice , int ProductQuantity) {
         //db.execSQL("DROP TABLE " + PRODUCT_TABLE);

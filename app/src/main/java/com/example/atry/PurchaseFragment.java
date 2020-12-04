@@ -26,7 +26,7 @@ public class PurchaseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-            purchaseList.add(new Shipment(0000,  0001, 1000, 001, 003, "13/10/2002"));
+        purchaseList.add(new Shipment(0000,  0001, 1000, 001, 003, "13/10/2002"));
         purchaseList.add(new Shipment(0000,  0001, 1000, 001, 003, "13/10/2002"));
         purchaseList.add(new Shipment(0000,  0001, 1000, 001, 003, "13/10/2002"));
 

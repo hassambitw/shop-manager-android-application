@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="8dp"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <LinearLayout
@@ -32,7 +33,8 @@
             android:id="@+id/customer_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="6">
+            android:layout_weight="6"
+            tools:listitem="@layout/customer_item">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -53,20 +55,14 @@
             android:orientation="horizontal">
 
         <Button
-            android:id="@+id/refreshbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Refresh"
-            android:layout_weight="0.5"/>
-
-        <Button
             android:id="@+id/addCustomer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="@string/addButton"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_marginLeft="5dp"/>
 
         </LinearLayout>

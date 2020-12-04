@@ -52,4 +52,7 @@
         <item>Earphones</item>
     </string-array>
 
+    <string name="staff">Staff</string>
+    <string name="no_transactions_available">There are no transactions by this customer. </string>
+
 </resources>
