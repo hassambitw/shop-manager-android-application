@@ -5,13 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Add_Sale"
-    android:padding="16dp">
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
 
 
     <LinearLayout
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar8">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adding Sale..."
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:textSize="22dp"></TextView>
 
         <LinearLayout
             android:id="@+id/lin_layout_sub_add_sale_1"
@@ -127,7 +146,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_alignParentBottom="true">
+    android:layout_alignParentBottom="true"
+    android:padding="16dp">
 
     <Button
         android:id="@+id/cancel_order"
@@ -146,4 +166,5 @@
         android:onClick="onClick_Add"
         android:text="Add Items" />
 </LinearLayout>
+
 </RelativeLayout>

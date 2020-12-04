@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberDecimal" />
 
 
 
@@ -164,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberDecimal" />
 
 
 
@@ -190,8 +190,9 @@
             <TextView
                 android:id="@+id/final_price_tv"
                 android:layout_width="210dp"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:background="@drawable/textview_border"
 
 

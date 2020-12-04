@@ -67,7 +67,7 @@ public class PurchaseFragment extends Fragment {
         b = (Button) v.findViewById(R.id.addPurchase);
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), Add_Sale.class);
+                Intent i = new Intent(getActivity(), AddPurchase.class);
                 startActivity(i);
             }
         });

@@ -6,26 +6,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".View_receipt">
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Receipt"
-            android:textSize="30sp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
-            android:paddingBottom="25dp">
 
-        </TextView>
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/app_logo">
+
+        </ImageView>
+
         <LinearLayout
+            android:paddingTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Order number:  "
             android:layout_marginLeft="10dp"
+            android:textStyle="bold"
             android:textSize="20sp"></TextView>
 
 <TextView
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="Customer ID:  "
                 android:layout_marginLeft="40dp"
+                android:textStyle="bold"
                 android:textSize="20sp"></TextView>
 
             <TextView
@@ -70,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="Order date:  "
                 android:layout_marginLeft="10dp"
+                android:textStyle="bold"
                 android:textSize="20sp"></TextView>
 
             <TextView
@@ -83,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Staff ID:  "
+                android:textStyle="bold"
                 android:layout_marginLeft="40dp"
                 android:textSize="20sp"></TextView>
 
@@ -111,12 +115,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total Price:   "></TextView>
+            android:text="Total Price:   "
+            android:textStyle="bold"></TextView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/total"
             android:text="00"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="dhs"></TextView>
+
 
     </LinearLayout>
 </LinearLayout>
@@ -126,6 +137,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
+        android:layout_marginBottom="30dp"
+
         android:onClick="goBackToSales"
         android:text="View All Sales"></Button>
 </RelativeLayout>

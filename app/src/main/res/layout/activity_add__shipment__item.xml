@@ -4,34 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPurchase"
+    tools:context=".Add_Shipment_Item"
     >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar8"
+        android:id="@+id/toolbar7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
-
-
-
     <LinearLayout
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/toolbar8">
-        <TextView
-            android:layout_width="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@+id/toolbar7">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adding Purchase..."
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10dp"
-            android:textSize="22dp"></TextView>
-
+            android:paddingBottom="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adding Shipment Item number "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20dp"></TextView>
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold"
+                android:text="1"></TextView>
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/lin_layout_sub_add_sale_1"
             android:layout_width="match_parent"
@@ -43,11 +52,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter Shipment ID: "
+                android:text="Enter Item ID: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
             <EditText
-                android:id="@+id/shipment_id_tv"
+                android:id="@+id/item_id_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -65,18 +74,17 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/enter_supplier_id"
+                android:id="@+id/enter_productID_sale"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter Supplier ID: "
+                android:text="Enter Product ID: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
-
             <EditText
-                android:id="@+id/supplier_id_tv"
+                android:id="@+id/product_id_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="number" />
@@ -96,17 +104,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter Cargo Handling(%): "
+                android:text="Enter Quantity Shipped: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
             <EditText
-                android:id="@+id/shipment_quote_tv"
+                android:id="@+id/quantity_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-
-                android:focusable="false"
                 android:inputType="number" />
 
 
@@ -116,25 +122,78 @@
             android:id="@+id/lin_layout_sub_add_sale_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/enter_price_sale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter Shipment Date: "
+                android:text="Product Price: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
-            <EditText
-                android:id="@+id/shipment_date_tv"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/price_tv"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
+                android:textSize="18sp"
+                android:background="@drawable/textview_border"
+
+
                 android:clickable="true"
-                android:focusable="false"
-                />
+                android:ems="10"
+                android:inputType="number"
+                android:onClick="handleOnClick_Final_price" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_layout_sub_final_price"
+            android:layout_width="match_parent"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/final_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Final Price Paid: "
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/final_price_tv"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:background="@drawable/textview_border"
+
+
+                android:clickable="true"
+                android:ems="10"
+                android:inputType="number"
+                android:onClick="handleOnClick_Final_price" />
+
 
 
 
@@ -142,25 +201,23 @@
 
 
 
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="20dp"
-        >
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/cancel_order"
-            android:layout_marginTop="5dp"
+            android:id="@+id/view_receipt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:onClick="onClick_Cancel"
-            android:text="Cancel Purchase"
-            />
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="90dp"
+            android:onClick="view_receipt"
+            android:text="View receipt" />
 
         <Button
             android:id="@+id/add_items"
@@ -168,8 +225,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_500"
 
-            android:onClick="onClick_Add"
-            android:text="Add Shipment items" />
+            android:onClick="add_another_item"
+            android:text="Add Another Item" />
     </LinearLayout>
-
 </RelativeLayout>

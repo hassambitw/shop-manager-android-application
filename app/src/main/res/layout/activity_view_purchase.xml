@@ -10,21 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/app_logo">
+
+        </ImageView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Purchase Summary"
-                android:textSize="30sp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="50dp"
-                android:paddingBottom="25dp">
 
-            </TextView>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,6 +33,7 @@
                     android:layout_height="wrap_content"
                     android:text="Shipment number:  "
                     android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
                     android:textSize="15sp"></TextView>
 
                 <TextView
@@ -46,8 +46,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Supplier ID:  "
-                    android:layout_marginLeft="40dp"
+                    android:text="Supplier Name:  "
+                    android:textStyle="bold"
+                    android:layout_marginLeft="55dp"
                     android:textSize="15sp"></TextView>
 
                 <TextView
@@ -70,6 +71,7 @@
                     android:layout_height="wrap_content"
                     android:text="Shipment date:  "
                     android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
                     android:textSize="15sp"></TextView>
 
                 <TextView
@@ -83,7 +85,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cargo Handling(%):  "
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="27dp"
+                    android:textStyle="bold"
                     android:textSize="15sp"></TextView>
 
                 <TextView
@@ -111,12 +114,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Total Price:   "></TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/total"
                 android:text="00"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="dhs"></TextView>
 
         </LinearLayout>
     </LinearLayout>
@@ -127,6 +136,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:onClick="goBackToPurchase"
+        android:layout_marginBottom="30dp"
         android:text="View All Purchases">
 </Button>
 </RelativeLayout>

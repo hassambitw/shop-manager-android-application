@@ -36,8 +36,13 @@ public class Add_item extends AppCompatActivity {
         //also remove the other actionbar using NoActionBar theme
         toolbar.setTitle("Add Item");
         toolbar.setBackgroundColor(getResources().getColor(R.color.weirdbluevariant));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               onBackPressed();
+            }
+        });
         Window window = this.getWindow();
         // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -116,22 +121,153 @@ public class Add_item extends AppCompatActivity {
 
         return true;
     }
-    public void add_another_item(View v){
-        dbO.insert_order_item(order_id,Integer.parseInt(item_id.getText().toString()),Integer.parseInt(product_id.getText().toString()),Integer.parseInt(quantity.getText().toString()),Double.parseDouble(price.getText().toString()),Double.parseDouble(discount.getText().toString()));
-        count=count+1;
-        count_tv.setText(Integer.toString(count));
-        item_id.setText("");
-        product_id.setText("");
-        quantity.setText("");
-        price.setText("");
-        discount.setText("");
-        final_price.setText("");
+
+    public boolean stringEmpty(EditText et){
+        if(et.getText().toString().trim().length()==0){
+            return true;
+        }else{
+            return false;
+        }
     }
-    public void view_receipt(View v){
-        dbO.insert_order_item(order_id,Integer.parseInt(item_id.getText().toString()),Integer.parseInt(product_id.getText().toString()),Integer.parseInt(quantity.getText().toString()),Double.parseDouble(price.getText().toString()),Double.parseDouble(discount.getText().toString()));
-        Intent i=new Intent(this,View_receipt.class);
-        i.putExtra("order_id",order_id);
-        startActivity(i);
+    public boolean idStartWithZero(EditText et){
+        if(et.getText().toString().trim().startsWith("0")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public void add_another_item(View v){
+
+        if(stringEmpty(item_id)||stringEmpty(product_id)||stringEmpty(price)||stringEmpty(quantity)||stringEmpty(discount)){
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("ERROR");
+            builder1.setMessage("All fields must be filled");
+            builder1.show();
+        }
+        else if(idStartWithZero(item_id)||idStartWithZero(product_id)){
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("ERROR");
+            builder1.setMessage("IDs cannot start with zero");
+            builder1.show();
+        }else if(Double.isNaN(Double.parseDouble(price.getText().toString()))){
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("ERROR");
+            builder1.setMessage("Invalid Price");
+            builder1.show();
+        }else if(Double.isNaN(Double.parseDouble(discount.getText().toString()))){
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("ERROR");
+            builder1.setMessage("Invalid Discount");
+            builder1.show();
+        }else {
+            int out = dbO.insert_order_item(order_id, Integer.parseInt(item_id.getText().toString()), Integer.parseInt(product_id.getText().toString()), Integer.parseInt(quantity.getText().toString()), Double.parseDouble(price.getText().toString()), Double.parseDouble(discount.getText().toString()));
+            if (out == 2) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setTitle("ERROR");
+                builder1.setMessage("Item ID should be unique");
+                builder1.show();
+            } else if (out == 3) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setTitle("ERROR");
+                builder1.setMessage("Product does not exist. Would you like to re-enter the product ID or add a new product?");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Add Customer",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                dialog.cancel();
+                                Intent i = new Intent(Add_item.this, AddProduct.class);
+                                startActivity(i);
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "Re-enter Customer ID",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            } else {
+
+                count = count + 1;
+                count_tv.setText(Integer.toString(count));
+                item_id.setText("");
+                product_id.setText("");
+                quantity.setText("");
+                price.setText("");
+                discount.setText("");
+                final_price.setText("");
+            }
+        }
+    }
+    public void view_receipt(View v) {
+        if (stringEmpty(item_id) || stringEmpty(product_id) || stringEmpty(price) || stringEmpty(quantity) || stringEmpty(discount)) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("ERROR");
+            builder1.setMessage("All fields must be filled");
+            builder1.show();
+        } else if (idStartWithZero(item_id) || idStartWithZero(product_id)) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("ERROR");
+            builder1.setMessage("IDs cannot start with zero");
+            builder1.show();
+        } else if (Double.isNaN(Double.parseDouble(price.getText().toString()))) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("ERROR");
+            builder1.setMessage("Invalid Price");
+            builder1.show();
+        } else if (Double.isNaN(Double.parseDouble(discount.getText().toString()))) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("ERROR");
+            builder1.setMessage("Invalid Discount");
+            builder1.show();
+        } else {
+            int out = dbO.insert_order_item(order_id, Integer.parseInt(item_id.getText().toString()), Integer.parseInt(product_id.getText().toString()), Integer.parseInt(quantity.getText().toString()), Double.parseDouble(price.getText().toString()), Double.parseDouble(discount.getText().toString()));
+            if (out == 2) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setTitle("ERROR");
+                builder1.setMessage("Item ID should be unique");
+                builder1.show();
+            } else if (out == 3) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setTitle("ERROR");
+                builder1.setMessage("Product does not exist. Would you like to re-enter the product ID or add a new product?");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Add Customer",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                dialog.cancel();
+                                Intent i = new Intent(Add_item.this, AddProduct.class);
+                                startActivity(i);
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "Re-enter Customer ID",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            } else {
+                // dbO.insert_order_item(order_id,Integer.parseInt(item_id.getText().toString()),Integer.parseInt(product_id.getText().toString()),Integer.parseInt(quantity.getText().toString()),Double.parseDouble(price.getText().toString()),Double.parseDouble(discount.getText().toString()));
+                Intent i = new Intent(this, View_receipt.class);
+                i.putExtra("order_id", order_id);
+                startActivity(i);
+            }
+        }
     }
 
     @Override

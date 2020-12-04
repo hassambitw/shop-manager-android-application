@@ -232,7 +232,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //insert methods
     public int insertOrder(int orderId, int customerId, String orderDate, int staff_id) {
-        int checkWhichError;
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("order_id", orderId);
@@ -253,6 +253,26 @@ public class DBHelper extends SQLiteOpenHelper {
             db.insert("orders", "", contentValues);
             return 1;
 
+        }
+    }
+
+    public int insert_order_item(int orderId, int itemId, int productId, int quantity, double price, double discount) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("order_id", orderId);
+        contentValues.put("item_id", itemId);
+        contentValues.put("product_id", productId);
+        contentValues.put("quantity", quantity);
+        contentValues.put("price", price);
+        contentValues.put("discount", discount);
+        if (checkItemsDuplicate(itemId)) {
+            //duplicate exists so error code 2
+            return 2;
+        }else if(!checkProductExists(productId)){
+            return 3;
+        }else {
+            db.insert("order_items", "", contentValues);
+            return 1;
         }
     }
 
@@ -282,10 +302,36 @@ public class DBHelper extends SQLiteOpenHelper {
         return false;           // no match
     }
 
+
     //check if customer exists
     private boolean checkCustomerExists(int ID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT  * FROM " + CUSTOMERS_TABLE + " WHERE " + CUSTOMERS_COL1_ID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() >= 1) {
+            cursor.close();
+            return true;       // found match
+        }
+        cursor.close();
+        return false;           // no match
+    }
+    //check if customer exists
+    public boolean checkProductExists(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + PRODUCTS_TABLE + " WHERE " + PRODUCTS_COL1_PRODID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() >= 1) {
+            cursor.close();
+            return true;       // found match
+        }
+        cursor.close();
+        return false;           // no match
+    }
+
+    //Check supplier exists
+    private boolean checkSupplierExists(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + SUPPLIER_TABLE + " WHERE " + SUPPLIER_COL1_ID + "=" + ID;
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.getCount() >= 1) {
             cursor.close();
@@ -299,6 +345,41 @@ public class DBHelper extends SQLiteOpenHelper {
     private boolean checkOrdersDuplicate(int ID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT  * FROM " + ORDERS_TABLE + " WHERE " + ORDERS_ORDER_ID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;       // no match
+        }
+        cursor.close();
+        return true;           // match found
+    }
+    //check for duplicates in orders
+    private boolean checkItemsDuplicate(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + ORDER_ITEMS_TABLE + " WHERE " + ORDER_ITEMS_ITEM_ID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;       // no match
+        }
+        cursor.close();
+        return true;           // match found
+    }
+    //check for duplicates in orders
+    private boolean checkShipmentItemsDuplicate(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + SHIPMENT_ITEMS_TABLE + " WHERE " + SHIPMENT_ITEMS_COL1_ITEM_ID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;       // no match
+        }
+        cursor.close();
+        return true;           // match found
+    }
+    private boolean checkShipmentsDuplicate(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + SHIPMENT_TABLE + " WHERE " + SHIPMENT_COL1_SHIPMENTNUM + "=" + ID;
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.getCount() <= 0) {
             cursor.close();
@@ -388,24 +469,43 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void insertShipment(int shipmentID, int supplier_id, int shipment_quote, String shipment_date) {
+    public int  insertShipment(int shipmentID, int supplier_id, int shipment_quote, String shipment_date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+
         contentValues.put("shipment_num", shipmentID);
         contentValues.put("shipment_supplier_id", supplier_id);
         contentValues.put("shipment_quote", shipment_quote);
         contentValues.put("shipment_date", shipment_date);
-        db.insert("shipment", "", contentValues);
+        if (checkShipmentsDuplicate(shipmentID)) {
+            //duplicate exists so error code 2
+            return 2;
+        }/*else if(!checkSupplierExists(supplier_id)){
+            return 3;
+        }*/else {
+            db.insert("shipment", "", contentValues);
+            return 1;
+        }
+
     }
 
-    public void insert_shipment_items(int shipmentID, int item_id, int product_id, int quantity) {
+    public int insert_shipment_items(int shipmentID, int item_id, int product_id, int quantity) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("shipment_num", shipmentID);
         contentValues.put("item_id", item_id);
         contentValues.put("shipment_product_id", product_id);
         contentValues.put("shipment_quantity", quantity);
-        db.insert("shipment_items", "", contentValues);
+        if (checkShipmentItemsDuplicate(item_id)) {
+            //duplicate exists so error code 2
+            return 2;
+        }else if(!checkProductExists(product_id)){
+            return 3;
+        }else {
+            db.insert("shipment_items", "", contentValues);
+            return 1;
+        }
+
     }
 
     public boolean insertProduct(int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear, double ProductListPrice, int ProductQuantity) {
@@ -486,17 +586,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public void insert_order_item(int orderId, int itemId, int productId, int quantity, double price, double discount) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("order_id", orderId);
-        contentValues.put("item_id", itemId);
-        contentValues.put("product_id", productId);
-        contentValues.put("quantity", quantity);
-        contentValues.put("price", price);
-        contentValues.put("discount", discount);
-        db.insert("order_items", "", contentValues);
-    }
 
     //getMethods
     public Cursor getCustomers() {
@@ -553,6 +642,12 @@ public class DBHelper extends SQLiteOpenHelper {
         String select_query = "SELECT p.product_name, p.list_price FROM" + " shipment_items si, products p WHERE si.item_id=? AND p.product_id=si.shipment_product_id";
         return db.rawQuery(select_query, new String[]{ String.valueOf(itemID)} );
     }
+    public Cursor get_price_only(int productID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT p.list_price FROM" + " shipment_items si, products p WHERE p.product_id=?";
+        return db.rawQuery(select_query, new String[]{ String.valueOf(productID)} );
+    }
+
 
 
     public Cursor getAllFrom_Orders() {
@@ -588,6 +683,17 @@ public class DBHelper extends SQLiteOpenHelper {
                 " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
         db.execSQL(delete_order_items);
         db.execSQL(delete_orders);
+
+    }
+    public void deleteShipment_and_related_items(int shipment_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String delete_shipments = "DELETE FROM " + SHIPMENT_TABLE +
+                " WHERE "+ SHIPMENT_COL1_SHIPMENTNUM +" = "+shipment_id;
+        String delete_shipment_items = "DELETE FROM " + SHIPMENT_ITEMS_TABLE +
+                " WHERE "+ SHIPMENT_ITEMS_COL4_SHIPMENTNUM +" = "+shipment_id;
+        db.execSQL(delete_shipment_items);
+        db.execSQL(delete_shipments);
+
 
     }
 
