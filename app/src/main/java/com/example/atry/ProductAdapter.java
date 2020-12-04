@@ -1,12 +1,14 @@
 package com.example.atry;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +25,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public TextView mTextView5;
         public TextView mTextView6;
         public TextView mTextView7;
-        Button editProd;
+        Button editProd, deleteProd;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -37,6 +39,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             mTextView6 = itemView.findViewById(R.id.year);
             mTextView7 = itemView.findViewById(R.id.prod_id);
             editProd = itemView.findViewById(R.id.editProd);
+            deleteProd = itemView.findViewById(R.id.deleteProd);
 
         }
     }
@@ -78,11 +81,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             v.getContext().startActivity(i);
         });
 
+        holder.deleteProd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int itemid = Integer.parseInt(holder.mTextView7.getText().toString());
+                prodList.remove(prodList.get(position));
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, prodList.size());
+                notifyDataSetChanged();
+                //Toast.makeText(holder, "deleted", Toast.LENGTH_SHORT).show();
+
+                //delete from db?
+                DBHelper dbh = new DBHelper(holder.deleteProd.getContext());
+                dbh.deleteProduct(itemid);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
         return prodList.size();
+    }
+
+    public void deleteProduct(int position){
+        //DBHelper dbh = new DBHelper(getApplicationContext());
     }
 }
