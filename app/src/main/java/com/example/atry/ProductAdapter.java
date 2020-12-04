@@ -89,9 +89,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, prodList.size());
                 notifyDataSetChanged();
-                //Toast.makeText(holder, "deleted", Toast.LENGTH_SHORT).show();
+                
 
-                //delete from db?
                 DBHelper dbh = new DBHelper(holder.deleteProd.getContext());
                 dbh.deleteProduct(itemid);
             }

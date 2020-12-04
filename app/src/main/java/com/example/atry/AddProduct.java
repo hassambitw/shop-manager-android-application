@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -98,12 +99,15 @@ public class AddProduct extends AppCompatActivity {
                 if (!etProdID.getText().toString().isEmpty() && !ProductName.isEmpty() && !ProductBrand.isEmpty() && !ProductCategory.isEmpty() && ProductListPrice!=0.0 && ProductQuantity != 0 && ProductYear != 0) {
                     if (dbh.insertProduct(prodID, ProductName, ProductBrand, ProductCategory, ProductYear, ProductListPrice, ProductQuantity)) {
                         Toast.makeText(getApplicationContext(), "Product added", Toast.LENGTH_SHORT).show();
-                        etProdCategory.setText("");
-                        etProdYear.setText("");
-                        etProdQuant.setText("");
-                        etProdListPrice.setText("");
-                        etProdBrand.setText("");
-                        etProdName.setText("");
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        i.putExtra("from_product","product");
+                        startActivity(i);
+//                        etProdCategory.setText("");
+//                        etProdYear.setText("");
+//                        etProdQuant.setText("");
+//                        etProdListPrice.setText("");
+//                        etProdBrand.setText("");
+//                        etProdName.setText("");
                         //etProdBrand.setText("");
 
                     } else {

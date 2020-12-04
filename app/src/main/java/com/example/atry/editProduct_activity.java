@@ -97,7 +97,7 @@ public class editProduct_activity extends AppCompatActivity {
                     if (dbh.updateProduct(prodID, ProductName, ProductBrand, ProductCategory, ProductYear, ProductListPrice, ProductQuantity)) {
                         Toast.makeText(getApplicationContext(), "Product updated", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.putExtra("message_from_editing_products","product");
+                        i.putExtra("from_edit_product","product");
                         startActivity(i);
                     } else {
                         Toast.makeText(getApplicationContext(), "Product not updated", Toast.LENGTH_SHORT).show();

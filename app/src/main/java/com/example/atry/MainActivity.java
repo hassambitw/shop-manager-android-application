@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             if (extras.containsKey("from_purchase")) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PurchaseFragment()).commit();
-                Toast.makeText(this, "Sale", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Purchases", Toast.LENGTH_SHORT).show();
             }
             if (extras.containsKey("from_customers") || extras.containsKey("from_edit_customers")) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CustomerFragment()).commit();
@@ -87,7 +87,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             if (extras.containsKey("from_supplier") || extras.containsKey("from_edit_supplier")) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SuppliersFragment()).commit();
-                Toast.makeText(this, "Staff", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Suppliers", Toast.LENGTH_SHORT).show();
+            }
+            if (extras.containsKey("from_product") || extras.containsKey("from_edit_product")) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductFragment()).commit();
+                Toast.makeText(this, "Products", Toast.LENGTH_SHORT).show();
             }
 
         }
