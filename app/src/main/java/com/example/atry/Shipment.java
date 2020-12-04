@@ -2,29 +2,24 @@ package com.example.atry;
 
 class Shipment {
 
-    private int shipmentCost;
+    private int shipmentQuote;
     private int shipmentNo;
-    private int shipmentQuantity;
-    private int productId;
     private int supplierId;
     private String shipmentDate;
+    private double totalCost;
 
-    public Shipment(int shipmentCost, int shipmentNo, int shipmentQuantity, int productId, int supplierId, String shipmentDate) {
-        this.shipmentCost = shipmentCost;
+
+    public Shipment(int shipmentQuote, int shipmentNo, int supplierId, String shipmentDate, double totalCost) {
+        this.shipmentQuote = shipmentQuote;
         this.shipmentNo = shipmentNo;
-        this.shipmentQuantity = shipmentQuantity;
-        this.productId = productId;
         this.supplierId = supplierId;
         this.shipmentDate = shipmentDate;
+        this.totalCost=totalCost;
+
     }
 
-    public int getShipmentCost() {
-        return shipmentCost;
-    }
 
-    public void setShipmentCost(int shipmentCost) {
-        this.shipmentCost = shipmentCost;
-    }
+
 
     public int getShipmentNo() {
         return shipmentNo;
@@ -32,22 +27,6 @@ class Shipment {
 
     public void setShipmentNo(int shipmentNo) {
         this.shipmentNo = shipmentNo;
-    }
-
-    public int getShipmentQuantity() {
-        return shipmentQuantity;
-    }
-
-    public void setShipmentQuantity(int shipmentQuantity) {
-        this.shipmentQuantity = shipmentQuantity;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
     }
 
     public int getSupplierId() {
@@ -64,5 +43,21 @@ class Shipment {
 
     public void setShipmentDate(String shipmentDate) {
         this.shipmentDate = shipmentDate;
+    }
+
+    public void setShipmentQuote(int shipmentQuote) {
+        this.shipmentNo = shipmentNo;
+    }
+
+    public int getShipmentQuote() {
+        return shipmentQuote;
+    }
+
+    public void setTotalCost(int shipmentQuote) {
+        this.totalCost = totalCost;
+    }
+
+    public double getTotalCost() {
+        return totalCost;
     }
 }

@@ -9,15 +9,28 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Try.NoActionBar">
-        <activity android:name=".editProduct_activity"></activity>
+        <activity android:name=".view_purchase"></activity>
+        <activity android:name=".editProduct_activity" />
         <activity android:name=".editCustomer_activity" />
         <activity android:name=".viewTransaction_activity" />
-        <activity android:name=".AddSupplier" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".AddCustomer_Activity" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".AddPurchase" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".AddProduct" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Add_Sale" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Add_item" android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".AddSupplier"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddCustomer_Activity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddPurchase"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddProduct"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Add_Sale"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Add_item"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".View_receipt" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity">

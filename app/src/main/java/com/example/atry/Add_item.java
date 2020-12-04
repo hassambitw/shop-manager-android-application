@@ -1,9 +1,11 @@
 package com.example.atry;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,8 +31,6 @@ public class Add_item extends AppCompatActivity {
         dbO=new DBHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
-
-
 
         Toolbar toolbar = findViewById(R.id.toolbar7); //makes your own toolbar, needed inorder to make your nav drawer functional
         //also remove the other actionbar using NoActionBar theme
@@ -98,6 +98,13 @@ public class Add_item extends AppCompatActivity {
         });
 
     }
+    public void handleOnClick_Final_price(View view)
+    {
+        if((!isEmpty(price)) && (!isEmpty(quantity))&&(!isEmpty(discount))){
+            double d=getDiscount(Integer.parseInt(quantity.getText().toString()),Double.parseDouble(price.getText().toString()),Double.parseDouble(discount.getText().toString()));
+            final_price.setText(Double.toString(d));
+        }
+    }
     public double getDiscount(int quantity, double price, double discount){
         double d=(100-discount)/100;
         double final_price=d*quantity*price;
@@ -118,11 +125,44 @@ public class Add_item extends AppCompatActivity {
         quantity.setText("");
         price.setText("");
         discount.setText("");
+        final_price.setText("");
     }
     public void view_receipt(View v){
         dbO.insert_order_item(order_id,Integer.parseInt(item_id.getText().toString()),Integer.parseInt(product_id.getText().toString()),Integer.parseInt(quantity.getText().toString()),Double.parseDouble(price.getText().toString()),Double.parseDouble(discount.getText().toString()));
         Intent i=new Intent(this,View_receipt.class);
         i.putExtra("order_id",order_id);
         startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Going back will erase current order and all items in it. Do you still wish to go back? ");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                        dbO.deleteOrders_and_related_items(order_id);
+                        Intent i=new Intent(Add_item.this,MainActivity.class);
+                        i.putExtra("from_sales","sales");
+                        startActivity(i);
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
     }
 }

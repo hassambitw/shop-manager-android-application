@@ -186,17 +186,19 @@
                 android:text="Final Price: "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/final_price_tv"
                 android:layout_width="210dp"
-
                 android:layout_height="20dp"
                 android:layout_weight="1"
-
-
                 android:background="@drawable/textview_border"
+
+
+                android:clickable="true"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number"
+                android:onClick="handleOnClick_Final_price" />
 
 
 

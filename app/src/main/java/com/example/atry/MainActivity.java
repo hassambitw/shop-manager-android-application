@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SalesFragment()).commit();
                 Toast.makeText(this, "Sale", Toast.LENGTH_SHORT).show();
             }
+            if (extras.containsKey("from_purchase")) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PurchaseFragment()).commit();
+                Toast.makeText(this, "Sale", Toast.LENGTH_SHORT).show();
+            }
 
             if (extras.containsKey("from_customers") || extras.containsKey("from_edit_customers")) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CustomerFragment()).commit();

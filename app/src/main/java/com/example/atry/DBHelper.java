@@ -22,30 +22,30 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CUSTOMERS_COL5_EMAIL = "email";
 
     String CREATE_TABLE_CUSTOMERS = "CREATE TABLE IF NOT EXISTS " + CUSTOMERS_TABLE +
-                                    "("
-                                            + CUSTOMERS_COL1_ID + " INTEGER PRIMARY KEY NOT NULL, "
-                                            + CUSTOMERS_COL2_FNAME + " TEXT NOT NULL, "
-                                            + CUSTOMERS_COL3_LNAME + " TEXT NOT NULL, "
-                                            + CUSTOMERS_COL4_PHONE + " TEXT NOT NULL, "
-                                            + CUSTOMERS_COL5_EMAIL + " TEXT NOT NULL " +
-                                    ")";
+            "("
+            + CUSTOMERS_COL1_ID + " INTEGER PRIMARY KEY NOT NULL, "
+            + CUSTOMERS_COL2_FNAME + " TEXT NOT NULL, "
+            + CUSTOMERS_COL3_LNAME + " TEXT NOT NULL, "
+            + CUSTOMERS_COL4_PHONE + " TEXT NOT NULL, "
+            + CUSTOMERS_COL5_EMAIL + " TEXT NOT NULL " +
+            ")";
 
     //orders table
     public static final String ORDERS_TABLE = "orders";
     public static final String ORDERS_ORDER_ID = "order_id";
     public static final String ORDERS_CUSTOMER_ID = "customer_id";      //FK on cust
     public static final String ORDERS_ORDER_DATE = "order_date";
-    public static final String ORDERS_STAFF_ID="staff_id";              //FK on staff table
+    public static final String ORDERS_STAFF_ID = "staff_id";              //FK on staff table
 
     String CREATE_TABLE_ORDERS = "CREATE TABLE IF NOT EXISTS " + ORDERS_TABLE +
-                                " ("
-                                    + ORDERS_ORDER_ID + " INTEGER PRIMARY KEY, "
-                                    + ORDERS_CUSTOMER_ID + " INTEGER NOT NULL, "
-                                    + ORDERS_ORDER_DATE + " STRING, "
-                                    + ORDERS_STAFF_ID + " INTEGER, "
-                                    + "FOREIGN KEY (" + ORDERS_CUSTOMER_ID + ") REFERENCES " + CUSTOMERS_TABLE +  "(" + CUSTOMERS_COL1_ID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
-                                    + "FOREIGN KEY (" + ORDERS_STAFF_ID + ") REFERENCES " + STAFF_TABLE +  "(" + STAFF_COL1_STAFFID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
-                                ")";
+            " ("
+            + ORDERS_ORDER_ID + " INTEGER PRIMARY KEY, "
+            + ORDERS_CUSTOMER_ID + " INTEGER NOT NULL, "
+            + ORDERS_ORDER_DATE + " STRING, "
+            + ORDERS_STAFF_ID + " INTEGER, "
+            + "FOREIGN KEY (" + ORDERS_CUSTOMER_ID + ") REFERENCES " + CUSTOMERS_TABLE + "(" + CUSTOMERS_COL1_ID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
+            + "FOREIGN KEY (" + ORDERS_STAFF_ID + ") REFERENCES " + STAFF_TABLE + "(" + STAFF_COL1_STAFFID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
+            ")";
 
     //staff table
     public static final String STAFF_TABLE = "staff";
@@ -55,14 +55,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String STAFF_COL4_EMAIL = "email";
     public static final String STAFF_COL5_PHONE = "phone";
 
-        String CREATE_TABLE_STAFF = "CREATE TABLE IF NOT EXISTS " + CUSTOMERS_TABLE +
-                                    "("
-                                        + STAFF_COL1_STAFFID + " INTEGER PRIMARY KEY, "
-                                        + STAFF_COL2_FNAME + " TEXT NOT NULL, "
-                                        + STAFF_COL3_LNAME + " TEXT NOT NULL, "
-                                        + STAFF_COL4_EMAIL + " TEXT NOT NULL, "
-                                        + STAFF_COL5_PHONE + " TEXT NOT NULL " +
-                                    ")";
+    String CREATE_TABLE_STAFF = "CREATE TABLE IF NOT EXISTS " + CUSTOMERS_TABLE +
+            "("
+            + STAFF_COL1_STAFFID + " INTEGER PRIMARY KEY, "
+            + STAFF_COL2_FNAME + " TEXT NOT NULL, "
+            + STAFF_COL3_LNAME + " TEXT NOT NULL, "
+            + STAFF_COL4_EMAIL + " TEXT NOT NULL, "
+            + STAFF_COL5_PHONE + " TEXT NOT NULL " +
+            ")";
 
     //order_items table
     public static final String ORDER_ITEMS_TABLE = "order_items";
@@ -74,19 +74,17 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String ORDER_ITEMS_DISCOUNT = "discount";
 
     String CREATE_TABLE_ORDERITEMS = "CREATE TABLE IF NOT EXISTS " + ORDER_ITEMS_TABLE +
-                                    " ("
-                                        + ORDER_ITEMS_ORDER_ID +" INTEGER, "
-                                        + ORDER_ITEMS_ITEM_ID + " INTEGER , "
-                                        + ORDER_ITEMS_PRODUCT_ID +" INTEGER, "
-                                        + ORDER_ITEMS_QUANTITY + " INTEGER, "
-                                        + ORDER_ITEMS_PRICE + " DOUBLE,"
-                                        + ORDER_ITEMS_DISCOUNT+" DOUBLE,"
-                                        + "PRIMARY KEY (" + ORDER_ITEMS_ORDER_ID + "," + ORDER_ITEMS_ITEM_ID + "), "
-                                        + "FOREIGN KEY (" + ORDER_ITEMS_ORDER_ID + ") REFERENCES " + ORDERS_TABLE +  "(" + ORDERS_ORDER_ID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
-                                        + "FOREIGN KEY (" + ORDER_ITEMS_PRODUCT_ID + ") REFERENCES " + PRODUCTS_TABLE +  "(" + PRODUCTS_COL1_PRODID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
-                                    ")";
-
-
+            " ("
+            + ORDER_ITEMS_ORDER_ID + " INTEGER, "
+            + ORDER_ITEMS_ITEM_ID + " INTEGER , "
+            + ORDER_ITEMS_PRODUCT_ID + " INTEGER, "
+            + ORDER_ITEMS_QUANTITY + " INTEGER, "
+            + ORDER_ITEMS_PRICE + " DOUBLE,"
+            + ORDER_ITEMS_DISCOUNT + " DOUBLE,"
+            + "PRIMARY KEY (" + ORDER_ITEMS_ORDER_ID + "," + ORDER_ITEMS_ITEM_ID + "), "
+            + "FOREIGN KEY (" + ORDER_ITEMS_ORDER_ID + ") REFERENCES " + ORDERS_TABLE + "(" + ORDERS_ORDER_ID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
+            + "FOREIGN KEY (" + ORDER_ITEMS_PRODUCT_ID + ") REFERENCES " + PRODUCTS_TABLE + "(" + PRODUCTS_COL1_PRODID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
+            ")";
 
 
     //categories table
@@ -119,12 +117,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SUPPLIER_COL4_EMAIL = "supplier_email";
 
     String CREATE_TABLE_SUPPLIER = "CREATE TABLE IF NOT EXISTS " + SUPPLIER_TABLE +
-                                    "("
-                                        + SUPPLIER_COL1_ID + " INTEGER PRIMARY KEY, "
-                                        + SUPPLIER_COL2_NAME + " TEXT NOT NULL, "
-                                        + SUPPLIER_COL3_NUM + "TEXT NOT NULL, "
-                                        + SUPPLIER_COL4_EMAIL + "TEXT NOT NULL " +
-                                    ")";
+            "("
+            + SUPPLIER_COL1_ID + " INTEGER PRIMARY KEY, "
+            + SUPPLIER_COL2_NAME + " TEXT NOT NULL, "
+            + SUPPLIER_COL3_NUM + "TEXT NOT NULL, "
+            + SUPPLIER_COL4_EMAIL + "TEXT NOT NULL " +
+            ")";
 
 
     //products table
@@ -139,48 +137,64 @@ public class DBHelper extends SQLiteOpenHelper {
     //public static final String PRODUCTS_COL7_SUPPLIERID = "prodSupplier_id";
 
     String CREATE_TABLE_PRODUCTS = "CREATE TABLE IF NOT EXISTS " + PRODUCTS_TABLE +
-                                    "("
-                                        + PRODUCTS_COL1_PRODID + " INTEGER PRIMARY KEY, "
-                                        + PRODUCTS_COL2_PRODNAME + " TEXT NOT NULL, "
-                                        + PRODUCTS_COL3_BRAND + " TEXT NOT NULL, "
-                                        + PRODUCTS_COL4_CATEGORY + " TEXT NOT NULL, "
-                                        + PRODUCTS_COL5_MODELYR + " INTEGER NOT NULL, "
-                                        + PRODUCTS_COL6_LISTPRICE + " DOUBLE NOT NULL, "
-                                        + PRODUCTS_COL7_STOCK + " INTEGER NOT NULL " +
-                                        //+ PRODUCTS_COL7_SUPPLIERID + "INTEGER NOT NULL, "
-                                       // + "FOREIGN KEY (" + PRODUCTS_COL3_CATEGORYID + ") REFERENCES " + CATEGORIES_TABLE +  "(" + CATEGORIES_COL1_CATEGORYID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
-                                       // + "FOREIGN KEY (" + PRODUCTS_COL2_BRANDID + ") REFERENCES " + BRANDS_TABLE +  "(" + BRANDS_COL1_BRANDID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
-                                       // + "FOREIGN KEY (" + PRODUCTS_COL7_SUPPLIERID + ") REFERENCES " + SUPPLIER_TABLE +  "(" + SUPPLIER_COL1_SUPPLIERID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
-                                    ")";
+            "("
+            + PRODUCTS_COL1_PRODID + " INTEGER PRIMARY KEY, "
+            + PRODUCTS_COL2_PRODNAME + " TEXT NOT NULL, "
+            + PRODUCTS_COL3_BRAND + " TEXT NOT NULL, "
+            + PRODUCTS_COL4_CATEGORY + " TEXT NOT NULL, "
+            + PRODUCTS_COL5_MODELYR + " INTEGER NOT NULL, "
+            + PRODUCTS_COL6_LISTPRICE + " DOUBLE NOT NULL, "
+            + PRODUCTS_COL7_STOCK + " INTEGER NOT NULL " +
+            //+ PRODUCTS_COL7_SUPPLIERID + "INTEGER NOT NULL, "
+            // + "FOREIGN KEY (" + PRODUCTS_COL3_CATEGORYID + ") REFERENCES " + CATEGORIES_TABLE +  "(" + CATEGORIES_COL1_CATEGORYID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
+            // + "FOREIGN KEY (" + PRODUCTS_COL2_BRANDID + ") REFERENCES " + BRANDS_TABLE +  "(" + BRANDS_COL1_BRANDID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
+            // + "FOREIGN KEY (" + PRODUCTS_COL7_SUPPLIERID + ") REFERENCES " + SUPPLIER_TABLE +  "(" + SUPPLIER_COL1_SUPPLIERID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
+            ")";
 
 
     //shipment table
     public static final String SHIPMENT_TABLE = "shipment";
     public static final String SHIPMENT_COL1_SHIPMENTNUM = "shipment_num";
-    public static final String SHIPMENT_COL2_PRODUCTID = "shipment_product_id";     //FK on prod table
     public static final String SHIPMENT_COL3_QUOTE = "shipment_quote";
     public static final String SUPPLIER_COL4_SUPPLIERID = "shipment_supplier_id";   //FK on supplier table
     public static final String SUPPLIER_COL5_SHIPMENTDATE = "shipment_date";
 
     String CREATE_TABLE_SHIPMENT = "CREATE TABLE IF NOT EXISTS " + SHIPMENT_TABLE +
-                                    "("
-                                        + SHIPMENT_COL1_SHIPMENTNUM + " INTEGER NOT NULL, "
-                                        + SHIPMENT_COL2_PRODUCTID + " INTEGER NOT NULL, "
-                                        + SHIPMENT_COL3_QUOTE + "DECIMAL NOT NULL, "
-                                        + SUPPLIER_COL4_SUPPLIERID + "INTEGER NOT NULL, "
-                                        + SUPPLIER_COL5_SHIPMENTDATE + "TEXT NOT NULL, "
-                                        + "PRIMARY KEY " + "(" + SHIPMENT_COL1_SHIPMENTNUM + "," + SHIPMENT_COL2_PRODUCTID + "), "
-                                        + "FOREIGN KEY (" + SHIPMENT_COL2_PRODUCTID + ") REFERENCES " + PRODUCTS_TABLE +  "(" + PRODUCTS_COL1_PRODID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
-                                        + "FOREIGN KEY (" + SUPPLIER_COL4_SUPPLIERID + ") REFERENCES " + SUPPLIER_TABLE +  "(" + SUPPLIER_COL1_ID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
-                                    ")";
+            "("
+            + SHIPMENT_COL1_SHIPMENTNUM + " INTEGER NOT NULL, "
+            + SHIPMENT_COL3_QUOTE + " INTEGER NOT NULL, "
+            + SUPPLIER_COL4_SUPPLIERID + " INTEGER NOT NULL, "
+            + SUPPLIER_COL5_SHIPMENTDATE + " TEXT NOT NULL, "
+            + "PRIMARY KEY " + "(" + SHIPMENT_COL1_SHIPMENTNUM + "), "
+            + "FOREIGN KEY (" + SUPPLIER_COL4_SUPPLIERID + ") REFERENCES " + SUPPLIER_TABLE + "(" + SUPPLIER_COL1_ID + ") ON DELETE CASCADE ON UPDATE CASCADE " +
+            ")";
+
+    //shipment items table
+    public static final String SHIPMENT_ITEMS_TABLE = "shipment_items";
+    public static final String SHIPMENT_ITEMS_COL1_ITEM_ID = "item_id";
+    public static final String SHIPMENT_ITEMS_COL2_PRODUCTID = "shipment_product_id";     //FK on prod table
+    public static final String SHIPMENT_ITEMS_COL3_QUANTITY = "shipment_quantity";
+    public static final String SHIPMENT_ITEMS_COL4_SHIPMENTNUM = "shipment_num";
+
+
+    String CREATE_TABLE_SHIPMENT_ITEMS = "CREATE TABLE IF NOT EXISTS " + SHIPMENT_ITEMS_TABLE +
+            "("
+            + SHIPMENT_ITEMS_COL1_ITEM_ID + " INTEGER NOT NULL, "
+            + SHIPMENT_ITEMS_COL2_PRODUCTID + " INTEGER NOT NULL, "
+            + SHIPMENT_ITEMS_COL3_QUANTITY + " INTEGER NOT NULL, "
+            + SHIPMENT_ITEMS_COL4_SHIPMENTNUM + " INTEGER NOT NULL, "
+            + "PRIMARY KEY " + "(" + SHIPMENT_ITEMS_COL1_ITEM_ID + "," + SHIPMENT_ITEMS_COL4_SHIPMENTNUM + "), "
+            + "FOREIGN KEY (" + SHIPMENT_ITEMS_COL2_PRODUCTID + ") REFERENCES " + PRODUCTS_TABLE + "(" + PRODUCTS_COL1_PRODID + ") ON DELETE CASCADE ON UPDATE CASCADE, "
+            + "FOREIGN KEY (" + SHIPMENT_ITEMS_COL4_SHIPMENTNUM + ") REFERENCES " + SHIPMENT_TABLE + "(" + SHIPMENT_COL1_SHIPMENTNUM + ") ON DELETE CASCADE ON UPDATE CASCADE " +
+            ")";
 
 
     SQLiteDatabase db;
 
     public DBHelper(Context context) {
 
-        super(context, DB_NAME , null, 1);
-        db=getWritableDatabase();
+        super(context, DB_NAME, null, 1);
+        db = getWritableDatabase();
     }
 
     @Override
@@ -195,6 +209,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_ORDERITEMS);
         db.execSQL(CREATE_TABLE_STAFF);
         db.execSQL(CREATE_TABLE_PRODUCTS);
+
+        db.execSQL(CREATE_TABLE_SHIPMENT);
+        db.execSQL(CREATE_TABLE_SHIPMENT_ITEMS);
 //        db.execSQL(CREATE_TABLE_CATEGORIES);
 //        db.execSQL(CREATE_TABLE_BRANDS);
 //        db.execSQL(CREATE_TABLE_SUPPLIER);
@@ -210,23 +227,77 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(add_orders);
         }*/
         db.execSQL("DROP TABLE IF EXISTS " + CUSTOMERS_TABLE);
-        onCreate(db); 
+        onCreate(db);
     }
 
     //insert methods
-    public void insertOrder(int orderId, int customerId, String orderDate, int staff_id){
-        boolean check;
+    public int insertOrder(int orderId, int customerId, String orderDate, int staff_id) {
+        int checkWhichError;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("order_id", orderId);
         contentValues.put("customer_id", customerId);
         contentValues.put("order_date", orderDate);
-        db.insert("orders", "", contentValues);
-        }
+        contentValues.put("staff_id", staff_id);
+        if (checkOrdersDuplicate(orderId)) {
+            //duplicate exists so error code 2
+            return 2;
+        } else if (!checkCustomerExists(customerId)) {
+            //cust does not exist, error code 3
+            return 3;
+        } /*else if (!checkStaffExists(staff_id)) {
+            //staff does not exist, error code 4
+            return 4;
+        }*/ else {
 
+            db.insert("orders", "", contentValues);
+            return 1;
+
+        }
+    }
+
+
+    //check if staff exists
+    private boolean checkStaffExists(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + STAFF_TABLE + " WHERE " + STAFF_COL1_STAFFID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() >= 1) {
+            cursor.close();
+            return true;       // found match
+        }
+        cursor.close();
+        return false;           // no match
+    }
+
+    //check if customer exists
+    private boolean checkCustomerExists(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + CUSTOMERS_TABLE + " WHERE " + CUSTOMERS_COL1_ID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() >= 1) {
+            cursor.close();
+            return true;       // found match
+        }
+        cursor.close();
+        return false;           // no match
+    }
+
+    //check for duplicates in orders
+    private boolean checkOrdersDuplicate(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + ORDERS_TABLE + " WHERE " + ORDERS_ORDER_ID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;       // no match
+        }
+        cursor.close();
+        return true;           // match found
+    }
 
     //check for duplicates
-    private boolean checkCustomerDuplicate (int ID) {
+    private boolean checkCustomerDuplicate(int ID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT  * FROM " + CUSTOMERS_TABLE + " WHERE " + CUSTOMERS_COL1_ID + "=" + ID;
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -237,8 +308,9 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         return true;           // match found
     }
+
     //check for duplicates
-    private boolean checkProductDuplicate (int ID) {
+    private boolean checkProductDuplicate(int ID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT  * FROM " + PRODUCTS_TABLE + " WHERE " + PRODUCTS_COL1_PRODID + "=" + ID;
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -250,7 +322,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;           // match found
     }
 
-    public boolean insertCustomer (int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
+    public boolean insertCustomer(int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
         //db.execSQL("DROP TABLE " + CUSTOMERS_TABLE);
         boolean check;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -288,7 +360,27 @@ public class DBHelper extends SQLiteOpenHelper {
 //        }
 //    }
 
-    public boolean insertProduct (int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear,  double ProductListPrice , int ProductQuantity) {
+    public void insertShipment(int shipmentID, int supplier_id, int shipment_quote, String shipment_date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("shipment_num", shipmentID);
+        contentValues.put("shipment_supplier_id", supplier_id);
+        contentValues.put("shipment_quote", shipment_quote);
+        contentValues.put("shipment_date", shipment_date);
+        db.insert("shipment", "", contentValues);
+    }
+
+    public void insert_shipment_items(int shipmentID, int item_id, int product_id, int quantity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("shipment_num", shipmentID);
+        contentValues.put("item_id", item_id);
+        contentValues.put("shipment_product_id", product_id);
+        contentValues.put("shipment_quantity", quantity);
+        db.insert("shipment_items", "", contentValues);
+    }
+
+    public boolean insertProduct(int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear, double ProductListPrice, int ProductQuantity) {
         //db.execSQL("DROP TABLE " + PRODUCT_TABLE);
         boolean check;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -309,8 +401,9 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean updateProduct (int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear,  double ProductListPrice , int ProductQuantity) {
-       // boolean update;
+
+    public boolean updateProduct(int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear, double ProductListPrice, int ProductQuantity) {
+        // boolean update;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         //contentValues.put("product_id", prodID);
@@ -323,12 +416,12 @@ public class DBHelper extends SQLiteOpenHelper {
 //        String update_query = "UPDATE " + CUSTOMERS_TABLE + " SET " + CUSTOMERS_COL2_FNAME + "='" + customer_Fname + "', " + CUSTOMERS_COL3_LNAME + "='" + customer_Lname + "', "
 //                            + CUSTOMERS_COL4_PHONE + "='" + customer_phone + "', " + CUSTOMERS_COL5_EMAIL + "='" + customer_email + "' WHERE " + CUSTOMERS_COL1_ID + "=" + customerID;
 //       db.execSQL(update_query);
-        long result = db.update("products", contentValues, "product_id = ?", new String[]{ String.valueOf(prodID) });
+        long result = db.update("products", contentValues, "product_id = ?", new String[]{String.valueOf(prodID)});
         System.out.println("After input");
         return result != -1;
     }
 
-    public boolean updateCustomer (int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
+    public boolean updateCustomer(int customerID, String customer_Fname, String customer_Lname, String customer_phone, String customer_email) {
         boolean update;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -339,13 +432,13 @@ public class DBHelper extends SQLiteOpenHelper {
 //        String update_query = "UPDATE " + CUSTOMERS_TABLE + " SET " + CUSTOMERS_COL2_FNAME + "='" + customer_Fname + "', " + CUSTOMERS_COL3_LNAME + "='" + customer_Lname + "', "
 //                            + CUSTOMERS_COL4_PHONE + "='" + customer_phone + "', " + CUSTOMERS_COL5_EMAIL + "='" + customer_email + "' WHERE " + CUSTOMERS_COL1_ID + "=" + customerID;
 //       db.execSQL(update_query);
-            long result = db.update("customers", contentValues, "customer_id = ?", new String[]{ String.valueOf(customerID) });
-            System.out.println("After input");
-            return result != -1;
+        long result = db.update("customers", contentValues, "customer_id = ?", new String[]{String.valueOf(customerID)});
+        System.out.println("After input");
+        return result != -1;
     }
 
 
-    public void insert_order_item(int orderId, int itemId, int productId, int quantity, double price, double discount){
+    public void insert_order_item(int orderId, int itemId, int productId, int quantity, double price, double discount) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("order_id", orderId);
@@ -353,21 +446,46 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("product_id", productId);
         contentValues.put("quantity", quantity);
         contentValues.put("price", price);
-        contentValues.put("discount",discount);
-        db.insert("order_items","",contentValues);
+        contentValues.put("discount", discount);
+        db.insert("order_items", "", contentValues);
     }
 
     //getMethods
-    public Cursor getCustomers () {
+    public Cursor getCustomers() {
         SQLiteDatabase db = this.getWritableDatabase();
         String select_customer = "SELECT * FROM " + CUSTOMERS_TABLE;
-        return db.rawQuery(select_customer,null);
+        return db.rawQuery(select_customer, null);
     }
 
-    public Cursor getProducts () {
+    //getMethods
+    public Cursor getShipments() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_shipment = "SELECT * FROM " + SHIPMENT_TABLE;
+        return db.rawQuery(select_shipment, null);
+    }
+
+    public Cursor getProducts() {
         SQLiteDatabase db = this.getWritableDatabase();
         String select_products = "SELECT * FROM " + PRODUCTS_TABLE;
-        return db.rawQuery(select_products,null);
+        return db.rawQuery(select_products, null);
+    }
+
+    public Cursor get_Shipment_items(int shipment_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_orders = "SELECT * FROM " + SHIPMENT_ITEMS_TABLE +
+                " WHERE "+ SHIPMENT_ITEMS_COL4_SHIPMENTNUM +" = "+shipment_id;
+        return db.rawQuery(select_orders,null);
+    }
+
+    public Cursor getPrice_Of_One_purchase(int itemID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT p.list_price*si.shipment_quantity AS totalPrice FROM" + " shipment_items si, products p WHERE si.item_id=? AND p.product_id=si.shipment_product_id";
+        return db.rawQuery(select_query, new String[]{ String.valueOf(itemID)} );
+    }
+    public Cursor get_price_and_name(int itemID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT p.product_name, p.list_price FROM" + " shipment_items si, products p WHERE si.item_id=? AND p.product_id=si.shipment_product_id";
+        return db.rawQuery(select_query, new String[]{ String.valueOf(itemID)} );
     }
 
 
@@ -381,11 +499,37 @@ public class DBHelper extends SQLiteOpenHelper {
                 " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
         return db.rawQuery(select_orders,null);
     }
+
+    public Cursor get_Shipment_Details(int shipment_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_orders = "SELECT * FROM " + SHIPMENT_TABLE +
+                " WHERE "+ SHIPMENT_COL1_SHIPMENTNUM +" = "+shipment_id;
+        return db.rawQuery(select_orders,null);
+    }
+
+    public Cursor getSupplierName(int supplier_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_supplier="SELECT supplier_name FROM " + SUPPLIER_TABLE +
+                " WHERE "+ SUPPLIER_COL1_ID +" = "+supplier_id;
+        return db.rawQuery(select_supplier,null);
+
+    }
+
     public Cursor getAllFrom_Order_items(int order_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String select_order_items = "SELECT * FROM " + ORDER_ITEMS_TABLE +
                 " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
         return db.rawQuery(select_order_items,null);
+    }
+    public void deleteOrders_and_related_items(int order_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String delete_orders = "DELETE FROM " + ORDERS_TABLE +
+                " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
+        String delete_order_items = "DELETE FROM " + ORDER_ITEMS_TABLE +
+                " WHERE "+ ORDERS_ORDER_ID +" = "+order_id;
+        db.execSQL(delete_order_items);
+        db.execSQL(delete_orders);
+
     }
 
     public Cursor getCustomerTransactions(int custID) {
