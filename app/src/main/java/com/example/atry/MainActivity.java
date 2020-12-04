@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //also remove the other actionbar using NoActionBar theme
         toolbar.setBackgroundColor(getResources().getColor(R.color.weirdbluevariant));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         NavigationView nav_view = findViewById(R.id.nav_view);
         nav_view.setNavigationItemSelectedListener(this); //for now i am implemmenting thelistner to this class but in future(or asap)
