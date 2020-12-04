@@ -78,6 +78,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             v.getContext().startActivity(i);
         });
 
+
     }
 
     @Override
