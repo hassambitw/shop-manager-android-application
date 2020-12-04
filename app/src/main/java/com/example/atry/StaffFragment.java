@@ -1,50 +1,50 @@
-//package com.example.atry;
-//
-//import android.content.Intent;
-//import android.database.Cursor;
-//import android.os.Bundle;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.Button;
-//
-//import androidx.annotation.NonNull;
-//import androidx.annotation.Nullable;
-//import androidx.fragment.app.Fragment;
-//import androidx.recyclerview.widget.LinearLayoutManager;
-//import androidx.recyclerview.widget.RecyclerView;
-//
-//import java.util.ArrayList;
-//
-//public class StaffFragment extends Fragment {
-//
-//
-//    private RecyclerView staffRecyclerView;
-//    private RecyclerView.Adapter staffAdapter;
-//    private RecyclerView.LayoutManager staffLayoutManager;
-//    Button addBtn;
-//    DBHelper dbh;
-//    ArrayList<Customer> staffList = new ArrayList<>();
-//    int staff_id;
-//    String customer_fname;
-//    String customer_lname;
-//    String customer_email;
-//    String customer_phone;
-//
-//
-//
-//    @Override
-//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//
-//        dbh = new DBHelper(getContext());
-//
+package com.example.atry;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class StaffFragment extends Fragment {
+
+
+    private RecyclerView staffRecyclerView;
+    private RecyclerView.Adapter staffAdapter;
+    private RecyclerView.LayoutManager staffLayoutManager;
+    Button addBtn;
+    DBHelper dbh;
+    ArrayList<Customer> staffList = new ArrayList<>();
+    int staff_id;
+    String customer_fname;
+    String customer_lname;
+    String customer_email;
+    String customer_phone;
+
+
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        dbh = new DBHelper(getContext());
+
 //        //adding customers
 //        addCustomers();
 //
 //        addToArrayList();
 //
-//        View v = inflater.inflate(R.layout.fragment_customer, container, false);
-//
+        View v = inflater.inflate(R.layout.fragment_customer, container, false);
+
 //        addBtn = v.findViewById(R.id.addCustomer);
 //
 //        addBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +55,7 @@
 //        });
 //
 //        buildRecyclerView(v);
-//        return v;
+        return v;
 //    }
 //
 //
@@ -92,5 +92,5 @@
 //            customerList.add(new Customer(staff_id, customer_fname, customer_lname, customer_email, customer_phone));
 //        }
 //    }
-//
-//}
+
+} }
