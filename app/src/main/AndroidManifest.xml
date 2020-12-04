@@ -31,6 +31,12 @@
         <activity
             android:name=".Add_item"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddStaff_Activity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".editStaff_activity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".View_receipt" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity">

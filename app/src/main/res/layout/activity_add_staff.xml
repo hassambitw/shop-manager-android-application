@@ -27,7 +27,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:paddingBottom="8dp"
-            android:text="@string/add_heading"
+            android:text="@string/add_staff_heading"
             android:textSize="36sp" />
 
     </LinearLayout>
@@ -49,19 +49,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="@string/customerID_tv"
+                android:text="@string/staffID_tv"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:gravity="center"/>
+                android:gravity="center" />
 
             <EditText
-                android:id="@+id/customer_idtv"
+                android:id="@+id/staff_idtv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/customerIDHint"
+                android:hint="@string/staffIDHint"
                 android:inputType="number"
                 android:textSize="14sp" />
 

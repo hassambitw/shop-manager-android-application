@@ -32,65 +32,64 @@ public class StaffFragment extends Fragment {
     String staff_phone;
 
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         dbh = new DBHelper(getContext());
 
-//        //adding customers
-//        addCustomers();
-//
-//        addToArrayList();
-//
+        //adding customers
+        addStaff();
+
+        addToArrayList();
+
         View v = inflater.inflate(R.layout.fragment_staff, container, false);
 
         addBtn = v.findViewById(R.id.addStaff);
-//
-//        addBtn.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent i = new Intent (getActivity(), AddStaff_Activity.class);
-//                startActivity(i);
-//            }
-//        });
-//
-//        buildRecyclerView(v);
-        return v;
-//    }
-//
-//
-//    public void addStaff() {
-//        dbh.insertStaff(01, "John", "Williams", "+971561017939", "johnwilliams@hotmail.com");
-//        dbh.insertStaff(02, "Jason", "King", "+971561017939", "jasonking@hotmail.com");
-//        dbh.insertStaff(03, "Elizabeth", "Becks", "+971561017939", "elibeck@hotmail.com");
-//        dbh.insertStaff(04, "Kenny", "Smith", "+971561017939", "kennysmith@hotmail.com");
-//        dbh.insertStaff(05, "Soda", "Poppins", "+971561017939", "sodapoppins@hotmail.com");
-//    }
-//
-//    public void buildRecyclerView(View v) {
-//        StaffRecyclerView = v.findViewById(R.id.staff_recycler_view);
-//        StaffRecyclerView.setHasFixedSize(true);
-//        StaffLayoutManager = new LinearLayoutManager(getActivity());
-//        StaffAdapter = new CustomerAdapter(StaffList);
-//        StaffRecyclerView.setLayoutManager(StaffLayoutManager);
-//        StaffRecyclerView.setAdapter(StaffAdapter);
-//        StaffAdapter.notifyDataSetChanged();
-//    }
-//
-//    public void addToArrayList() {
-//        //retrieving customers
-//        Cursor c = dbh.getStaffs();
-//
-//        //adding to arrayList
-//        while (c.moveToNext()) {
-//            int i = customerList.indexOf(c);
-//            staff_id = c.getInt(c.getColumnIndex("customer_id"));
-//            customer_fname = c.getString(c.getColumnIndex("first_name"));
-//            customer_lname = c.getString(c.getColumnIndex("last_name"));
-//            customer_email = c.getString(c.getColumnIndex("email"));
-//            customer_phone = c.getString(c.getColumnIndex("phone"));
-//            customerList.add(new Customer(staff_id, customer_fname, customer_lname, customer_email, customer_phone));
-//        }
-//    }
 
-} }
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent (getActivity(), AddStaff_Activity.class);
+                startActivity(i);
+            }
+        });
+
+        buildRecyclerView(v);
+        return v;
+    }
+
+
+    public void addStaff() {
+        dbh.insertStaff(01, "Ted", "Lasso", "+971501018761", "tedlasso@hotmail.com");
+        dbh.insertStaff(02, "Pepper", "Potts", "+971552417839", "pepperp@hotmail.com");
+        dbh.insertStaff(03, "Cameron", "Becks", "+971561017939", "cameronbecks@hotmail.com");
+        dbh.insertStaff(04, "Nick", "Bishop", "+971561017939", "nickb@hotmail.com");
+        dbh.insertStaff(05, "Willow", "Field", "+971561017939", "field@hotmail.com");
+    }
+
+    public void buildRecyclerView(View v) {
+        staffRecyclerView = v.findViewById(R.id.staff_recycler_view);
+        staffRecyclerView.setHasFixedSize(true);
+        staffLayoutManager = new LinearLayoutManager(getActivity());
+        staffAdapter = new StaffAdapter(staffList);
+        staffRecyclerView.setLayoutManager(staffLayoutManager);
+        staffRecyclerView.setAdapter(staffAdapter);
+        staffAdapter.notifyDataSetChanged();
+    }
+
+    public void addToArrayList() {
+        //retrieving customers
+        Cursor c = dbh.getStaff();
+
+        //adding to arrayList
+        while (c.moveToNext()) {
+            int i = staffList.indexOf(c);
+            staff_id = c.getInt(c.getColumnIndex("staff_id"));
+            staff_fname = c.getString(c.getColumnIndex("first_name"));
+            staff_lname = c.getString(c.getColumnIndex("last_name"));
+            staff_email = c.getString(c.getColumnIndex("email"));
+            staff_phone = c.getString(c.getColumnIndex("phone"));
+            staffList.add(new Staff(staff_id, staff_fname, staff_lname, staff_email, staff_phone));
+        }
+    }
+
+}

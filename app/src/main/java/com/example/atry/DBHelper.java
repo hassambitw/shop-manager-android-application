@@ -55,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String STAFF_COL4_EMAIL = "email";
     public static final String STAFF_COL5_PHONE = "phone";
 
-    String CREATE_TABLE_STAFF = "CREATE TABLE IF NOT EXISTS " + CUSTOMERS_TABLE +
+    String CREATE_TABLE_STAFF = "CREATE TABLE IF NOT EXISTS " + STAFF_TABLE +
             "("
             + STAFF_COL1_STAFFID + " INTEGER PRIMARY KEY, "
             + STAFF_COL2_FNAME + " TEXT NOT NULL, "
@@ -341,24 +341,24 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-//    public boolean insertStaff (int staffID, String staff_fname, String staff_lname, String staff_phone, String staff_email) {
-//        //db.execSQL("DROP TABLE " + CUSTOMERS_TABLE);
-//        boolean check;
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("staff_id", staffID);
-//        contentValues.put("first_name", staff_fname);
-//        contentValues.put("last_name", staff_lname);
-//        contentValues.put("phone", staff_phone);
-//        contentValues.put("email", staff_email);
-//        check = checkStaffDuplicate(staffID);
-//        if (!check) {       // if there's no match, add
-//            long result = db.insert("customers", "", contentValues);
-//            return result != -1;
-//        } else {
-//            return false;
-//        }
-//    }
+    public boolean insertStaff (int staffID, String staff_fname, String staff_lname, String staff_phone, String staff_email) {
+        //db.execSQL("DROP TABLE " + CUSTOMERS_TABLE);
+        boolean check;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("staff_id", staffID);
+        contentValues.put("first_name", staff_fname);
+        contentValues.put("last_name", staff_lname);
+        contentValues.put("phone", staff_phone);
+        contentValues.put("email", staff_email);
+        check = checkStaffExists(staffID);
+        if (!check) {       // if there's no match, add
+            long result = db.insert("staff", "", contentValues);
+            return result != -1;
+        } else {
+            return false;
+        }
+    }
 
     public void insertShipment(int shipmentID, int supplier_id, int shipment_quote, String shipment_date) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -413,9 +413,6 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("model_year", ProductYear);
         contentValues.put("list_price", ProductListPrice);
         contentValues.put("stock", ProductQuantity);
-//        String update_query = "UPDATE " + CUSTOMERS_TABLE + " SET " + CUSTOMERS_COL2_FNAME + "='" + customer_Fname + "', " + CUSTOMERS_COL3_LNAME + "='" + customer_Lname + "', "
-//                            + CUSTOMERS_COL4_PHONE + "='" + customer_phone + "', " + CUSTOMERS_COL5_EMAIL + "='" + customer_email + "' WHERE " + CUSTOMERS_COL1_ID + "=" + customerID;
-//       db.execSQL(update_query);
         long result = db.update("products", contentValues, "product_id = ?", new String[]{String.valueOf(prodID)});
         System.out.println("After input");
         return result != -1;
@@ -433,7 +430,20 @@ public class DBHelper extends SQLiteOpenHelper {
 //                            + CUSTOMERS_COL4_PHONE + "='" + customer_phone + "', " + CUSTOMERS_COL5_EMAIL + "='" + customer_email + "' WHERE " + CUSTOMERS_COL1_ID + "=" + customerID;
 //       db.execSQL(update_query);
         long result = db.update("customers", contentValues, "customer_id = ?", new String[]{String.valueOf(customerID)});
-        System.out.println("After input");
+        System.out.println("After update");
+        return result != -1;
+    }
+
+    public boolean updateStaff(int staffID, String staff_fname, String staff_lname, String staff_phone, String staff_email) {
+        boolean update;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("first_name", staff_fname);
+        contentValues.put("last_name", staff_lname);
+        contentValues.put("phone", staff_phone);
+        contentValues.put("email", staff_email);
+        long result = db.update("staff", contentValues, "staff_id = ?", new String[]{ String.valueOf(staffID) });
+        System.out.println("After update");
         return result != -1;
     }
 
@@ -455,6 +465,12 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String select_customer = "SELECT * FROM " + CUSTOMERS_TABLE;
         return db.rawQuery(select_customer, null);
+    }
+
+    public Cursor getStaff() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_staff = "SELECT * FROM " + STAFF_TABLE;
+        return db.rawQuery(select_staff, null);
     }
 
     //getMethods
@@ -542,7 +558,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getCustomerTransactions(int custID) {
         SQLiteDatabase db = this.getWritableDatabase();
         String select_query = "SELECT c.first_name, c.last_name, o.order_id, oi.price*oi.quantity*((100-oi.discount)/100) AS totalPrice FROM " + "customers c, orders o, order_items oi WHERE c.customer_id = o.customer_id AND o.order_id = oi.order_id AND c.customer_id = ?";
-        //String select_query = "SELECT * FROM customers c, orders o WHERE c.customer_id = o.customer_id AND c.customer_id = ?";
         return db.rawQuery(select_query, new String[]{ String.valueOf(custID)} );
     }
     public void updateTable(){
