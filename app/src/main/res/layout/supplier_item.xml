@@ -1,77 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="8dp"
     app:cardBackgroundColor="@color/weirdyellow"
     app:cardCornerRadius="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="8dp">
-
-
-        <TextView
-            android:id="@+id/supplier_name_help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Supplier Name: "
-            android:textColor="@color/white" />
-
-
-        <TextView
-            android:id="@+id/supplierName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Supplier Name"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-            <TextView
-                android:id="@+id/supplier_email_help"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email: "
-                android:textColor="@color/white" />
+            <LinearLayout
+                android:id="@+id/idcrap"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/supplierEmail"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/supplierID_tv"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/supplierID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="4dp"
+                    android:text="54"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:text="bla@bla.com"
-                android:textColor="@color/white" />
+                android:layout_gravity="center"
+                android:layout_weight="0.8"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/supplier_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Hassam"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contact_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phoneNumTV"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/supplier_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="000"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/emailTV"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/supplier_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="hassambitw@hotmail.com"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/cust_buttons"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/supplier_number_help"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Number: "
-                android:textColor="@color/white" />
+            <Button
+                android:id="@+id/viewShipment"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:paddingEnd="8dp"
+                android:text="@string/shipmentsBtn"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/supplierNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:text="090078601"
-                android:textColor="@color/white" />
+            <Button
+                android:id="@+id/editSupplier"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:paddingEnd="20dp"
+                android:text="@string/editBtn"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
 
         </LinearLayout>
     </LinearLayout>

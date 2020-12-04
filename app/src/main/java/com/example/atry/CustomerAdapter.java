@@ -1,6 +1,5 @@
 package com.example.atry;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;

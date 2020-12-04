@@ -37,6 +37,9 @@
         <activity
             android:name=".editStaff_activity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".editSupplier_activity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".View_receipt" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity">

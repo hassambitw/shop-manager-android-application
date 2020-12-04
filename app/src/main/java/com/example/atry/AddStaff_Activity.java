@@ -38,7 +38,7 @@ public class AddStaff_Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar4); //makes your own toolbar, needed inorder to make your nav drawer functional
         //also remove the other actionbar using NoActionBar theme
         toolbar.setBackgroundColor(getResources().getColor(R.color.weirdbluevariant));
-        toolbar.setTitle("Add Customer");
+        toolbar.setTitle("Add Staff");
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

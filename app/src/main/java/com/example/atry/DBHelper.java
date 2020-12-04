@@ -120,8 +120,8 @@ public class DBHelper extends SQLiteOpenHelper {
             "("
             + SUPPLIER_COL1_ID + " INTEGER PRIMARY KEY, "
             + SUPPLIER_COL2_NAME + " TEXT NOT NULL, "
-            + SUPPLIER_COL3_NUM + "TEXT NOT NULL, "
-            + SUPPLIER_COL4_EMAIL + "TEXT NOT NULL " +
+            + SUPPLIER_COL3_NUM + " TEXT NOT NULL, "
+            + SUPPLIER_COL4_EMAIL + " TEXT NOT NULL " +
             ")";
 
 
@@ -214,7 +214,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_SHIPMENT_ITEMS);
 //        db.execSQL(CREATE_TABLE_CATEGORIES);
 //        db.execSQL(CREATE_TABLE_BRANDS);
-//        db.execSQL(CREATE_TABLE_SUPPLIER);
+        db.execSQL(CREATE_TABLE_SUPPLIER);
 //        db.execSQL(CREATE_TABLE_SHIPMENT);
 
     }
@@ -261,6 +261,18 @@ public class DBHelper extends SQLiteOpenHelper {
     private boolean checkStaffExists(int ID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT  * FROM " + STAFF_TABLE + " WHERE " + STAFF_COL1_STAFFID + "=" + ID;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() >= 1) {
+            cursor.close();
+            return true;       // found match
+        }
+        cursor.close();
+        return false;           // no match
+    }
+
+    private boolean checkSupplierExists(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + SUPPLIER_TABLE + " WHERE " + SUPPLIER_COL1_ID + "=" + ID;
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.getCount() >= 1) {
             cursor.close();
@@ -342,7 +354,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertStaff (int staffID, String staff_fname, String staff_lname, String staff_phone, String staff_email) {
-        //db.execSQL("DROP TABLE " + CUSTOMERS_TABLE);
         boolean check;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -354,6 +365,23 @@ public class DBHelper extends SQLiteOpenHelper {
         check = checkStaffExists(staffID);
         if (!check) {       // if there's no match, add
             long result = db.insert("staff", "", contentValues);
+            return result != -1;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean insertSupplier (int supplierID, String supplier_name, String supplier_number, String supplier_email) {
+        boolean check;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("supplier_id", supplierID);
+        contentValues.put("supplier_name", supplier_name);
+        contentValues.put("supplier_number", supplier_number);
+        contentValues.put("supplier_email", supplier_email);
+        check = checkSupplierExists(supplierID);
+        if (!check) {       // if there's no match, add
+            long result = db.insert("supplier", "", contentValues);
             return result != -1;
         } else {
             return false;
@@ -381,7 +409,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertProduct(int prodID, String ProductName, String ProductBrand, String ProductCategory, int ProductYear, double ProductListPrice, int ProductQuantity) {
-        //db.execSQL("DROP TABLE " + PRODUCT_TABLE);
         boolean check;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -447,6 +474,17 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public boolean updateSupplier(int supplierID, String supplier_name, String supplier_num, String supplier_email) {
+        boolean update;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("supplier_name", supplier_name);
+        contentValues.put("supplier_number", supplier_num);
+        contentValues.put("supplier_email", supplier_email);
+        long result = db.update("supplier", contentValues, "supplier_id = ?", new String[]{ String.valueOf(supplierID) });
+        System.out.println("After update");
+        return result != -1;
+    }
 
     public void insert_order_item(int orderId, int itemId, int productId, int quantity, double price, double discount) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -493,6 +531,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.rawQuery(select_orders,null);
     }
 
+    public Cursor getSuppliers() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_supplier = "SELECT * FROM " + SUPPLIER_TABLE;
+        return db.rawQuery(select_supplier, null);
+    }
+
+    public Cursor getSupplierName(int supplier_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_supplier = "SELECT supplier_name FROM " + SUPPLIER_TABLE + " WHERE " + SUPPLIER_COL1_ID + " = " + supplier_id;
+        return db.rawQuery(select_supplier,null);
+    }
+
     public Cursor getPrice_Of_One_purchase(int itemID) {
         SQLiteDatabase db = this.getWritableDatabase();
         String select_query = "SELECT p.list_price*si.shipment_quantity AS totalPrice FROM" + " shipment_items si, products p WHERE si.item_id=? AND p.product_id=si.shipment_product_id";
@@ -523,13 +573,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.rawQuery(select_orders,null);
     }
 
-    public Cursor getSupplierName(int supplier_id){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String select_supplier="SELECT supplier_name FROM " + SUPPLIER_TABLE +
-                " WHERE "+ SUPPLIER_COL1_ID +" = "+supplier_id;
-        return db.rawQuery(select_supplier,null);
-
-    }
 
     public Cursor getAllFrom_Order_items(int order_id) {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -4,11 +4,11 @@ class Supplier {
 
     public String supplierName;
     public int supplierId;
-    public int supplierNumber;
+    public String supplierNumber;
     public String supplierEmail;
 
 
-    public Supplier(String supplierName, int supplierId, int supplierNumber, String supplierEmail) {
+    public Supplier(String supplierName, int supplierId, String supplierNumber, String supplierEmail) {
         this.supplierName = supplierName;
         this.supplierId = supplierId;
         this.supplierNumber = supplierNumber;
@@ -23,11 +23,11 @@ class Supplier {
         this.supplierName = supplierName;
     }
 
-    public int getSupplierNumber() {
+    public String getSupplierNumber() {
         return supplierNumber;
     }
 
-    public void setSupplierNumber(int supplierNumber) {
+    public void setSupplierNumber(String supplierNumber) {
         this.supplierNumber = supplierNumber;
     }
 
@@ -37,5 +37,13 @@ class Supplier {
 
     public void setSupplierEmail(String supplierEmail) {
         this.supplierEmail = supplierEmail;
+    }
+
+    public int getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(int supplierId) {
+        this.supplierId = supplierId;
     }
 }

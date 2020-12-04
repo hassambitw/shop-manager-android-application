@@ -16,6 +16,7 @@
     <!-- Add customer xml -->
     <string name="add_heading">Add Customer </string>
     <string name="add_staff_heading">Add Staff </string>
+    <string name="add_supplier_heading">Add Supplier </string>
     <!-- text views -->
     <string name="customerID_tv">Customer ID: </string>
     <string name="firstNameTV">First name: </string>
@@ -23,13 +24,19 @@
     <string name="emailTV">Email:  </string>
     <string name="phoneNumTV">Phone number:  </string>
 
-    <string name="staffID_tv">Staff ID: </string>
+    <string name="name">Name: </string>
 
+    <string name="staffID_tv">Staff ID: </string>
+    <string name="addSupplier">Add Supplier </string>
+    <string name="supplierID_tv">Supplier ID: </string>
+    <string name="shipmentsBtn">View Shipments</string>
 
     <!-- edit text hints -->
     <string name="customerIDHint">Enter customer ID </string>
+    <string name="supplierIDHint">Enter supplier ID </string>
     <string name="staffIDHint">Enter staff ID </string>
     <string name="firstNameHint">Enter first name </string>
+    <string name="nameHint">Enter name </string>
     <string name="lastNameHint">Enter last name </string>
     <string name="emailHint">Enter email </string>
     <string name="phoneNumHint">Enter phone number </string>
@@ -47,6 +54,7 @@
     <!-- editCustomer xml -->
     <string name="editCustHeading">Edit Customers</string>
     <string name="editStaffHeading">Edit Staff</string>
+    <string name="editSupplierHeading">Edit Supplier</string>
 
     <!-- activity_view_transaction xml -->
     <string name="transactionHeading">Transaction History</string>
