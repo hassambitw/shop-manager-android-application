@@ -34,8 +34,8 @@ public class PurchaseFragment extends Fragment {
         dbO = new DBHelper(getActivity());
 
 
-        dbO.insertShipment(1,12,5,"02/12/2020");
-       dbO.insert_shipment_items(1,99,1,8);
+        dbO.insertShipment(1,1,5,"02/12/2020");
+       dbO.insert_shipment_items(1,2,1,8);
         dbO.insert_shipment_items(1,98,2,3);
         dbO.insertShipment(2,1,5,"04/12/2020");
         dbO.insert_shipment_items(2,45,3,2);

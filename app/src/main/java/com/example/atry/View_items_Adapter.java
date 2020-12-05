@@ -21,7 +21,7 @@ public class View_items_Adapter extends RecyclerView.Adapter<View_items_Adapter.
     public class View_Items_Holder extends RecyclerView.ViewHolder{
 
         public TextView item_id_tv;
-        public TextView product_id_tv;
+        public TextView product_name_tv;
         public TextView quantity_tv;
         public TextView price_tv;
         public TextView discount_tv;
@@ -31,7 +31,7 @@ public class View_items_Adapter extends RecyclerView.Adapter<View_items_Adapter.
         public View_Items_Holder(@NonNull View itemView) {
             super(itemView);
             item_id_tv = itemView.findViewById(R.id.item_id_tv);
-            product_id_tv = itemView.findViewById(R.id.product_id_tv);
+            product_name_tv = itemView.findViewById(R.id.product_name_tv);
             quantity_tv = itemView.findViewById(R.id.quantity_tv);
             price_tv = itemView.findViewById(R.id.price_tv);
             discount_tv = itemView.findViewById(R.id.discount_tv);
@@ -57,7 +57,7 @@ public class View_items_Adapter extends RecyclerView.Adapter<View_items_Adapter.
         Order_Items curItem = itemsList.get(position);
 
         holder.item_id_tv.setText(Integer.toString(curItem.getItemId()));
-        holder.product_id_tv.setText(Integer.toString(curItem.getProductId()));
+        holder.product_name_tv.setText(curItem.getProductName());
         holder.quantity_tv.setText(Integer.toString(curItem.getQuantity()));
         holder.price_tv.setText(Double.toString(curItem.getPrice()));
         holder.discount_tv.setText(Double.toString(curItem.viewDiscount()));

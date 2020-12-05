@@ -71,6 +71,7 @@ public class view_purchase extends AppCompatActivity {
             int item_id=c1.getInt(c1.getColumnIndex("item_id"));
             int product_id=c1.getInt(c1.getColumnIndex("shipment_product_id"));
             int quantity=c1.getInt(c1.getColumnIndex("shipment_quantity"));
+            dbO.increaseQuantity(product_id,quantity);
             double price=0;
             String name="";
             Cursor c2=dbO.get_price_and_name(item_id);

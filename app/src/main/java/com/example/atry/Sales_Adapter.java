@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class Sales_Adapter extends RecyclerView.Adapter<Sales_Adapter.SalesViewHolder> {
@@ -20,7 +22,7 @@ public class Sales_Adapter extends RecyclerView.Adapter<Sales_Adapter.SalesViewH
         public TextView mTextView1;
         public TextView mTextView2;
         public TextView mTextView3;
-        public TextView mTextView4;
+
         public Button b;
 
         public SalesViewHolder(@NonNull View itemView) {
@@ -29,9 +31,9 @@ public class Sales_Adapter extends RecyclerView.Adapter<Sales_Adapter.SalesViewH
 
             mTextView1 = itemView.findViewById(R.id.order_id);
 
-            mTextView2 = itemView.findViewById(R.id.customer_id);
+            mTextView2 = itemView.findViewById(R.id.total_price);
             mTextView3 = itemView.findViewById(R.id.order_date);
-            mTextView4=itemView.findViewById(R.id.staff_id);
+
             b=itemView.findViewById(R.id.view_button);
         }
     }
@@ -54,9 +56,9 @@ public class Sales_Adapter extends RecyclerView.Adapter<Sales_Adapter.SalesViewH
         Orders curItem = salesList.get(position);
 
         holder.mTextView1.setText(Integer.toString(curItem.getOrderId()));
-        holder.mTextView2.setText(Integer.toString(curItem.getCustomerId()));
+        holder.mTextView2.setText(Double.toString(round(curItem.getTotal_price(),2)));
         holder.mTextView3.setText(curItem.getOrderDate());
-        holder.mTextView4.setText(Integer.toString(curItem.getStaffId()));
+
         holder.b.setOnClickListener((v)->{
             Intent i=new Intent(v.getContext(), View_receipt.class);
             i.putExtra("order_id",Integer.parseInt(holder.mTextView1.getText().toString()));
@@ -67,5 +69,12 @@ public class Sales_Adapter extends RecyclerView.Adapter<Sales_Adapter.SalesViewH
     @Override
     public int getItemCount() {
         return salesList.size();
+    }
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

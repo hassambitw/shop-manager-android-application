@@ -66,34 +66,20 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customer ID:  "
+        android:text="Total Revenue:  "
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="16sp" />
 
     <TextView
-            android:id="@+id/customer_id"
+            android:id="@+id/total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="000"
 
             android:layout_marginRight="20dp"
             android:textColor="@color/white"
-            android:textSize="12sp" />
-    <TextView
+            android:textSize="16sp" />
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Staff ID:"
-        android:textColor="@color/white"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/staff_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="000"
-        android:textColor="@color/white"
-        android:textSize="12sp" />
 
 </LinearLayout>
     </LinearLayout>

@@ -245,10 +245,10 @@ public class DBHelper extends SQLiteOpenHelper {
         } else if (!checkCustomerExists(customerId)) {
             //cust does not exist, error code 3
             return 3;
-        } /*else if (!checkStaffExists(staff_id)) {
+        } else if (!checkStaffExists(staff_id)) {
             //staff does not exist, error code 4
             return 4;
-        }*/ else {
+        } else {
 
             db.insert("orders", "", contentValues);
             return 1;
@@ -270,7 +270,11 @@ public class DBHelper extends SQLiteOpenHelper {
             return 2;
         }else if(!checkProductExists(productId)){
             return 3;
-        }else {
+        }
+        else if(!enoughQuantity( productId, quantity)){
+            return 4;
+        }
+        else {
             db.insert("order_items", "", contentValues);
             return 1;
         }
@@ -290,17 +294,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return false;           // no match
     }
 
-    private boolean checkSupplierExists(int ID) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT  * FROM " + SUPPLIER_TABLE + " WHERE " + SUPPLIER_COL1_ID + "=" + ID;
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.getCount() >= 1) {
-            cursor.close();
-            return true;       // found match
-        }
-        cursor.close();
-        return false;           // no match
-    }
+
 
 
     //check if customer exists
@@ -480,9 +474,9 @@ public class DBHelper extends SQLiteOpenHelper {
         if (checkShipmentsDuplicate(shipmentID)) {
             //duplicate exists so error code 2
             return 2;
-        }/*else if(!checkSupplierExists(supplier_id)){
+        }else if(!checkSupplierExists(supplier_id)){
             return 3;
-        }*/else {
+        }else {
             db.insert("shipment", "", contentValues);
             return 1;
         }
@@ -525,6 +519,33 @@ public class DBHelper extends SQLiteOpenHelper {
             return result != -1;
         } else {
             return false;
+        }
+    }
+    public void decreaseQuantity(int productID,int quantity){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String update_query="UPDATE products SET stock = stock - "+quantity+" WHERE product_id = "+productID;
+        db.execSQL(update_query);
+    }
+    public void increaseQuantity(int productID,int quantity){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String update_query="UPDATE products SET stock = stock + "+quantity+" WHERE product_id = "+productID;
+        db.execSQL(update_query);
+    }
+    public boolean enoughQuantity(int productID,int quantity){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String select_query="SELECT stock FROM products WHERE product_id= "+productID;
+        Cursor c=db.rawQuery(select_query,null);
+        int stock=0;
+        while(c.moveToNext()){
+            stock=c.getInt(c.getColumnIndex("stock"));
+        }
+        if(stock-quantity<0){
+            return false;
+        }else{
+            return true;
         }
     }
 
@@ -637,6 +658,16 @@ public class DBHelper extends SQLiteOpenHelper {
         String select_query = "SELECT p.list_price*si.shipment_quantity AS totalPrice FROM" + " shipment_items si, products p WHERE si.item_id=? AND p.product_id=si.shipment_product_id";
         return db.rawQuery(select_query, new String[]{ String.valueOf(itemID)} );
     }
+    public Cursor getPrice_Of_One_sale(int itemID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT o.price*((100-o.discount)/100)*o.quantity AS totalPrice FROM" + " order_items o WHERE o.item_id=?";
+        return db.rawQuery(select_query, new String[]{ String.valueOf(itemID)} );
+    }
+    public Cursor getProductName(int productID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT product_name FROM" + " products  WHERE product_id=?";
+        return db.rawQuery(select_query, new String[]{ String.valueOf(productID)} );
+    }
     public Cursor get_price_and_name(int itemID){
         SQLiteDatabase db = this.getWritableDatabase();
         String select_query = "SELECT p.product_name, p.list_price FROM" + " shipment_items si, products p WHERE si.item_id=? AND p.product_id=si.shipment_product_id";
@@ -644,7 +675,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public Cursor get_price_only(int productID){
         SQLiteDatabase db = this.getWritableDatabase();
-        String select_query = "SELECT p.list_price FROM" + " shipment_items si, products p WHERE p.product_id=?";
+        String select_query = "SELECT p.list_price FROM" + " products p WHERE p.product_id=?";
         return db.rawQuery(select_query, new String[]{ String.valueOf(productID)} );
     }
 

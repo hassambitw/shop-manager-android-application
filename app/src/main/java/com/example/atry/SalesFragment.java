@@ -34,7 +34,7 @@ public class SalesFragment extends Fragment {
         dbO = new DBHelper(getActivity());
 
 
-        dbO.insertOrder(6, 005, "02/10/2020", 99);
+        dbO.insertOrder(6, 005, "02/10/2020", 1);
         dbO.insert_order_item(6,2,3,2,33,20);
         //dbO.updateTable();
         Cursor c1 = dbO.getAllFrom_Orders();
@@ -43,7 +43,19 @@ public class SalesFragment extends Fragment {
             int customerID = c1.getInt(c1.getColumnIndex("customer_id"));
             String orderDate = c1.getString(c1.getColumnIndex("order_date"));
             int staff_id = c1.getInt(c1.getColumnIndex("staff_id"));
-            ordersList.add(new Orders(id, customerID, orderDate, staff_id));
+
+            Cursor c2=dbO.getAllFrom_Order_items(id);
+            double total_price=0;
+            while(c2.moveToNext()){
+                int item_id=c2.getInt(c2.getColumnIndex("item_id"));
+                Cursor c3= dbO.getPrice_Of_One_sale(item_id);
+                while(c3.moveToNext()){
+                    double price=c3.getDouble(c3.getColumnIndex("totalPrice"));
+                    total_price=total_price+price;
+                }
+            }
+
+            ordersList.add(new Orders(id, customerID, orderDate, staff_id,total_price));
         }
 
 

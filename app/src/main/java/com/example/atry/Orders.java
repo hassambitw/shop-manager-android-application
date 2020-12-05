@@ -8,11 +8,12 @@ class Orders {
     private int staff_id;
     private double total_price;
 
-    public Orders(int orderId, int customerId, String orderDate, int staff_id) {
+    public Orders(int orderId, int customerId, String orderDate, int staff_id, double total_price) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.orderDate = orderDate;
         this.staff_id=staff_id;
+        this.total_price=total_price;
     }
 
     public int getOrderId() {
@@ -48,6 +49,8 @@ class Orders {
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
+
+    public double getTotal_price(){return total_price;}
 
 
 }

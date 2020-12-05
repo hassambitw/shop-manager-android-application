@@ -4,17 +4,19 @@ public class Order_Items {
     private int orderId;
     private int itemId;
     private int productId;
+    private String productName;
     private int quantity;
     private double price;
     private double discount;
 
-    public Order_Items(int orderId, int itemId, int productId, int quantity, double price, double discount) {
+    public Order_Items(int orderId, int itemId, int productId, int quantity, double price, double discount,String productName) {
         this.orderId = orderId;
         this.itemId = itemId;
         this.productId = productId;
         this.quantity = quantity;
         this.price = price;
         this.discount = discount;
+        this.productName=productName;
     }
 
     public int getOrderId() {
@@ -41,6 +43,11 @@ public class Order_Items {
         double d=(100-discount)/100;
         return d;
     }
+
+    public String getProductName() {
+        return productName;
+    }
+
     public double viewDiscount(){
         return discount;
     }

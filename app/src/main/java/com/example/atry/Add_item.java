@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +23,7 @@ public class Add_item extends AppCompatActivity {
     EditText quantity;
     EditText price;
     EditText discount;
+    EditText original_price;
     TextView final_price;
     int count=1;
     DBHelper dbO;
@@ -56,10 +58,32 @@ public class Add_item extends AppCompatActivity {
         count_tv=(TextView)findViewById(R.id.count);
         item_id=(EditText)findViewById(R.id.item_id_tv);
         product_id=(EditText)findViewById(R.id.product_id_tv);
+        original_price=(EditText)findViewById(R.id.original_price_tv);
         quantity=(EditText)findViewById(R.id.quantity_tv);
         price=(EditText)findViewById(R.id.price_tv);
         discount=(EditText)findViewById(R.id.discount_tv);
         final_price=(TextView)findViewById(R.id.final_price_tv);
+        product_id.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    //do nothing
+                } else {
+                    if((!isEmpty(product_id))){
+                        if (!(dbO.checkProductExists(Integer.parseInt(product_id.getText().toString())))) {
+                            product_id_alert();
+                        }else{
+                            Cursor c1=dbO.get_price_only(Integer.parseInt(product_id.getText().toString()));
+                            double p=0;
+                            while(c1.moveToNext()){
+                                p=c1.getInt(c1.getColumnIndex("list_price"));
+                            }
+                            original_price.setText(Double.toString(p));
+                        }
+                    }
+                }
+            }
+        });
         discount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -159,7 +183,9 @@ public class Add_item extends AppCompatActivity {
             builder1.setTitle("ERROR");
             builder1.setMessage("Invalid Discount");
             builder1.show();
-        }else {
+        }
+
+        else {
             int out = dbO.insert_order_item(order_id, Integer.parseInt(item_id.getText().toString()), Integer.parseInt(product_id.getText().toString()), Integer.parseInt(quantity.getText().toString()), Double.parseDouble(price.getText().toString()), Double.parseDouble(discount.getText().toString()));
             if (out == 2) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
@@ -167,33 +193,15 @@ public class Add_item extends AppCompatActivity {
                 builder1.setMessage("Item ID should be unique");
                 builder1.show();
             } else if (out == 3) {
+                product_id_alert();
+            }
+            else if(out==4){
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
                 builder1.setTitle("ERROR");
-                builder1.setMessage("Product does not exist. Would you like to re-enter the product ID or add a new product?");
-                builder1.setCancelable(true);
-
-                builder1.setPositiveButton(
-                        "Add Customer",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                                dialog.cancel();
-                                Intent i = new Intent(Add_item.this, AddProduct.class);
-                                startActivity(i);
-                            }
-                        });
-
-                builder1.setNegativeButton(
-                        "Re-enter Customer ID",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-            } else {
+                builder1.setMessage("Product does not exist in that quantity. Please enter a lower quantity or select a different item.");
+                builder1.show();
+            }
+            else {
 
                 count = count + 1;
                 count_tv.setText(Integer.toString(count));
@@ -205,6 +213,35 @@ public class Add_item extends AppCompatActivity {
                 final_price.setText("");
             }
         }
+    }
+    public void product_id_alert(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setTitle("ERROR");
+        builder1.setMessage("Product does not exist. Would you like to re-enter the product ID or add a new product?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Add Product",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                        Intent i = new Intent(Add_item.this, AddProduct.class);
+                        startActivity(i);
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Re-enter Product ID",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        product_id.requestFocus();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
     public void view_receipt(View v) {
         if (stringEmpty(item_id) || stringEmpty(product_id) || stringEmpty(price) || stringEmpty(quantity) || stringEmpty(discount)) {
@@ -235,33 +272,16 @@ public class Add_item extends AppCompatActivity {
                 builder1.setMessage("Item ID should be unique");
                 builder1.show();
             } else if (out == 3) {
+                product_id_alert();
+            } else if(out==4){
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
                 builder1.setTitle("ERROR");
-                builder1.setMessage("Product does not exist. Would you like to re-enter the product ID or add a new product?");
-                builder1.setCancelable(true);
+                builder1.setMessage("Product does not exist in that quantity. Please enter a lower quantity or select a different item.");
+                builder1.show();
+            }
 
-                builder1.setPositiveButton(
-                        "Add Customer",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
 
-                                dialog.cancel();
-                                Intent i = new Intent(Add_item.this, AddProduct.class);
-                                startActivity(i);
-                            }
-                        });
-
-                builder1.setNegativeButton(
-                        "Re-enter Customer ID",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-            } else {
+            else {
                 // dbO.insert_order_item(order_id,Integer.parseInt(item_id.getText().toString()),Integer.parseInt(product_id.getText().toString()),Integer.parseInt(quantity.getText().toString()),Double.parseDouble(price.getText().toString()),Double.parseDouble(discount.getText().toString()));
                 Intent i = new Intent(this, View_receipt.class);
                 i.putExtra("order_id", order_id);

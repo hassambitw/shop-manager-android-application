@@ -111,7 +111,7 @@ public class Add_Sale extends AppCompatActivity {
         enteredDate=sdf.parse(date);
         currDate=new Date();
 
-
+        
         order_date.setText(sdf.format(myCalendar.getTime()));
     }
 
@@ -237,9 +237,35 @@ public class Add_Sale extends AppCompatActivity {
 
                 AlertDialog alert11 = builder1.create();
                 alert11.show();
-            }/*else if(out==4){
+            }else if(out==4){
                 // go to add staff
-            }*/
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setTitle("ERROR");
+                builder1.setMessage("Staff does not exist. Would you like to re-enter the staff ID or add a new staff?");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Add Staff",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                dialog.cancel();
+                                Intent i = new Intent(Add_Sale.this, AddStaff_Activity.class);
+                                startActivity(i);
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "Re-enter Staff ID",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
             else if (out == 1) {
                 Intent i = new Intent(this, Add_item.class);
                 i.putExtra("order_id", Integer.parseInt(order_id.getText().toString()));

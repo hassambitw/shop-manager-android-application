@@ -72,8 +72,13 @@ public class View_receipt extends AppCompatActivity {
             int quantity=c1.getInt(c1.getColumnIndex("quantity"));
             double price=c1.getDouble(c1.getColumnIndex("price"));
             double discount=c1.getDouble(c1.getColumnIndex("discount"));
-
-            itemList.add(new Order_Items(order_id,item_id,product_id,quantity,price,discount));
+            dbO.decreaseQuantity(product_id,quantity);
+            Cursor c2=dbO.getProductName(product_id);
+            String name="";
+            while(c2.moveToNext()){
+                name=c2.getString(c2.getColumnIndex("product_name"));
+            }
+            itemList.add(new Order_Items(order_id,item_id,product_id,quantity,price,discount,name));
         }
 
         // set up the RecyclerView
