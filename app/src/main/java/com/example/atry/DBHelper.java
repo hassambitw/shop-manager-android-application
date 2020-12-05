@@ -209,7 +209,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_ORDERITEMS);
         db.execSQL(CREATE_TABLE_STAFF);
         db.execSQL(CREATE_TABLE_PRODUCTS);
-
         db.execSQL(CREATE_TABLE_SHIPMENT);
         db.execSQL(CREATE_TABLE_SHIPMENT_ITEMS);
 //        db.execSQL(CREATE_TABLE_CATEGORIES);
@@ -217,6 +216,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_SUPPLIER);
 //        db.execSQL(CREATE_TABLE_SHIPMENT);
 
+        // for orders, do products, staff and customers first
     }
 
     @Override

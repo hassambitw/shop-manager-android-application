@@ -87,20 +87,25 @@ public class editProduct_activity extends AppCompatActivity {
                 String ProductName = etProdName.getText().toString();
                 String ProductBrand = etProdBrand.getText().toString();
                 String ProductCategory = etProdCategory.getText().toString();
-                double ProductListPrice = Double.parseDouble(etProdListPrice.getText().toString());
-                int ProductQuantity = Integer.parseInt(etProdQuant.getText().toString());
-                int ProductYear = Integer.parseInt(etProdYear.getText().toString());
-
-
+                try {
+                    double ProductListPrice = Double.parseDouble(etProdListPrice.getText().toString());
+                    int ProductQuantity = Integer.parseInt(etProdQuant.getText().toString());
+                    int ProductYear = Integer.parseInt(etProdYear.getText().toString());
+                } catch (NumberFormatException nfe) {
+                    Toast.makeText(getApplicationContext(), "Product not added", Toast.LENGTH_SHORT).show();
+                }
                 if (!ProductName.isEmpty() && !ProductBrand.isEmpty() && !ProductCategory.isEmpty() && ProductListPrice!=0.0 && ProductQuantity != 0 && ProductYear != 0) {
-
-                    if (dbh.updateProduct(prodID, ProductName, ProductBrand, ProductCategory, ProductYear, ProductListPrice, ProductQuantity)) {
-                        Toast.makeText(getApplicationContext(), "Product updated", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.putExtra("from_edit_product","product");
-                        startActivity(i);
+                    if (!idStartWithZero(etProdListPrice) && !idStartWithZero(etProdQuant) && !idStartWithZero(etProdYear)) {
+                        if (dbh.updateProduct(prodID, ProductName, ProductBrand, ProductCategory, ProductYear, ProductListPrice, ProductQuantity)) {
+                            Toast.makeText(getApplicationContext(), "Product updated", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                            i.putExtra("from_edit_product", "product");
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Product not updated", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Product not updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Values cannot start with 0.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Product not updated", Toast.LENGTH_SHORT).show();
@@ -122,4 +127,11 @@ public class editProduct_activity extends AppCompatActivity {
         });
 
     }
+        public boolean idStartWithZero(EditText et){
+            if (et.getText().toString().trim().startsWith("0")){
+                return true;
+            }else{
+                return false;
+            }
+        }
 }

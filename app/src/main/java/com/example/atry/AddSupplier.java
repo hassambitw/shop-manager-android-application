@@ -73,14 +73,18 @@ public class AddSupplier extends AppCompatActivity {
                 supplier_email = supplier_email_et.getText().toString();
                 supplier_phone = supplier_phone_et.getText().toString();
                 if (!supplierID_et.getText().toString().isEmpty() && !supplier_name.isEmpty() && !supplier_email.isEmpty() && !supplier_phone.isEmpty()) {
-                    if (dbh.insertSupplier(supplier_id, supplier_name, supplier_phone, supplier_email)) {
-                        Toast.makeText(getApplicationContext(), "Data added", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.putExtra("from_supplier","suppliers");
-                        startActivity(i);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
-                    }
+                   if (!idStartWithZero(supplierID_et)) {
+                       if (dbh.insertSupplier(supplier_id, supplier_name, supplier_phone, supplier_email)) {
+                           Toast.makeText(getApplicationContext(), "Data added", Toast.LENGTH_SHORT).show();
+                           Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                           i.putExtra("from_supplier", "suppliers");
+                           startActivity(i);
+                       } else {
+                           Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
+                       }
+                   } else {
+                       Toast.makeText(getApplicationContext(), "IDs cannot start with 0", Toast.LENGTH_SHORT).show();
+                   }
                 } else {
                     Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
                     if (supplierID_et.getText().toString().length() == 0)
@@ -102,5 +106,12 @@ public class AddSupplier extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public boolean idStartWithZero(EditText et){
+        if (et.getText().toString().trim().startsWith("0")){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
