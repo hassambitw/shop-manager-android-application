@@ -297,11 +297,11 @@ public class DBHelper extends SQLiteOpenHelper {
         this.insertOrder(54, 3, "2020/11/12", 6);
         this.insertOrder(55, 1, "2020/11/16", 6);
 
-        this.insertOrder(56, 2, "2020/12/05", 2);
-        this.insertOrder(57, 2, "2020/12/18", 5);
-        this.insertOrder(58, 4, "2020/12/21", 1);
-        this.insertOrder(59, 7, "2020/12/12", 8);
-        this.insertOrder(60, 9, "2020/12/16", 9);
+        this.insertOrder(56, 2, "2020/12/02", 2);
+        this.insertOrder(57, 2, "2020/12/01", 5);
+        this.insertOrder(58, 4, "2020/12/03", 1);
+        this.insertOrder(59, 7, "2020/12/04", 8);
+        this.insertOrder(60, 9, "2020/12/02", 9);
     }
 
     public void addSuppliers() {
