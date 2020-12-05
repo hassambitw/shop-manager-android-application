@@ -679,7 +679,54 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.rawQuery(select_query, new String[]{ String.valueOf(productID)} );
     }
 
+    public double getAllSalesFromAMonth(String startDate, String endDate) {
 
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT order_id FROM orders  WHERE order_date BETWEEN '"+startDate+"' AND '"+endDate+"'";
+        Cursor c=db.rawQuery(select_query,null);
+        double total_price_f=0;
+        while (c.moveToNext()) {
+            int id = c.getInt(c.getColumnIndex("order_id"));
+            Cursor c2 = getAllFrom_Order_items(id);
+            double total_price = 0;
+            while (c2.moveToNext()) {
+                int item_id = c2.getInt(c2.getColumnIndex("item_id"));
+                Cursor c3 = getPrice_Of_One_sale(item_id);
+                while (c3.moveToNext()) {
+                    double price = c3.getDouble(c3.getColumnIndex("totalPrice"));
+                    total_price = total_price + price;
+                }
+            }
+           total_price_f=total_price_f+total_price;
+        }
+        return total_price_f;
+    }
+
+    public double getAllPurchaseFromAMonth(String startDate, String endDate) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT shipment_num FROM shipment  WHERE shipment_date BETWEEN '"+startDate+"' AND '"+endDate+"'";
+        Cursor c=db.rawQuery(select_query,null);
+        double total_price_f=0;
+        while (c.moveToNext()) {
+            int shipment_num = c.getInt(c.getColumnIndex("shipment_num"));
+
+            Cursor c2=get_Shipment_items(shipment_num);
+            double total_price=0;
+            while(c2.moveToNext()){
+                int item_id=c2.getInt(c2.getColumnIndex("item_id"));
+                Cursor c3= getPrice_Of_One_purchase(item_id);
+                while(c3.moveToNext()){
+                    double price=c3.getDouble(c3.getColumnIndex("totalPrice"));
+                    total_price=total_price+price;
+                }
+                total_price=total_price+(total_price*((double)5/100));
+            }
+            total_price_f=total_price_f+total_price;
+        }
+        return total_price_f;
+        }
 
     public Cursor getAllFrom_Orders() {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -104,14 +104,14 @@ public class Add_Sale extends AppCompatActivity {
 
     }
     private void updateLabel() throws ParseException {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
+        String myFormat = "yyyy-MM-dd"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         String date= sdf.format(myCalendar.getTime());
         enteredDate=sdf.parse(date);
         currDate=new Date();
 
-        
+
         order_date.setText(sdf.format(myCalendar.getTime()));
     }
 

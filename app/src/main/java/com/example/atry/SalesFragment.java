@@ -58,6 +58,17 @@ public class SalesFragment extends Fragment {
             ordersList.add(new Orders(id, customerID, orderDate, staff_id,total_price));
         }
 
+        //Double d=dbO.getAllSalesFromAMonth();
+        /*ArrayList<Integer>sList=new ArrayList<Integer>();
+        while(c.moveToNext()){
+
+            sList.add(c.getInt(c.getColumnIndex("order_id")));
+        }
+       for(int i=0;i<sList.size();i++){
+           System.out.println(sList.get(i));
+       }*/
+       System.out.println("IN HERE");
+       //System.out.println("Double "+d);
 
         View v = inflater.inflate(R.layout.fragment_sales, container, false);
         b = (Button) v.findViewById(R.id.addSale);
