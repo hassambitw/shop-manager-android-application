@@ -3,8 +3,13 @@ package com.example.atry;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,4 +18,5 @@ public class Dashboard extends AppCompatActivity {
 
         //activity for dashboard, nothing is there yet
     }
+
 }

@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
-            android:text="@string/transactionHeading"
+            android:text="@string/shipmentHeading"
             android:textSize="36sp"
             android:layout_alignParentTop="true" />
 
@@ -30,30 +30,30 @@
         android:weightSum="7"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/empty_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/empty_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/error_icon" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+        <LinearLayout
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/no_items_available" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/empty_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/error_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/no_items_available" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/transaction_recycler_view"
+            android:id="@+id/shipment_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView"

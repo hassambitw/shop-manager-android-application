@@ -41,6 +41,9 @@
         <activity
             android:name=".editSupplier_activity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".viewShipment_activity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".View_receipt" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity">

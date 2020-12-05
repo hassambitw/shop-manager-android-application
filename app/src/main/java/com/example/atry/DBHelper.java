@@ -740,6 +740,18 @@ public class DBHelper extends SQLiteOpenHelper {
         String select_query = "SELECT c.first_name, c.last_name, o.order_id, oi.price*oi.quantity*((100-oi.discount)/100) AS totalPrice FROM " + "customers c, orders o, order_items oi WHERE c.customer_id = o.customer_id AND o.order_id = oi.order_id AND c.customer_id = ?";
         return db.rawQuery(select_query, new String[]{ String.valueOf(custID)} );
     }
+
+    public Cursor getShipmentDetails(int supplierID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String select_query = "SELECT si.item_id, s.shipment_num, s.shipment_date, SUM((p.list_price*si.shipment_quantity)*1.05) AS totalPrice " +
+                                "FROM " + "shipment s, shipment_items si, products p, supplier sp " +
+                                "WHERE sp.supplier_id = s.shipment_supplier_id " +
+                                "AND s.shipment_num = si.shipment_num " +
+                                "AND si.shipment_product_id = p.product_id " +
+                                "AND sp.supplier_id = ? " +
+                                "GROUP BY s.shipment_num";
+        return db.rawQuery(select_query, new String[]{ String.valueOf(supplierID)} );
+    }
     public void updateTable(){
         SQLiteDatabase db = this.getWritableDatabase();
         String update_orders = "UPDATE " + ORDERS_TABLE + " SET staff_id=3 WHERE order_id=1";

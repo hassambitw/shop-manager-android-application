@@ -58,6 +58,7 @@
 
     <!-- activity_view_transaction xml -->
     <string name="transactionHeading">Transaction History</string>
+    <string name="shipmentHeading">Shipment History</string>
 
     <string-array name="product_category_array">
         <item>Smart phones</item>
@@ -67,7 +68,22 @@
         <item>Earphones</item>
     </string-array>
 
+    <string-array name="month_range">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
     <string name="staff">Staff</string>
-    <string name="no_transactions_available">There are no transactions by this customer. </string>
+    <string name="no_items_available">Oops. There is nothing to show here. </string>
 
 </resources>

@@ -19,8 +19,6 @@ class Shipment {
     }
 
 
-
-
     public int getShipmentNo() {
         return shipmentNo;
     }

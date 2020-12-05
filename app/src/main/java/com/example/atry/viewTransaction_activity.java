@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class viewTransaction_activity extends AppCompatActivity {
@@ -54,7 +52,7 @@ public class viewTransaction_activity extends AppCompatActivity {
             ll.setVisibility(View.VISIBLE);
         }
 
-
+        System.out.println(c.getCount());
         while(c.moveToNext()){
              fname = c.getString(c.getColumnIndex("first_name"));
              lname = c.getString(c.getColumnIndex("last_name"));

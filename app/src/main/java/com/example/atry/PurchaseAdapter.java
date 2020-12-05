@@ -54,11 +54,8 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.Purcha
 
         holder.mTextView1.setText(Integer.toString(curItem.getShipmentNo()));
         holder.mTextView2.setText(curItem.getShipmentDate());
-
-
-
-
         holder.mTextView3.setText(Double.toString(curItem.getTotalCost()));
+
         holder.b.setOnClickListener((v)->{
             Intent i=new Intent(v.getContext(), view_purchase.class);
             i.putExtra("shipment_id",Integer.parseInt(holder.mTextView1.getText().toString()));
