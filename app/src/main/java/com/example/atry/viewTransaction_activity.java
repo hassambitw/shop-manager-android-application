@@ -56,7 +56,6 @@ public class viewTransaction_activity extends AppCompatActivity {
         while(c.moveToNext()){
              fname = c.getString(c.getColumnIndex("first_name"));
              lname = c.getString(c.getColumnIndex("last_name"));
-             //price, quantity, discount
              totalPrice = c.getDouble(c.getColumnIndex("totalPrice"));
              orderID = c.getInt(c.getColumnIndex("order_id"));
             custTransactionList.add(new TransactionDetails(fname, lname, orderID, totalPrice));

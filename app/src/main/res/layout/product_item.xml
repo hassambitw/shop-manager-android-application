@@ -183,6 +183,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
             android:text="@string/editBtn" />
@@ -192,6 +194,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/editProd"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
             android:layout_alignParentRight="true"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"

@@ -90,10 +90,10 @@ public class AddCustomer_Activity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                cust_email_et.setError("Email should be in format of _____@_____.___");
+                                cust_phone_et.setError("Phone is in wrong format.");
                             }
                         } else {
-                            cust_phone_et.setError("Phone is in wrong format.");
+                            cust_email_et.setError("Email should be in format of _____@_____.___");
                         }
                     }   else {
                             Toast.makeText(getApplicationContext(), "IDs cannot start with 0.", Toast.LENGTH_SHORT).show();

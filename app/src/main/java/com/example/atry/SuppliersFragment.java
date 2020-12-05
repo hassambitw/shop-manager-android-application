@@ -35,7 +35,7 @@ public class SuppliersFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         dbh = new DBHelper(getContext());
-
+        addSuppliers();
 
         addToArrayList();
 
@@ -79,6 +79,14 @@ public class SuppliersFragment extends Fragment {
             supplier_email = c.getString(c.getColumnIndex("supplier_email"));
             supplierList.add(new Supplier(supplier_name, supplier_id, supplier_num, supplier_email));
         }
+    }
+
+    public void addSuppliers() {
+        dbh.insertSupplier(1, "National Store LLC", "+971507814622", "nationalstore@gmail.com");
+        dbh.insertSupplier(2, "Obaid Khalifa Trading LLC", "+971561549876", "okhalifa@hotmail.com");
+        dbh.insertSupplier(3, "2000 Screen Electronics ", "+971569859876", "screenelectronics@gmail.com");
+        dbh.insertSupplier(4, "Ashraf Electronics", "+971501543276", "ashrafelec@outlook.com");
+        dbh.insertSupplier(5, "Ginza Trading", "+971587659876", "ginzatrading@gmail.com");
     }
 
 }

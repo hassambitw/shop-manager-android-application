@@ -37,6 +37,7 @@ public class CustomerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         dbh = new DBHelper(getContext());
+        addCustomers();
 
         addToArrayList();
 
@@ -83,6 +84,19 @@ public class CustomerFragment extends Fragment {
             customer_phone = c.getString(c.getColumnIndex("phone"));
             customerList.add(new Customer(customer_id, customer_fname, customer_lname, customer_email, customer_phone));
         }
+    }
+
+    public void addCustomers() {
+        dbh.insertCustomer(1, "John", "Williams", "+971561017939", "johnwilliams@hotmail.com");
+        dbh.insertCustomer(2, "Jason", "King", "+971561017939", "jasonking@hotmail.com");
+        dbh.insertCustomer(3, "Elizabeth", "Becks", "+971561017939", "elibeck@hotmail.com");
+        dbh.insertCustomer(4, "Kenny", "Smith", "+971561017939", "kennysmith@hotmail.com");
+        dbh.insertCustomer(5, "Soda", "Poppins", "+971561017939", "sodapoppins@hotmail.com");
+        dbh.insertCustomer(6, "Nick", "Bishop", "+971561017939", "nickbishop@hotmail.com");
+        dbh.insertCustomer(7, "Yunus", "Yu", "+971561017939", "sodapoppins@hotmail.com");
+        dbh.insertCustomer(8, "Eden", "Barclay", "+971561017939", "edenbarclay@hotmail.com");
+        dbh.insertCustomer(9, "Izaak", "Moody", "+971561017939", "moody@hotmail.com");
+        dbh.insertCustomer(10, "Olaf", "Hubbard", "+971561017939", "olafhubbard@hotmail.com");
     }
 
 }

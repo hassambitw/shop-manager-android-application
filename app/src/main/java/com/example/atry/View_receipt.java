@@ -112,10 +112,10 @@ public class View_receipt extends AppCompatActivity {
         return bd.doubleValue();
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent i=new Intent(this,MainActivity.class);
-        i.putExtra("from_sales","sales");
-        startActivity(i);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        Intent i=new Intent(this,MainActivity.class);
+//        i.putExtra("from_sales","sales");
+//        startActivity(i);
+//    }
 }

@@ -118,10 +118,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new PurchaseFragment()).commit();
                 Toast.makeText(this,"Purchases",Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_report:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
-                Toast.makeText(this,"Reports",Toast.LENGTH_SHORT).show();
-                break;
             case R.id.nav_staff:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new StaffFragment()).commit();
                 Toast.makeText(this,"Staff",Toast.LENGTH_SHORT).show();
@@ -133,10 +129,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_sale:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SalesFragment()).commit();
                 Toast.makeText(this,"Sale",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_setting:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProductFragment()).commit();
-                Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show();
                 break;
 
 

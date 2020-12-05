@@ -42,7 +42,7 @@ public class ProductFragment extends Fragment {
         dbh = new DBHelper(getContext());
 
 
-        AddProducts();
+        addProducts();
         addToProductArrayList();
 
         View v =  inflater.inflate(R.layout.fragment_products,container,false);
@@ -72,12 +72,17 @@ public class ProductFragment extends Fragment {
 
     }
 
-    public void AddProducts() {
-        dbh.insertProduct (1, "Galaxy S20+ 5G", "Samsung", "Smartphones", 2020,  3799 , 59);
-        dbh.insertProduct (2, "QC35 II", "Bose", "Headphones", 2018,  1349 , 22);
-        dbh.insertProduct (3, "QiCharge++", "Anker", "Accessories", 2019,  250 , 222);
-        dbh.insertProduct (4, "OnePlus 8T", "OnePlus", "Smartphones", 2020,  2699 , 18);
-
+    public void addProducts() {
+        dbh.insertProduct(1,"Galaxy ZFold","Samsung","mobile phones",2020,900,900);
+        dbh.insertProduct(2,"Galaxy s20","Samsung","mobile phones",2020,1000,800);
+        dbh.insertProduct(3,"Galaxy Note 10","Samsung","mobile phones",2020,3000,100);
+        dbh.insertProduct(4,"iPhone 12","Apple","mobile phones",2020,920,90);
+        dbh.insertProduct(5,"iPhone 11","Apple","mobile phones",2020,920,900);
+        dbh.insertProduct(6,"iPhone 10","Apple","mobile phones",2020,920,900);
+        dbh.insertProduct(7,"Huawei P40","Huawei","mobile phones",2020,820,900);
+        dbh.insertProduct(8,"OnePlus 8","OnePlus","mobile phones",2020,820,90);
+        dbh.insertProduct(9,"OnePlus 6","OnePlus","mobile phones",2020,820,900);
+        dbh.insertProduct(10,"Mi9T","Motorola","mobile phones",2020,920,900);
     }
 
     public void addToProductArrayList() {

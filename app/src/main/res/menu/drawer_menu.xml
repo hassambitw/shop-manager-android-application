@@ -8,19 +8,11 @@
         <item
             android:id="@+id/nav_dashb1"
 
-            android:title="Dashboard - Supplier"></item>
+            android:title="Dashboard"></item>
         <item
             android:id="@+id/nav_product"
 
             android:title="@string/products"></item>
-        <item
-            android:id="@+id/nav_sale"
-
-            android:title="@string/sale"></item>
-        <item
-            android:id="@+id/nav_purchase"
-
-            android:title="@string/purchases"></item>
         <item
             android:id="@+id/nav_customer"
 
@@ -34,13 +26,13 @@
 
             android:title="@string/staff"></item>
         <item
-            android:id="@+id/nav_report"
+            android:id="@+id/nav_sale"
 
-            android:title="@string/reports"></item>
+            android:title="@string/sale"></item>
         <item
-            android:id="@+id/nav_setting"
+            android:id="@+id/nav_purchase"
 
-            android:title="@string/settings"></item>
+            android:title="@string/purchases"></item>
 
 
     </group>

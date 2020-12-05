@@ -56,7 +56,6 @@ public class viewShipment_activity extends AppCompatActivity {
         while(c.moveToNext()) {
             shipment_date = c.getString(c.getColumnIndex("shipment_date"));
             shipmentID = c.getInt(c.getColumnIndex("shipment_num"));
-            totalPrice = 0;
            totalPrice = c.getDouble(c.getColumnIndex("totalPrice"));
             shipmentList.add(new ShipmentDetails(shipmentID, shipment_date, totalPrice));
         }

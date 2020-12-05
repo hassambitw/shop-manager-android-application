@@ -36,7 +36,7 @@ public class StaffFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         dbh = new DBHelper(getContext());
-
+        addStaff();
 
         addToArrayList();
 
@@ -81,6 +81,19 @@ public class StaffFragment extends Fragment {
             staff_phone = c.getString(c.getColumnIndex("phone"));
             staffList.add(new Staff(staff_id, staff_fname, staff_lname, staff_email, staff_phone));
         }
+    }
+
+    public void addStaff() {
+        dbh.insertStaff(1, "Ted", "Lasso", "+971501018761", "tedlasso@hotmail.com");
+        dbh.insertStaff(2, "Pepper", "Potts", "+971552417839", "pepperp@hotmail.com");
+        dbh.insertStaff(3, "Cameron", "Becks", "+971561017939", "cameronbecks@hotmail.com");
+        dbh.insertStaff(4, "Nick", "Bishop", "+971561017939", "nickb@hotmail.com");
+        dbh.insertStaff(5, "Willow", "Field", "+971561017939", "field@hotmail.com");
+        dbh.insertStaff(6, "Hashir", "Sweeney", "+971501018761", "hashirsweeny@hotmail.com");
+        dbh.insertStaff(7, "Timothy", "Dodson", "+971552417839", "timothydodson@hotmail.com");
+        dbh.insertStaff(8, "Ismail", "Robins", "+971561017939", "ismailrobins@hotmail.com");
+        dbh.insertStaff(9, "Willa", "Blundell", "+971561017939", "willablund@hotmail.com");
+        dbh.insertStaff(10, "Rufus", "Simon", "+971561017939", "rsimon@hotmail.com");
     }
 
 }
