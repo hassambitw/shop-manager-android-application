@@ -36,8 +36,6 @@ public class SuppliersFragment extends Fragment {
 
         dbh = new DBHelper(getContext());
 
-        //adding customers
-        addSuppliers();
 
         addToArrayList();
 
@@ -58,13 +56,6 @@ public class SuppliersFragment extends Fragment {
 
     }
 
-    public void addSuppliers() {
-        dbh.insertSupplier(01, "National Store LLC", "+971507814622", "nationalstore@gmail.com");
-        dbh.insertSupplier(02, "Obaid Khalifa Trading LLC", "+971561549876", "okhalifa@hotmail.com");
-        dbh.insertSupplier(03, "2000 Screen Electronics ", "+971569859876", "screenelectronics@gmail.com");
-        dbh.insertSupplier(04, "Ashraf Electronics", "+971501543276", "ashrafelec@outlook.com");
-        dbh.insertSupplier(05, "Ginza Trading", "+971587659876", "ginzatrading@gmail.com");
-    }
 
     public void buildRecyclerView(View v) {
         supplierRecyclerView = v.findViewById(R.id.supplier_recycler_view);

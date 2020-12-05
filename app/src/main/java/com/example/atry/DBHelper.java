@@ -216,7 +216,126 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_SUPPLIER);
 //        db.execSQL(CREATE_TABLE_SHIPMENT);
 
-        // for orders, do products, staff and customers first
+        addCustomers();
+        addStaff();
+        addSuppliers();
+        addOrders();
+        addOrderItems();
+
+
+        // for orders, do products
+    }
+
+    public void addOrderItems() {
+
+    }
+
+    public void addOrders() {
+        this.insertOrder(1, 1, "2020/01/01", 1);
+        this.insertOrder(2, 2, "2020/01/15", 1);
+        this.insertOrder(3, 4, "2020/01/25", 2);
+        this.insertOrder(4, 3, "2020/01/19", 2);
+        this.insertOrder(5, 1, "2020/01/10", 4);
+
+        this.insertOrder(6, 2, "2020/02/05", 5);
+        this.insertOrder(7, 3, "2020/02/18", 2);
+        this.insertOrder(8, 5, "2020/02/21", 4);
+        this.insertOrder(9, 4, "2020/02/12", 5);
+        this.insertOrder(10, 2, "2020/02/16", 7);
+
+        this.insertOrder(11, 3, "2020/03/05", 6);
+        this.insertOrder(12, 4, "2020/03/18", 6);
+        this.insertOrder(13, 6, "2020/03/21", 3);
+        this.insertOrder(14, 5, "2020/03/12", 4);
+        this.insertOrder(15, 3, "2020/03/16", 2);
+
+        this.insertOrder(16, 4, "2020/04/05", 3);
+        this.insertOrder(17, 5, "2020/04/18", 6);
+        this.insertOrder(18, 7, "2020/04/21", 2);
+        this.insertOrder(19, 6, "2020/04/12", 2);
+        this.insertOrder(20, 4, "2020/04/16", 8);
+
+        this.insertOrder(21, 5, "2020/05/05", 4);
+        this.insertOrder(22, 6, "2020/05/18", 1);
+        this.insertOrder(23, 8, "2020/05/21", 8);
+        this.insertOrder(24, 7, "2020/05/12", 2);
+        this.insertOrder(25, 5, "2020/05/16", 3);
+
+        this.insertOrder(26, 6, "2020/06/05", 5);
+        this.insertOrder(27, 7, "2020/06/18", 2);
+        this.insertOrder(28, 9, "2020/06/21", 4);
+        this.insertOrder(29, 8, "2020/06/12", 5);
+        this.insertOrder(30, 6, "2020/06/16", 7);
+
+        this.insertOrder(31, 7, "2020/07/05", 7);
+        this.insertOrder(32, 8, "2020/07/18", 4);
+        this.insertOrder(33, 10, "2020/07/21", 8);
+        this.insertOrder(34, 9, "2020/07/12", 3);
+        this.insertOrder(35, 7, "2020/07/16", 2);
+
+        this.insertOrder(36, 8, "2020/08/05", 8);
+        this.insertOrder(37, 9, "2020/08/18", 1);
+        this.insertOrder(38, 1, "2020/08/21", 2);
+        this.insertOrder(39, 10, "2020/08/12", 9);
+        this.insertOrder(40, 8, "2020/08/16", 5);
+
+        this.insertOrder(41, 9, "2020/09/05", 9);
+        this.insertOrder(42, 10, "2020/09/18", 2);
+        this.insertOrder(43, 2, "2020/09/21", 3);
+        this.insertOrder(44, 1, "2020/09/12", 4);
+        this.insertOrder(45, 9, "2020/09/16", 5);
+
+        this.insertOrder(46, 10, "2020/10/05", 10);
+        this.insertOrder(47, 1, "2020/10/18", 3);
+        this.insertOrder(48, 3, "2020/10/21", 4);
+        this.insertOrder(49, 2, "2020/10/12", 1);
+        this.insertOrder(50, 10, "2020/10/16", 7);
+
+        this.insertOrder(51, 1, "2020/11/05", 2);
+        this.insertOrder(52, 2, "2020/11/18", 3);
+        this.insertOrder(53, 4, "2020/11/21", 4);
+        this.insertOrder(54, 3, "2020/11/12", 6);
+        this.insertOrder(55, 1, "2020/11/16", 6);
+
+        this.insertOrder(56, 2, "2020/12/05", 2);
+        this.insertOrder(57, 2, "2020/12/18", 5);
+        this.insertOrder(58, 4, "2020/12/21", 1);
+        this.insertOrder(59, 7, "2020/12/12", 8);
+        this.insertOrder(60, 9, "2020/12/16", 9);
+    }
+
+    public void addSuppliers() {
+        this.insertSupplier(1, "National Store LLC", "+971507814622", "nationalstore@gmail.com");
+        this.insertSupplier(2, "Obaid Khalifa Trading LLC", "+971561549876", "okhalifa@hotmail.com");
+        this.insertSupplier(3, "2000 Screen Electronics ", "+971569859876", "screenelectronics@gmail.com");
+        this.insertSupplier(4, "Ashraf Electronics", "+971501543276", "ashrafelec@outlook.com");
+        this.insertSupplier(5, "Ginza Trading", "+971587659876", "ginzatrading@gmail.com");
+    }
+
+    public void addStaff() {
+        this.insertStaff(1, "Ted", "Lasso", "+971501018761", "tedlasso@hotmail.com");
+        this.insertStaff(2, "Pepper", "Potts", "+971552417839", "pepperp@hotmail.com");
+        this.insertStaff(3, "Cameron", "Becks", "+971561017939", "cameronbecks@hotmail.com");
+        this.insertStaff(4, "Nick", "Bishop", "+971561017939", "nickb@hotmail.com");
+        this.insertStaff(5, "Willow", "Field", "+971561017939", "field@hotmail.com");
+        this.insertStaff(6, "Hashir", "Sweeney", "+971501018761", "hashirsweeny@hotmail.com");
+        this.insertStaff(7, "Timothy", "Dodson", "+971552417839", "timothydodson@hotmail.com");
+        this.insertStaff(8, "Ismail", "Robins", "+971561017939", "ismailrobins@hotmail.com");
+        this.insertStaff(9, "Willa", "Blundell", "+971561017939", "willablund@hotmail.com");
+        this.insertStaff(10, "Rufus", "Simon", "+971561017939", "rsimon@hotmail.com");
+    }
+
+    public void addCustomers() {
+            this.insertCustomer(1, "John", "Williams", "+971561017939", "johnwilliams@hotmail.com");
+            this.insertCustomer(2, "Jason", "King", "+971561017939", "jasonking@hotmail.com");
+            this.insertCustomer(3, "Elizabeth", "Becks", "+971561017939", "elibeck@hotmail.com");
+            this.insertCustomer(4, "Kenny", "Smith", "+971561017939", "kennysmith@hotmail.com");
+            this.insertCustomer(5, "Soda", "Poppins", "+971561017939", "sodapoppins@hotmail.com");
+            this.insertCustomer(6, "Nick", "Bishop", "+971561017939", "nickbishop@hotmail.com");
+            this.insertCustomer(7, "Yunus", "Yu", "+971561017939", "sodapoppins@hotmail.com");
+            this.insertCustomer(8, "Eden", "Barclay", "+971561017939", "edenbarclay@hotmail.com");
+            this.insertCustomer(9, "Izaak", "Moody", "+971561017939", "moody@hotmail.com");
+            this.insertCustomer(10, "Olaf", "Hubbard", "+971561017939", "olafhubbard@hotmail.com");
     }
 
     @Override

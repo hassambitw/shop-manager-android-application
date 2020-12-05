@@ -37,8 +37,6 @@ public class StaffFragment extends Fragment {
 
         dbh = new DBHelper(getContext());
 
-        //adding customers
-        addStaff();
 
         addToArrayList();
 
@@ -58,13 +56,6 @@ public class StaffFragment extends Fragment {
     }
 
 
-    public void addStaff() {
-        dbh.insertStaff(01, "Ted", "Lasso", "+971501018761", "tedlasso@hotmail.com");
-        dbh.insertStaff(02, "Pepper", "Potts", "+971552417839", "pepperp@hotmail.com");
-        dbh.insertStaff(03, "Cameron", "Becks", "+971561017939", "cameronbecks@hotmail.com");
-        dbh.insertStaff(04, "Nick", "Bishop", "+971561017939", "nickb@hotmail.com");
-        dbh.insertStaff(05, "Willow", "Field", "+971561017939", "field@hotmail.com");
-    }
 
     public void buildRecyclerView(View v) {
         staffRecyclerView = v.findViewById(R.id.staff_recycler_view);

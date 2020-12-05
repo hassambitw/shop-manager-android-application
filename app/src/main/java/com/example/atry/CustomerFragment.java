@@ -38,9 +38,6 @@ public class CustomerFragment extends Fragment {
 
         dbh = new DBHelper(getContext());
 
-        //adding customers
-        addCustomers();
-
         addToArrayList();
 
         View v = inflater.inflate(R.layout.fragment_customer, container, false);
@@ -60,13 +57,7 @@ public class CustomerFragment extends Fragment {
 
     }
 
-    public void addCustomers() {
-        dbh.insertCustomer(01, "John", "Williams", "+971561017939", "johnwilliams@hotmail.com");
-        dbh.insertCustomer(02, "Jason", "King", "+971561017939", "jasonking@hotmail.com");
-        dbh.insertCustomer(03, "Elizabeth", "Becks", "+971561017939", "elibeck@hotmail.com");
-        dbh.insertCustomer(04, "Kenny", "Smith", "+971561017939", "kennysmith@hotmail.com");
-        dbh.insertCustomer(05, "Soda", "Poppins", "+971561017939", "sodapoppins@hotmail.com");
-    }
+
 
     public void buildRecyclerView(View v) {
         customerRecyclerView = v.findViewById(R.id.customer_recycler_view);

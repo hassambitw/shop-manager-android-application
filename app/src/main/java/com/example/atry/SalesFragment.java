@@ -34,8 +34,6 @@ public class SalesFragment extends Fragment {
         dbO = new DBHelper(getActivity());
 
 
-        dbO.insertOrder(6, 005, "02/10/2020", 1);
-        dbO.insert_order_item(6,2,3,2,33,20);
         //dbO.updateTable();
         Cursor c1 = dbO.getAllFrom_Orders();
         while (c1.moveToNext()) {
