@@ -95,7 +95,7 @@ public class editCustomer_activity extends AppCompatActivity {
                     if (dbh.updateCustomer(customer_id, customer_fname, customer_lname, customer_phone, customer_email)) {
                         Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.putExtra("from_edit_customers","customers");
+                        i.putExtra("from_edit_customers", "customers");
                         startActivity(i);
                     } else {
                         Toast.makeText(getApplicationContext(), "Data not updated", Toast.LENGTH_SHORT).show();
@@ -112,5 +112,13 @@ public class editCustomer_activity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean idStartWithZero(EditText et) {
+        if (et.getText().toString().trim().startsWith("0")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

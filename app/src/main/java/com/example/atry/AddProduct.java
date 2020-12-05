@@ -87,32 +87,28 @@ public class AddProduct extends AppCompatActivity {
 
                 try {
                     prodID = Integer.parseInt(etProdID.getText().toString());
+                    ProductListPrice = Double.parseDouble(etProdListPrice.getText().toString());
+                    ProductQuantity = Integer.parseInt(etProdQuant.getText().toString());
+                    ProductYear = Integer.parseInt(etProdYear.getText().toString());
                 } catch (NumberFormatException nfe) {
                     Toast.makeText(getApplicationContext(), "Product not added", Toast.LENGTH_SHORT).show();
                 }
                 ProductName = etProdName.getText().toString();
                 ProductBrand = etProdBrand.getText().toString();
                 ProductCategory = etProdCategory.getText().toString();
-                ProductListPrice = Double.parseDouble(etProdListPrice.getText().toString());
-                ProductQuantity = Integer.parseInt(etProdQuant.getText().toString());
-                ProductYear = Integer.parseInt(etProdYear.getText().toString());
                 if (!etProdID.getText().toString().isEmpty() && !ProductName.isEmpty() && !ProductBrand.isEmpty() && !ProductCategory.isEmpty() && ProductListPrice!=0.0 && ProductQuantity != 0 && ProductYear != 0) {
-                    if (dbh.insertProduct(prodID, ProductName, ProductBrand, ProductCategory, ProductYear, ProductListPrice, ProductQuantity)) {
-                        Toast.makeText(getApplicationContext(), "Product added", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.putExtra("from_product","product");
-                        startActivity(i);
-//                        etProdCategory.setText("");
-//                        etProdYear.setText("");
-//                        etProdQuant.setText("");
-//                        etProdListPrice.setText("");
-//                        etProdBrand.setText("");
-//                        etProdName.setText("");
-                        //etProdBrand.setText("");
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Product not added", Toast.LENGTH_SHORT).show();
-                    }
+                   if (!idStartWithZero(etProdID) && !idStartWithZero(etProdListPrice) && !idStartWithZero(etProdQuant) && !idStartWithZero(etProdYear)) {
+                       if (dbh.insertProduct(prodID, ProductName, ProductBrand, ProductCategory, ProductYear, ProductListPrice, ProductQuantity)) {
+                           Toast.makeText(getApplicationContext(), "Product added", Toast.LENGTH_SHORT).show();
+                           Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                           i.putExtra("from_product", "product");
+                           startActivity(i);
+                       } else {
+                           Toast.makeText(getApplicationContext(), "Product not added", Toast.LENGTH_SHORT).show();
+                       }
+                   } else {
+                       Toast.makeText(getApplicationContext(), "Values cannot start with 0.", Toast.LENGTH_SHORT).show();
+                   }
                 } else {
                     Toast.makeText(getApplicationContext(), "Product not added", Toast.LENGTH_SHORT).show();
                     if (etProdID.getText().toString().length() == 0)
@@ -121,13 +117,13 @@ public class AddProduct extends AppCompatActivity {
                         etProdName.setError("Enter product name.");
                     else if (etProdBrand.length() == 0)
                         etProdBrand.setError("Enter product brand.");
-                    else if (etProdListPrice.length() == 0) etProdListPrice.setError("Enter product list price.");
+                    else if (etProdCategory.length() == 0)
+                        etProdCategory.setError("Enter product category.");
                     else if (etProdQuant.length() == 0)
                         etProdQuant.setError("Enter product stock.");
                     else if (etProdYear.length() == 0)
                         etProdYear.setError("Enter product year.");
-                    else if (etProdCategory.length() == 0)
-                        etProdCategory.setError("Enter product category.");
+                    else if (etProdListPrice.length() == 0) etProdListPrice.setError("Enter product list price.");
                 }
 //                    dbh.insertCustomer(customer_id, customer_fname, customer_lname, customer_email, customer_phone);
 
@@ -135,9 +131,12 @@ public class AddProduct extends AppCompatActivity {
         });
 
 
-
-
+}
+    public boolean idStartWithZero(EditText et){
+        if (et.getText().toString().trim().startsWith("0")){
+            return true;
+        }else{
+            return false;
+        }
     }
-
-
 }

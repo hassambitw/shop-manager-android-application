@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.regex.Pattern;
 
 public class AddCustomer_Activity extends AppCompatActivity {
 
@@ -26,7 +29,6 @@ public class AddCustomer_Activity extends AppCompatActivity {
     String customer_email;
     String customer_phone;
     private RecyclerView.Adapter customerAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,19 +78,26 @@ public class AddCustomer_Activity extends AppCompatActivity {
                 customer_email = cust_email_et.getText().toString();
                 customer_phone = cust_phone_et.getText().toString();
                 if (!custID_et.getText().toString().isEmpty() && !customer_fname.isEmpty() && !customer_lname.isEmpty() && !customer_email.isEmpty() && !customer_phone.isEmpty()) {
-                    if (dbh.insertCustomer(customer_id, customer_fname, customer_lname, customer_phone, customer_email)) {
-                        Toast.makeText(getApplicationContext(), "Data added", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.putExtra("from_customers","customers");
-                        startActivity(i);
-//                        custID_et.setText("");
-//                        cust_fname_et.setText("");
-//                        cust_lname_et.setText("");
-//                        cust_email_et.setText("");
-//                        cust_phone_et.setText("");
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
-                    }
+                    if(!idStartWithZero(custID_et)) {
+                        if (Patterns.EMAIL_ADDRESS.matcher(customer_email).matches()) {
+                            if (Patterns.PHONE.matcher(customer_phone).matches()) {
+                                if (dbh.insertCustomer(customer_id, customer_fname, customer_lname, customer_phone, customer_email)) {
+                                    Toast.makeText(getApplicationContext(), "Data added", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                    i.putExtra("from_customers", "customers");
+                                    startActivity(i);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                cust_email_et.setError("Email should be in format of _____@_____.___");
+                            }
+                        } else {
+                            cust_phone_et.setError("Phone is in wrong format.");
+                        }
+                    }   else {
+                            Toast.makeText(getApplicationContext(), "IDs cannot start with 0.", Toast.LENGTH_SHORT).show();
+                        }
                 } else {
                     Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
                     if (custID_et.getText().toString().length() == 0)
@@ -112,5 +121,13 @@ public class AddCustomer_Activity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public boolean idStartWithZero(EditText et){
+        if (et.getText().toString().trim().startsWith("0")){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

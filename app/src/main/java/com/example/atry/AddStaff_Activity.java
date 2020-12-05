@@ -76,18 +76,22 @@ public class AddStaff_Activity extends AppCompatActivity {
                 staff_email = staff_email_et.getText().toString();
                 staff_phone = staff_phone_et.getText().toString();
                 if (!staffID_et.getText().toString().isEmpty() && !staff_fname.isEmpty() && !staff_lname.isEmpty() && !staff_email.isEmpty() && !staff_phone.isEmpty()) {
-                    if (dbh.insertStaff(staff_id, staff_fname, staff_lname, staff_phone, staff_email)) {
-                        Toast.makeText(getApplicationContext(), "Data added", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.putExtra("from_staff","staff");
-                        startActivity(i);
+                    if (!idStartWithZero(staffID_et)) {
+                        if (dbh.insertStaff(staff_id, staff_fname, staff_lname, staff_phone, staff_email)) {
+                            Toast.makeText(getApplicationContext(), "Data added", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                            i.putExtra("from_staff", "staff");
+                            startActivity(i);
 //                        custID_et.setText("");
 //                        cust_fname_et.setText("");
 //                        cust_lname_et.setText("");
 //                        cust_email_et.setText("");
 //                        cust_phone_et.setText("");
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "IDs cannot start with 0", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Data not added", Toast.LENGTH_SHORT).show();
@@ -112,5 +116,12 @@ public class AddStaff_Activity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public boolean idStartWithZero(EditText et){
+        if (et.getText().toString().trim().startsWith("0")){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
