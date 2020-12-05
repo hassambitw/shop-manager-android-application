@@ -406,6 +406,106 @@ public class DBHelper extends SQLiteOpenHelper {
         this.insertSupplier(5, "Ginza Trading", "+971587659876", "ginzatrading@gmail.com");
     }
 
+    public void addOrderItems() {
+        this.insert_order_item(1,1,1,6,1000,6);
+        this.insert_order_item(5,2,2,5,1000,6);
+        this.insert_order_item(2,3,3,3,900,25);
+        this.insert_order_item(3,4,4,6,1000,60);
+        this.insert_order_item(4,5,5,6,1000,6);
+
+        this.insert_order_item(6,6,6,6,1000,6);
+        this.insert_order_item(7,7,7,5,1000,6);
+        this.insert_order_item(8,8,8,3,900,25);
+        this.insert_order_item(9,9,9,6,1000,60);
+        this.insert_order_item(10,10,10,6,1000,6);
+
+        this.insert_order_item(11,11,1,6,1000,6);
+        this.insert_order_item(12,12,2,3,1000,6);
+        this.insert_order_item(13,13,3,2,60,6);
+        this.insert_order_item(14,14,4,1,1000,6);
+        this.insert_order_item(15,15,5,2,1000,6);
+
+        this.insert_order_item(16,16,6,1,1000,6);
+        this.insert_order_item(17,17,7,2,1000,6);
+        this.insert_order_item(18,18,8,3,1000,6);
+        this.insert_order_item(19,19,9,4,1000,6);
+        this.insert_order_item(20,20,10,5,1000,6);
+
+        this.insert_order_item(21,21,1,4,1000,6);
+        this.insert_order_item(22,22,2,5,1000,6);
+        this.insert_order_item(23,23,3,2,1000,6);
+        this.insert_order_item(24,24,4,3,1000,6);
+        this.insert_order_item(25,25,5,4,1000,6);
+
+        this.insert_order_item(26,26,6,1,800,6);
+        this.insert_order_item(27,27,7,2,1000,6);
+        this.insert_order_item(28,28,8,4,900,6);
+        this.insert_order_item(29,29,9,5,1000,6);
+        this.insert_order_item(30,30,10,6,1000,6);
+
+        this.insert_order_item(31,31,1,8,1000,6);
+        this.insert_order_item(32,32,2,1,900,6);
+        this.insert_order_item(33,33,3,4,1000,6);
+        this.insert_order_item(34,34,4,3,950,6);
+        this.insert_order_item(35,35,5,1,1000,6);
+
+        this.insert_order_item(36,36,6,2,1000,6);
+        this.insert_order_item(37,37,7,3,1000,6);
+        this.insert_order_item(38,38,8,1,1000,6);
+        this.insert_order_item(39,39,9,4,1000,6);
+        this.insert_order_item(40,40,10,1,1000,6);
+
+        this.insert_order_item(41,41,1,1,1000,6);
+        this.insert_order_item(42,42,2,2,1000,6);
+        this.insert_order_item(43,43,3,3,1000,6);
+        this.insert_order_item(44,44,4,6,1000,6);
+        this.insert_order_item(45,45,5,4,1000,6);
+
+        this.insert_order_item(46,46,6,1,1000,6);
+        this.insert_order_item(47,47,7,3,1000,6);
+        this.insert_order_item(48,48,8,4,1000,6);
+        this.insert_order_item(49,49,9,3,1000,6);
+        this.insert_order_item(50,50,10,1,1000,6);
+
+        this.insert_order_item(51,51,1,3,1000,6);
+        this.insert_order_item(52,52,2,4,1000,6);
+        this.insert_order_item(53,53,3,3,1000,6);
+        this.insert_order_item(54,54,4,4,1000,6);
+        this.insert_order_item(55,55,5,6,1000,6);
+
+        this.insert_order_item(56,56,6,6,1000,6);
+        this.insert_order_item(57,57,7,3,1000,6);
+        this.insert_order_item(58,58,8,2,1000,6);
+        this.insert_order_item(59,59,9,1,1000,6);
+        this.insert_order_item(60,60,10,3,1000,6);
+
+        //extra order items
+
+        this.insert_order_item(51,61,2,3,1000,6);
+        this.insert_order_item(52,62,4,4,1000,6);
+        this.insert_order_item(53,63,9,3,1000,6);
+        this.insert_order_item(54,64,10,4,1000,6);
+        this.insert_order_item(55,65,8,6,1000,6);
+
+        this.insert_order_item(56,66,8,6,1000,6);
+        this.insert_order_item(57,67,9,3,1000,6);
+        this.insert_order_item(58,68,10,2,1000,6);
+        this.insert_order_item(59,69,2,1,1000,6);
+        this.insert_order_item(60,70,1,3,1000,6);
+
+        this.insert_order_item(41,71,10,1,1000,6);
+        this.insert_order_item(42,72,3,2,1000,6);
+        this.insert_order_item(43,73,1,3,1000,6);
+        this.insert_order_item(44,74,10,6,1000,6);
+        this.insert_order_item(45,75,9,4,1000,6);
+
+        this.insert_order_item(46,76,8,1,1000,6);
+        this.insert_order_item(47,77,4,3,1000,6);
+        this.insert_order_item(48,78,5,4,1000,6);
+        this.insert_order_item(49,79,1,3,1000,6);
+        this.insert_order_item(50,80,2,1,1000,6);
+    }
+
     public void addStaff() {
         this.insertStaff(1, "Ted", "Lasso", "+971501018761", "tedlasso@hotmail.com");
         this.insertStaff(2, "Pepper", "Potts", "+971552417839", "pepperp@hotmail.com");
