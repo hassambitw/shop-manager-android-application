@@ -220,88 +220,182 @@ public class DBHelper extends SQLiteOpenHelper {
         addStaff();
         addSuppliers();
         addOrders();
+        addShipments();
+        addShipmentItems();
         addOrderItems();
 
-
-        // for orders, do products
     }
 
-    public void addOrderItems() {
+    public void addShipmentItems() {
+        this.insert_shipment_items(1,1,1,80);
+        this.insert_shipment_items(1,2,1,10);
+        this.insert_shipment_items(2,3,2,25);
+        this.insert_shipment_items(3,4,3,46);
+        this.insert_shipment_items(4,5,4,40);
+        this.insert_shipment_items(5,6,5,31);
+        this.insert_shipment_items(6,7,6,80);
+        this.insert_shipment_items(7,8,7,70);
+        this.insert_shipment_items(8,9,8,84);
+        this.insert_shipment_items(9,10,9,50);
+        this.insert_shipment_items(10,11,10,87);
+        this.insert_shipment_items(11,12,9,64);
+        this.insert_shipment_items(12,13,8,32);
+        this.insert_shipment_items(13,14,3,38);
+        this.insert_shipment_items(14,15,2,84);
+        this.insert_shipment_items(15,16,7,82);
+        this.insert_shipment_items(16,17,4,89);
+        this.insert_shipment_items(17,18,5,90);
+        this.insert_shipment_items(18,19,3,93);
+        this.insert_shipment_items(19,20,2,47);
+    }
 
+
+    public void addShipments() {
+        this.insertShipment(1,1,5,"2020-01-01");
+        this.insertShipment(2,1,5,"2020-01-07");
+        this.insertShipment(3,3,5,"2020-01-12");
+        this.insertShipment(4,4,5,"2020-01-19");
+        this.insertShipment(5,5,5,"2020-01-30");
+
+        this.insertShipment(6,2,5,"2020-02-01");
+        this.insertShipment(7,3,5,"2020-02-07");
+        this.insertShipment(8,5,5,"2020-02-12");
+        this.insertShipment(9,3,5,"2020-02-19");
+        this.insertShipment(10,1,5,"2020-02-24");
+
+        this.insertShipment(11,5,5,"2020-03-01");
+        this.insertShipment(12,4,5,"2020-03-07");
+        this.insertShipment(13,3,5,"2020-03-12");
+        this.insertShipment(14,2,5,"2020-03-19");
+        this.insertShipment(15,1,5,"2020-03-30");
+
+        this.insertShipment(16,1,5,"2020-04-01");
+        this.insertShipment(17,2,5,"2020-04-07");
+        this.insertShipment(18,3,5,"2020-04-12");
+        this.insertShipment(19,4,5,"2020-04-19");
+        this.insertShipment(20,5,5,"2020-04-30");
+
+        this.insertShipment(21,1,5,"2020-05-01");
+        this.insertShipment(22,3,5,"2020-05-07");
+        this.insertShipment(23,5,5,"2020-05-12");
+        this.insertShipment(24,3,5,"2020-05-19");
+        this.insertShipment(25,2,5,"2020-05-30");
+
+        this.insertShipment(26,5,5,"2020-06-01");
+        this.insertShipment(27,3,5,"2020-06-07");
+        this.insertShipment(28,1,5,"2020-06-12");
+        this.insertShipment(29,3,5,"2020-06-19");
+        this.insertShipment(30,5,5,"2020-06-30");
+
+        this.insertShipment(31,3,5,"2020-07-01");
+        this.insertShipment(32,2,5,"2020-07-07");
+        this.insertShipment(33,4,5,"2020-07-12");
+        this.insertShipment(34,4,5,"2020-07-19");
+        this.insertShipment(35,1,5,"2020-07-30");
+
+        this.insertShipment(36,2,5,"2020-08-01");
+        this.insertShipment(37,2,5,"2020-08-07");
+        this.insertShipment(38,2,5,"2020-08-12");
+        this.insertShipment(39,5,5,"2020-08-19");
+        this.insertShipment(40,5,5,"2020-08-30");
+
+        this.insertShipment(41,4,5,"2020-09-01");
+        this.insertShipment(42,3,5,"2020-09-07");
+        this.insertShipment(43,3,5,"2020-09-12");
+        this.insertShipment(44,3,5,"2020-09-19");
+        this.insertShipment(45,2,5,"2020-09-30");
+
+        this.insertShipment(46,3,5,"2020-10-01");
+        this.insertShipment(47,2,5,"2020-10-07");
+        this.insertShipment(48,1,5,"2020-10-12");
+        this.insertShipment(49,3,5,"2020-10-19");
+        this.insertShipment(50,4,5,"2020-10-30");
+
+        this.insertShipment(51,2,5,"2020-11-01");
+        this.insertShipment(52,2,5,"2020-11-07");
+        this.insertShipment(53,4,5,"2020-11-12");
+        this.insertShipment(54,3,5,"2020-11-19");
+        this.insertShipment(55,5,5,"2020-11-30");
+
+        this.insertShipment(56,2,5,"2020-01-01");
+        this.insertShipment(57,3,5,"2020-01-02");
+        this.insertShipment(58,4,5,"2020-01-03");
+        this.insertShipment(59,5,5,"2020-01-04");
+        this.insertShipment(60,6,5,"2020-01-02");
     }
 
     public void addOrders() {
-        this.insertOrder(1, 1, "2020/01/01", 1);
-        this.insertOrder(2, 2, "2020/01/15", 1);
-        this.insertOrder(3, 4, "2020/01/25", 2);
-        this.insertOrder(4, 3, "2020/01/19", 2);
-        this.insertOrder(5, 1, "2020/01/10", 4);
+        this.insertOrder(1, 1, "2020-01-01", 1);
+        this.insertOrder(2, 2, "2020-01-15", 1);
+        this.insertOrder(3, 4, "2020-01-25", 2);
+        this.insertOrder(4, 3, "2020-01-19", 2);
+        this.insertOrder(5, 1, "2020-01-10", 4);
 
-        this.insertOrder(6, 2, "2020/02/05", 5);
-        this.insertOrder(7, 3, "2020/02/18", 2);
-        this.insertOrder(8, 5, "2020/02/21", 4);
-        this.insertOrder(9, 4, "2020/02/12", 5);
-        this.insertOrder(10, 2, "2020/02/16", 7);
+        this.insertOrder(6, 2, "2020-02-05", 5);
+        this.insertOrder(7, 3, "2020-02-18", 2);
+        this.insertOrder(8, 5, "2020-02-21", 4);
+        this.insertOrder(9, 4, "2020-02-12", 5);
+        this.insertOrder(10, 2, "2020-02-16", 7);
 
-        this.insertOrder(11, 3, "2020/03/05", 6);
-        this.insertOrder(12, 4, "2020/03/18", 6);
-        this.insertOrder(13, 6, "2020/03/21", 3);
-        this.insertOrder(14, 5, "2020/03/12", 4);
-        this.insertOrder(15, 3, "2020/03/16", 2);
+        this.insertOrder(11, 3, "2020-03-05", 6);
+        this.insertOrder(12, 4, "2020-03-18", 6);
+        this.insertOrder(13, 6, "2020-03-21", 3);
+        this.insertOrder(14, 5, "2020-03-12", 4);
+        this.insertOrder(15, 3, "2020-03-16", 2);
 
-        this.insertOrder(16, 4, "2020/04/05", 3);
-        this.insertOrder(17, 5, "2020/04/18", 6);
-        this.insertOrder(18, 7, "2020/04/21", 2);
-        this.insertOrder(19, 6, "2020/04/12", 2);
-        this.insertOrder(20, 4, "2020/04/16", 8);
+        this.insertOrder(16, 4, "2020-04-05", 3);
+        this.insertOrder(17, 5, "2020-04-18", 6);
+        this.insertOrder(18, 7, "2020-04-21", 2);
+        this.insertOrder(19, 6, "2020-04-12", 2);
+        this.insertOrder(20, 4, "2020-04-16", 8);
 
-        this.insertOrder(21, 5, "2020/05/05", 4);
-        this.insertOrder(22, 6, "2020/05/18", 1);
-        this.insertOrder(23, 8, "2020/05/21", 8);
-        this.insertOrder(24, 7, "2020/05/12", 2);
-        this.insertOrder(25, 5, "2020/05/16", 3);
+        this.insertOrder(21, 5, "2020-05-05", 4);
+        this.insertOrder(22, 6, "2020-05-18", 1);
+        this.insertOrder(23, 8, "2020-05-21", 8);
+        this.insertOrder(24, 7, "2020-05-12", 2);
+        this.insertOrder(25, 5, "2020-05-16", 3);
 
-        this.insertOrder(26, 6, "2020/06/05", 5);
-        this.insertOrder(27, 7, "2020/06/18", 2);
-        this.insertOrder(28, 9, "2020/06/21", 4);
-        this.insertOrder(29, 8, "2020/06/12", 5);
-        this.insertOrder(30, 6, "2020/06/16", 7);
+        this.insertOrder(26, 6, "2020-06-05", 5);
+        this.insertOrder(27, 7, "2020-06-18", 2);
+        this.insertOrder(28, 9, "2020-06-21", 4);
+        this.insertOrder(29, 8, "2020-06-12", 5);
+        this.insertOrder(30, 6, "2020-06-16", 7);
 
-        this.insertOrder(31, 7, "2020/07/05", 7);
-        this.insertOrder(32, 8, "2020/07/18", 4);
-        this.insertOrder(33, 10, "2020/07/21", 8);
-        this.insertOrder(34, 9, "2020/07/12", 3);
-        this.insertOrder(35, 7, "2020/07/16", 2);
+        this.insertOrder(31, 7, "2020-07-05", 7);
+        this.insertOrder(32, 8, "2020-07-18", 4);
+        this.insertOrder(33, 10, "2020-07-21", 8);
+        this.insertOrder(34, 9, "2020-07-12", 3);
+        this.insertOrder(35, 7, "2020-07-16", 2);
 
-        this.insertOrder(36, 8, "2020/08/05", 8);
-        this.insertOrder(37, 9, "2020/08/18", 1);
-        this.insertOrder(38, 1, "2020/08/21", 2);
-        this.insertOrder(39, 10, "2020/08/12", 9);
-        this.insertOrder(40, 8, "2020/08/16", 5);
+        this.insertOrder(36, 8, "2020-08-05", 8);
+        this.insertOrder(37, 9, "2020-08-18", 1);
+        this.insertOrder(38, 1, "2020-08-21", 2);
+        this.insertOrder(39, 10, "2020-08-12", 9);
+        this.insertOrder(40, 8, "2020-08-16", 5);
 
-        this.insertOrder(41, 9, "2020/09/05", 9);
-        this.insertOrder(42, 10, "2020/09/18", 2);
-        this.insertOrder(43, 2, "2020/09/21", 3);
-        this.insertOrder(44, 1, "2020/09/12", 4);
-        this.insertOrder(45, 9, "2020/09/16", 5);
+        this.insertOrder(41, 9, "2020-09-05", 9);
+        this.insertOrder(42, 10, "2020-09-18", 2);
+        this.insertOrder(43, 2, "2020-09-21", 3);
+        this.insertOrder(44, 1, "2020-09-12", 4);
+        this.insertOrder(45, 9, "2020-09-16", 5);
 
-        this.insertOrder(46, 10, "2020/10/05", 10);
-        this.insertOrder(47, 1, "2020/10/18", 3);
-        this.insertOrder(48, 3, "2020/10/21", 4);
-        this.insertOrder(49, 2, "2020/10/12", 1);
-        this.insertOrder(50, 10, "2020/10/16", 7);
+        this.insertOrder(46, 10, "2020-10-05", 10);
+        this.insertOrder(47, 1, "2020-10-18", 3);
+        this.insertOrder(48, 3, "2020-10-21", 4);
+        this.insertOrder(49, 2, "2020-10-12", 1);
+        this.insertOrder(50, 10, "2020-10-16", 7);
 
-        this.insertOrder(51, 1, "2020/11/05", 2);
-        this.insertOrder(52, 2, "2020/11/18", 3);
-        this.insertOrder(53, 4, "2020/11/21", 4);
-        this.insertOrder(54, 3, "2020/11/12", 6);
-        this.insertOrder(55, 1, "2020/11/16", 6);
+        this.insertOrder(51, 1, "2020-11-05", 2);
+        this.insertOrder(52, 2, "2020-11-18", 3);
+        this.insertOrder(53, 4, "2020-11-21", 4);
+        this.insertOrder(54, 3, "2020-11-12", 6);
+        this.insertOrder(55, 1, "2020-11-16", 6);
 
-        this.insertOrder(56, 2, "2020/12/02", 2);
-        this.insertOrder(57, 2, "2020/12/01", 5);
-        this.insertOrder(58, 4, "2020/12/03", 1);
-        this.insertOrder(59, 7, "2020/12/04", 8);
-        this.insertOrder(60, 9, "2020/12/02", 9);
+        this.insertOrder(56, 2, "2020-12-02", 2);
+        this.insertOrder(57, 2, "2020-12-01", 5);
+        this.insertOrder(58, 4, "2020-12-03", 1);
+        this.insertOrder(59, 7, "2020-12-04", 8);
+        this.insertOrder(60, 9, "2020-12-02", 9);
     }
 
     public void addSuppliers() {
