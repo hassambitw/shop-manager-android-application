@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -61,13 +62,8 @@ public class viewShipment_activity extends AppCompatActivity {
         }
 
 
-        backBtn = findViewById(R.id.back);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backBtn = findViewById(R.id.back_transaction);
+        backBtn.setOnClickListener(v -> finish());
 
 
         shipmentRecyclerView.setHasFixedSize(true);

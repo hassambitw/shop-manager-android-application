@@ -47,6 +47,7 @@ public class Add_Sale extends AppCompatActivity {
             public void onClick(View v) {
 
                 onBackPressed();
+                finish();
             }
         });
         Window window = this.getWindow();
