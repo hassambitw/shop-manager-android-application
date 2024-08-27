@@ -11,8 +11,7 @@ An Android application for shop managers to streamline business operations, feat
 - Purchase Tracking:
   - Record purchases
   - Calculate total cost with shipping tax
-- Live Dashboard:
-  - Real-time statistics
+- Dashboard:
   - Monthly profit and revenue visualization
 - User Interface:
   - Fragment-based screens
