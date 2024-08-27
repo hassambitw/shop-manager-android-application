@@ -1,8 +1,25 @@
-This is an Android Application designed for shop managers to help run their business smoothly. 
-The application allows the manager to add and remove products, as well as record details on a particular sale and generate a receipt. 
-Similarly, the manager can record the purchases made to calculate the total cost, with a shipping tax included.   
-Additionaly, a live dashboard is implemented so real-time statistics like monthly profit and revenue can be viewed.
+# Shop Manager 
 
-This application makes use of the MVC architecture which makes the code more reusable and easier to understand.
-To add to that, fragments were used to implement most screens, and a navigation drawer was used to allow the user to go between different features easily.
-For the backend, a SQLite database was implemented, hence a DBHelper class was used to retrieve, update, insert and delete elements from the database. 
+An Android application for shop managers to streamline business operations, featuring product management, sales tracking, purchase recording, and real-time financial analytics. Built with MVC architecture, the app utilizes fragments, a navigation drawer, and a SQLite database for efficient data management.
+
+Key Features:
+- Product Management:
+  - Add and remove products from inventory
+- Sales Recording:
+  - Log sale details
+  - Generate receipts
+- Purchase Tracking:
+  - Record purchases
+  - Calculate total cost with shipping tax
+- Live Dashboard:
+  - Real-time statistics
+  - Monthly profit and revenue visualization
+- User Interface:
+  - Fragment-based screens
+  - Navigation drawer for easy feature access
+- Architecture and Backend:
+  - MVC (Model-View-Controller) architecture
+  - SQLite database with DBHelper for CRUD operations
+- Enhanced Usability:
+  - Intuitive design for shop managers
+  - Streamlined business process management
